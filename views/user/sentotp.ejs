@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTP Verification</title>
+  <link rel="stylesheet" href="user/css/otp.css">
+  
+</head>
+<body>
+ 
+  <form action="/sendOtp" method="post">
+    <div class="message-container">
+      <% if(typeof message !== 'undefined'){%>
+          <p class="message"><%= message%></p>
+      <% }%>
+  </div>
+    <label for="otp">Please verify your Email </label>
+    
+    
+    <button type="submit">sent</button>
+  </form>
+</body>
+</html>

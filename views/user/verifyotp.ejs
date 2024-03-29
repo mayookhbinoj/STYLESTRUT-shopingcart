@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTP Verification</title>
+  <link rel="stylesheet" href="user/css/verify.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .box {
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .otp-input {
+      margin-bottom: 10px;
+    }
+
+    #timer {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    #resend-link {
+      display: block;
+      margin-top: 10px;
+      text-decoration: underline;
+      color: #3498db; 
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Please enter the OTP to verify the email.</h2>
+    
+    <input type="text" id="otp" name="otp" required class="otp-input">
+    <p id="otpDisplay"></p>
+    <button id="generateOTPButton" type="submit">Submit</button>
+    
+    <div id="timer">1:00</div>
+    <div id="expired-message"></div>
+  
+
+    
+     <a id="resendOTP" href="/resend">Resend OTP</a>
+    </form>
+  </div>
+
+  <script>
+    
+
+    let countdownTime = 60;
+
+  
+    function updateTimer() {
+      const minutes = Math.floor(countdownTime / 60);
+      let seconds = countdownTime % 60;
+
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+
+   
+      document.getElementById('timer').innerText = `${minutes}:${seconds}`;
+
+     
+      countdownTime--;
+
+      if (countdownTime < 0) {
+        clearInterval(timerInterval);
+        document.getElementById('timer').innerText = '00:00';
+        alert("OTP has been expired")
+      }
+    }
+
+   
+    const timerInterval = setInterval(updateTimer, 1000);
+  
+    $('#generateOTPButton').click(function() {
+      const otp = $('#otp').val(); 
+      $.ajax({
+        type: 'POST',
+        url: '/verifyotp',
+        data: { otp: otp }, 
+        success: function(response) {
+          console.log(response);
+          if (response.otpverified) {
+            window.location.href = '/home'; 
+          }
+            else if(response.validataion){
+
+                $('#otpDisplay').text('please enter the otp to verify').css('color', 'red').show();
+            }
+         else {
+
+              $('#otpDisplay').text('Invalid OTP. Please try again.').css('color', 'red').show();
+          
+         
+            
+          }
+        },
+        error: function() {
+          $('#otpDisplay').text('Something went wrong.');
+        }
+      });
+    });
+    document.getElementById('resendOTP').style.display = 'none';
+    setTimeout(function() {
+    document.getElementById('resendOTP').style.display = 'block';
+    }, 60000); 
+  
+
+
+   
+  </script>
+</body>
+</html>

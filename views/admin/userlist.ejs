@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-body-image="none">
+
+
+<!-- Mirrored from themesbrand.com/toner/html/backend/sellers-list-view.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Feb 2024 08:49:08 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <title>List View - Sellers | Toner eCommerce + Admin HTML Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="eCommerce + Admin HTML Template" name="description">
+    <meta content="Themesbrand" name="author">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+
+    <!-- Sweet Alert css-->
+    <link href="../assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Layout config Js -->
+    <script src="../assets/js/layout.js"></script>
+    <!-- Bootstrap Css -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <!-- App Css-->
+    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css">
+    <!-- custom Css-->
+    <link href="../assets/css/custom.min.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+        <div class="app-menu navbar-menu">
+           
+     <div id="scrollbar">
+                <div class="container-fluid">
+
+                    <div id="two-column-menu">
+                    </div>
+                    <ul class="navbar-nav" id="navbar-nav">
+                        <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                        <li class="nav-item">
+                            <a href="/admin/home" class="nav-link menu-link"> <i class="bi bi-speedometer2"></i> <span data-key="t-dashboard">Dashboard</span> <span class="badge badge-pill bg-danger-subtle text-danger " data-key="t-hot">Hot</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarProducts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProducts">
+                                <i class="bi bi-box-seam"></i> <span data-key="t-products">Products</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarProducts">
+                                <ul class="nav nav-sm flex-column">
+  
+                                    <li class="nav-item">       
+                                        <a href="/admin/category" class="nav-link" data-key="t-categories">Categories</a>
+                                    </li>
+  
+                                    <li class="nav-item">       
+                                        <a href="/admin/productslist" class="nav-link" data-key="t-categories">List view</a>
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarOrders" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrders">
+                                <i class="bi bi-cart4"></i> <span data-key="t-orders">Orders</span>
+                            </a>
+                        </li>
+
+                        
+
+                        <li class="nav-item">
+                            <a href="coupons.html" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Coupons</span> </a>
+                        </li>   
+                        <li>
+                            
+                       
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+
+            <div class="sidebar-background"></div>
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- Vertical Overlay-->
+        <div class="vertical-overlay"></div>
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    
+                    <!-- end page title -->
+
+
+                    <div class="row" id="sellersList">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-lg-3">
+                                            <div class="search-box">
+                                                <input type="text" class="form-control search" placeholder="Search...">
+                                                <i class="ri-search-line search-icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-auto">
+                                            <select class="form-control" id="idStatus" name="choices-single-default">
+                                                <option value="">Status</option>
+                                                <option value="All" selected>All</option>
+                                                <option value="Active">Active</option>
+                                                <option value="Inactive">Inactive</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-auto">
+                                            <select class="form-control" data-choices data-choices-search-false name="choices-single-default">
+                                                <option value="all">All</option>
+                                                <option value="Today">Today</option>
+                                                <option value="Yesterday">Yesterday</option>
+                                                <option value="Last 7 Days">Last 7 Days</option>
+                                                <option value="Last 30 Days">Last 30 Days</option>
+                                                <option value="This Month" selected>This Month</option>
+                                                <option value="Last Month">Last Month</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-auto ms-auto">
+                                            <div class="hstack gap-2">
+                                                <a class="btn btn-primary add-btn" href="#showModal" data-bs-toggle="modal">Add Seller</a>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-icon btn-soft-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class="ph-dots-three-outline"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive table-card mb-1">
+                                        <table class="table align-middle table-nowrap" id="customerTable">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th scope="col" style="width: 50px;">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="checkAll" value="option">
+                                                        </div>
+                                                    </th>
+                                                    <th class="sort" data-sort="name">NAME</th>
+                                                    <th class="sort" data-sort="email">EMAIL</th>
+                                                    <th class="sort" data-sort="phone">PHONE</th>
+                                                    
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody class="list form-check-all">
+                                                <% if(users.length > 0) { %>
+                                                    <% for (let i = 0; i < users.length; i++) { %>
+                                                        <tr>
+                                                            <td><%= i + 1 %></td>
+                                                            <td><b><%= users[i].name %></b></td>
+                                                            <td><%= users[i].email %></td>
+                                                            <td><%= users[i].phone %></td>
+                                                            <td>
+                                                                <% if (users[i].blocked) { %>
+                                                                    <button class="btn btn-danger btn-sm" onclick="unblockUser('<%= users[i].id %>')">Unblock</button>
+                                                                <% } else { %>
+                                                                    <button class="btn btn-success btn-sm" onclick="blockUser('<%= users[i].id %>')">Block</button>
+                                                                <% } %>
+                                                            </td>
+                                                        </tr>
+                                                    <% } %>
+                                                <% } %>
+                               </tbody>
+                                        </table>
+                                        <div class="noresult" style="display: none">
+                                            <div class="text-center py-4">
+                                                <div class="avatar-md mx-auto mb-4">
+                                                    <div class="avatar-title bg-primary-subtle text-primary rounded-circle fs-24">
+                                                        <i class="bi bi-search"></i>
+                                                    </div>
+                                                </div>
+                                                <h5 class="mt-2">Sorry! No Result Found</h5>
+                                                <p class="text-muted mb-0">We've searched more than 150+ seller We did not find any seller for you search.</p>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+
+                                    <div class="d-flex justify-content-end">
+                                        <div class="pagination-wrap hstack gap-2">
+                                            <a class="page-item pagination-prev disabled" href="#">
+                                                <i class="mdi mdi-chevron-left align-middle me-1"></i> Previous
+                                            </a>
+                                            <ul class="pagination listjs-pagination mb-0"></ul>
+                                            <a class="page-item pagination-next" href="#">
+                                                Next <i class="mdi mdi-chevron-right align-middle ms-1"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               
+
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner-border text-primary avatar-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+  
+
+   
+                            
+                  
+
+    <!-- JAVASCRIPT -->
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../assets/js/plugins.js"></script>
+
+    <!-- list.js min js -->
+    <script src="../assets/libs/list.js/list.min.js"></script>
+    <script src="../assets/libs/list.pagination.js/list.pagination.min.js"></script>
+
+    <script src="../assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- Sellers list js -->
+    <script src="../assets/js/backend/sellers-list.init.js"></script>
+
+    <!-- App js -->
+    <script src="../assets/js/app.js"></script>
+    <script>
+       function blockUser(userId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'This user will be blocked!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, block it!',
+                cancelButtonText: 'Cancel',
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    let request = {method : 'PATCH'}
+                    // Send AJAX request to block user
+                    fetch(`/admin/block/${userId}`,request)
+                        .then(response => {
+                            if (response.ok) {
+                                Swal.fire('Blocked!',` The user has been blocked${userId}`, "success");
+                                // Reload the page after blocking
+                                location.reload();
+                            } else {
+                                throw new Error('Failed to block user.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error(error);
+                            Swal.fire('Error!', 'Failed to block user.', 'error');
+                        });
+                }
+            });
+        }
+function unblockUser(userId) {
+Swal.fire({
+               title: 'Are you sure?',
+                text: 'This user will be unblocked!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, unblock it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let request = {method : 'PATCH'}
+                    // Send AJAX request to unblock user
+                    fetch(`/admin/unblock/${userId}`,request)
+                        .then(response => {
+                            if (response.ok) {
+                                Swal.fire('Unblocked!', 'The user has been unblocked.', 'success');
+                                // Reload the page after unblocking
+                                location.reload();
+                            } else {
+                                throw new Error('Failed to unblock user.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error(error);
+                            Swal.fire('Error!', 'Failed to unblock user.', 'error');
+                        });
+                }
+            });
+        }
+    </script>
+   
+</body>
+
+
+<!-- Mirrored from themesbrand.com/toner/html/backend/sellers-list-view.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Feb 2024 08:49:09 GMT -->
+</html>

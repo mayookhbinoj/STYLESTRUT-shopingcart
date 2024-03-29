@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0; /* Optional: Set a background color */
+}
+
+.main-form {
+  text-align: center;
+      background-color: #ffffff; /* Optional: Set a background color for the main form */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+}
+
+.otp-input {
+  margin-bottom: 20px;
+}
+.resend-form {
+  text-align: center;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 8px;
+  width: 200px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px;
+  background-color: #088178;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#timer {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #333;
+}

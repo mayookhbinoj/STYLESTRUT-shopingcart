@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.css" integrity="sha512-bs9fAcCAeaDfA4A+NiShWR886eClUcBtqhipoY5DM60Y1V3BbVQlabthUBal5bq8Z8nnxxiyb1wfGX2n76N1Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/assets/css/product.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Edit Product Information</h1>
+        <form action="/admin/update-product?id=<%=product._id%>"  id="addproduct" method="post" enctype="multipart/form-data" >
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="name" value="<%= product.name%>" required>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01"  value="<%= product.price%>" required>
+            <span id="priceValidationMessage" style="color: red;"></span>
+           
+
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" value="<%= product.stock%>" required>
+            <span id="stockValidationMessage" style="color: red;"></span>
+
+            <label for="details">Details:</label>
+            <textarea id="details" value="<%= product.details%>"   name="details" rows="4" cols="50"  required></textarea>
+
+            <label for="brand">Brand:</label>
+            <input type="text"  value="<%= product.brand   %>"  id="brand" name="brand" required>
+            
+            <input type="file" id="image" name="image"  accept="image/*" multiple>
+            <input type="hidden" name="product_id" value="<%= product._id%>" >
+            <div>
+            <% for( let index = 0; index < product.image.length; index++ ) { %>
+              <button type="button" id="delete<%= index %>" class="btn btn-primary">Change</button>
+
+              <img src="<%=product.image[index] %>" alt="" class="img-fluid mt-2" style="max-width: 200px;">
+              <div id="imageContainer<%= index %>"></div>
+            <% } %>
+          </div>
+      
+            <input type="submit" value="Save">
+        </form>
+    </div>
+
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      document.getElementById('price').addEventListener('input', function() {
+        var priceInput = document.getElementById('price');
+        var priceValidationMessage = document.getElementById('priceValidationMessage');
+        var price = parseFloat(priceInput.value);
+        
+        if (isNaN(price) || price <= 0) {
+            priceValidationMessage.textContent = 'Please enter a positive number.';
+            priceInput.setCustomValidity('Please enter a positive number.');
+        } else {
+            priceValidationMessage.textContent = '';
+            priceInput.setCustomValidity('');
+        }
+    });
+    document.getElementById('stock').addEventListener('input', function() {
+        var stockInput = document.getElementById('stock');
+        var stockValidationMessage = document.getElementById('stockValidationMessage');
+        var stock = parseInt(stockInput.value);
+        
+        if (isNaN(stock) || stock < 0) {
+            stockValidationMessage.textContent = 'Please enter a positive number.';
+            stockInput.setCustomValidity('Please enter a positive number.');
+        } else {
+            stockValidationMessage.textContent = '';
+            stockInput.setCustomValidity('');
+        }
+    });
+    
+        const form = document.getElementById("addproduct")
+  let totalimages = 0;
+
+  function imageupload(event) {
+
+    const files = event.target.files;
+    const imagecontainer = document.getElementById("imageContainer");
+    const maximum = 5;
+
+    const totalupload = totalimages + files.length;
+    if (totalupload > maximum) {
+     //   Swal.fire(Oops! Upload only ${maximum} files., "Sorry");
+        event.target.value = "";
+        return;
+    }
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const reader = new FileReader();
+      if (!file.type.startsWith("image/")) {
+        console.log("File is not an image.", file.type);
+        continue;
+      }
+
+      const imgdiv = document.createElement("div");
+      imgdiv.classList.add("image-div");
+
+      const img = document.createElement("img");
+      img.style.height = "300px";
+      img.style.width = "300px";
+      img.setAttribute("name", images);
+      img.classList.add("uploaded-image");
+
+      const deletebutton = document.createElement("button");
+      deletebutton.textContent = "Delete";
+      deletebutton.classList.add("btn", "btn-danger", "m-2");
+
+      deletebutton.addEventListener("click", function () {
+        totalimages--;
+        imgdiv.remove();
+      });
+
+      reader.onload = function (event) {
+        img.src = event.target.result;
+
+        const cropperdiv = document.createElement("div");
+        cropperdiv.classList.add("cropper-container");
+        cropperdiv.appendChild(img);
+
+        imgdiv.appendChild(cropperdiv);
+        const cropper = new Cropper(img, {
+          dragMode: "move",
+          aspectRatio: 1,
+          autoCropArea: 0.8,
+          restore: false,
+          guides: false,
+          center: false,
+          responsive:true,
+          highlight: false,
+          cropBoxMovable: false,
+          cropBoxResizable: false,
+          toggleDragModeOnDblclick: false,
+        });
+
+        const cropbtn = document.createElement("button");
+        cropbtn.classList.add("btn", "btn-primary", "m-2");
+        cropbtn.textContent = "Crop";
+        cropbtn.addEventListener("click", function (event) {
+          event.preventDefault();
+          const croppedCanvas = cropper.getCroppedCanvas();
+
+          img.src = croppedCanvas.toDataURL()
+
+          croppedCanvas.toBlob((blob) => {
+            const fileName = Date.now();
+            const file = new File([blob], `${fileName}.jpg`, { type: 'image/jpeg' });
+
+            if (window.FileList && window.DataTransfer) {
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.name =` image${i}`;
+                input.files = dataTransfer.files;
+               form.appendChild(input)
+               input.style.display = 'none'
+               
+            } else {
+                console.error('FileList and DataTransfer are not supported in this browser.');
+            }
+        })
+          cropper.destroy();
+          cropbtn.remove();
+    
+
+        });
+      
+        imgdiv.appendChild(cropbtn);
+        imgdiv.appendChild(deletebutton);
+      };
+
+      reader.readAsDataURL(file);
+
+      imagecontainer.appendChild(imgdiv);
+    }
+    totalimages = totalupload;
+  }
+  const imageInput = document.getElementById("image");
+
+imageInput.addEventListener("change", imageupload);
+
+    </script>
+</body>
+</html>
