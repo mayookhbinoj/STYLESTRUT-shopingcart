@@ -1,22 +1,22 @@
 const jwt = require('jsonwebtoken');
 const User=require("../models/userModel");
-const { insertUser } = require('../controllers/userController');
+const { insertUser } = require('../controllers/User/userController');
 require("dotenv").config()
 const secret=process.env.JWT_SECRET
 const requireAuth=async(req,res,next)=>{
     try {
         console.log(req.cookies);
-        const token=req.cookies.jwt
+        const token=req.cookies.admin
         console.log(token);
      
         if(token){
             jwt.verify(token,secret,(err,decodeToken)=>{
                 if(err){
-                    console.log(err);
+                    console.log(err);   
                     res.redirect("/admin")
                 }
                 else{
-                    req.id=decodeToken;
+                    req.admin=decodeToken;
                     next()
                 }
             })

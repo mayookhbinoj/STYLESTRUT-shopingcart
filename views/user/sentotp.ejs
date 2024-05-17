@@ -5,21 +5,35 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OTP Verification</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="user/css/otp.css">
-  
 </head>
 <body>
- 
-  <form action="/sendOtp" method="post">
-    <div class="message-container">
-      <% if(typeof message !== 'undefined'){%>
-          <p class="message"><%= message%></p>
-      <% }%>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form action="/sendOtp?id=<%= userId %>" method="post">
+          <div class="message-container">
+            <% if(typeof message !== 'undefined') { %>
+              <p class="message"><%= message %></p>
+            <% } %>
+            <% if(typeof tessage !== 'undefined') { %>
+              <p class="message"><%= tessage %></p>
+            <% } %>
+          </div>
+          <div class="form-group">
+            <label for="otp">Please verify your Email </label>
+           
+          </div>
+          <button type="submit"  style="margin-left: 17px"  class="btn btn-primary btn-block">Send</button>
+        </form>
+      </div>
+    </div>
   </div>
-    <label for="otp">Please verify your Email </label>
-    
-    
-    <button type="submit">sent</button>
-  </form>
+
+  <!-- Bootstrap JS (Optional) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

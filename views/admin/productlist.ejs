@@ -418,23 +418,26 @@
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                             <li class="nav-item">
-                                <a href="/admin/home" class="nav-link menu-link"> <i class="bi bi-speedometer2"></i> <span data-key="t-dashboard">Dashboard</span> <span class="badge badge-pill bg-danger-subtle text-danger " data-key="t-hot">Hot</span></a>
-                            </li>
-
+                                <a href="/admin/home" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Dashboard</span> </a>
+                            </li>   
                             <li class="nav-item">
                                 <a class="nav-link menu-link" href="#sidebarProducts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProducts">
                                     <i class="bi bi-box-seam"></i> <span data-key="t-products">Products</span>
                                 </a>
                                 <div class="collapse menu-dropdown" id="sidebarProducts">
                                     <ul class="nav nav-sm flex-column">
-                                        
+                                        <li class="nav-item">
+                                            <a href="/admin/productslist" class="nav-link" data-key="t-list-view">List View</a>
+                                        </li>
+                                      
                                         <li class="nav-item">       
                                             <a href="/admin/category" class="nav-link" data-key="t-categories">Categories</a>
                                         </li>
+                                     
                                     </ul>
                                 </div>
                             </li>
-
+    
                             <li class="nav-item">
                                 <a class="nav-link menu-link" href="#sidebarOrders" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrders">
                                     <i class="bi bi-cart4"></i> <span data-key="t-orders">Orders</span>
@@ -442,24 +445,30 @@
                                 <div class="collapse menu-dropdown" id="sidebarOrders">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
-                                            <a href="orders-list-view.html" class="nav-link" data-key="t-list-view">List View</a>
+                                            <a href="/admin/orderList" class="nav-link" data-key="t-list-view">List View</a>
                                         </li>
-                                     
+                                        <li class="nav-item">
+                                            <a href="/admin/salesReport" class="nav-link" data-key="t-list-view">Sales report</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
-
-
+    
+                            
+                                                                                     
                             <li class="nav-item">
                                 <a href="/admin/users" class="nav-link menu-link"> <i class="bi bi-person-bounding-box"></i> <span data-key="t-users-list">Users List</span> </a>
                             </li>
-
+    
+                          
                             <li class="nav-item">
-                                <a href="coupons.html" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Coupons</span> </a>
+                                <a href="/admin/coupon" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Coupons</span> </a>
                             </li>   
-  
-             
-                            </li>
+                           
+                          
+                            <li class="nav-item">
+                                <a href="/admin/offer" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Offer</span> </a>
+                            </li>   
 
                         </ul>
                     </div>
@@ -660,16 +669,10 @@
                           tabindex="0"
                           style="width: 400px"
                         >
-                          <div class="gridjs-th-content">Product name </div>
+                          <div class="gridjs-th-content">Product name & Stock</div>
                         </th>
-                        <th
-                          data-column-id="stock"
-                          class="gridjs-th gridjs-th-sort"
-                          tabindex="0"
-                          style="width: 94px"
-                        >
-                          <div class="gridjs-th-content">Stock</div>
-                        </th>
+                        
+                        
                         <!-- <th
                           data-column-id="rate"
                           class="gridjs-th gridjs-th-sort"
@@ -700,12 +703,12 @@
                         >
                           <div class="gridjs-th-content">Price</div>
                         </th>
-                        <!-- <th
+                        <!--<th
                           data-column-id="orders"
                           class="gridjs-th gridjs-th-sort"
                           tabindex="0"
                           style="width: 84px"
-                        >
+                        
                           <div class="gridjs-th-content">Orders</div>
                           <button
                             tabindex="-1"
@@ -732,45 +735,50 @@
                         </th>
                       </tr>
                     </thead>
-                    <tbody class="gridjs-tbody">
-                      <% for(let i=0; i< productData.length ;i++){ %>
-                      
+                        <tbody class="gridjs-tbody">
+                        <% for(let i=0; i< productData.length ;i++){ %>
+                        
 
-                       
+                        
 
-                      <tr class="gridjs-tr">
-                        <td data-column-id="productName" class="gridjs-td">
-                          <span
-                            ><div class="d-flex align-items-center">
-                              <div class="flex-shrink-0 me-2 avatar-sm">
-                                <div class="avatar-title bg-light rounded">
-                                  
-                                  <img
-                                    src="<%=productData[i].image[0]%>"
-                                    alt=""
-                                    class="avatar-xs"
-                                  />
+                        <tr class="gridjs-tr">
+                            <td data-column-id="productName" class="gridjs-td">
+                            <span
+                                ><div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 me-2 avatar-sm">
+                                    <div class="avatar-title bg-light rounded">
+                                    
+                                    <img
+                                        src="<%=productData[i].image[0]%>"  
+                                    
+                                        alt=""
+                                        class="avatar-xs"
+                                    />
+                                    </div>
                                 </div>
-                              </div>
-                              <div class="flex-grow-1">
+                                <div class="flex-grow-1">
+                                    
+                                    <p class="mb-0 text-muted">
+                                    <%= productData[i].name%> Stock:  &nbsp  
+                                    <% productData[i].sizes.forEach(size => { %> 
+                                        &nbsp  <%=size.size  %> : 
+                                        <%=size.
+                                        quantity %>, &nbsp  
+                                          <% }); %>
+                                    <span class="fw-medium" 
+                                    
+                                        ></span
+                                    >
+                                    </p>
+                                    
+                                </div>
                                 
-                                <p class="mb-0 text-muted">
-                                 <%= productData[i].name%> 
-                                  <span class="fw-medium" 
-                                
-                                    ></span
-                                  >
-                                </p>
-                                
-                              </div>
-                              
-                            </div>
-                    
-                        </td>
-                        <td data-column-id="stock" class="gridjs-td">
-                             <%= productData[i].stock%>
-                         
-                        </td>
+                                </div>
+                        
+                            </td>
+                        
+                          
+                          
                         <!-- <td data-column-id="rate" class="gridjs-td">
                           <span
                             ><span
@@ -1567,8 +1575,7 @@
                                     <h5 class="fs-14 text-center mt-2">Small (Icon View)</h5>
                                 </div>
 
-                                <div class="col-6">
-                                    <div class="form-check sidebar-setting card-radio customize-widget">
+                                <div class="col-6"><div class="form-check sidebar-setting card-radio customize-widget">
                                         <input class="form-check-input" type="radio" name="data-sidebar-size" id="sidebar-size-small-hover" value="sm-hover">
                                         <label class="form-check-label p-0 avatar-xl w-100" for="sidebar-size-small-hover">
                                             <span class="customize-penal-main w-100 d-block d-flex align-items-center">

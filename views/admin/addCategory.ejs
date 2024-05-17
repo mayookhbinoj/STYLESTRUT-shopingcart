@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Offer</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 500px; 
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Add category offer</h1>
+        <form id="productOfferForm">
+            <div class="form-group">
+                <label for="category">Category Name</label>
+                <select class="form-control" id="category">
+                    <option value="">Select a category</option>
+                    <% categoryFind.forEach(item => {%>
+                        <option value="<%= item.categoryName  %>"><%= item.categoryName  %></option>
+                   <% }); %>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="discount">Discount price</label>
+                <input type="number" class="form-control" id="discount" placeholder="Enter discount percentage">
+            </div>
+            <button type="submit" class="btn btn-primary" style="background-color:#06d6a0;">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (optional, if you need JavaScript features) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('productOfferForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get values of form fields
+            var categories = document.getElementById('category').value;
+            var discount = document.getElementById('discount').value;
+            console.log("Category: " + category); // Log category value for debugging
+            console.log("Discount: " + discount); // Log discount value for debugging
+
+            var formData = {
+                categories: categories,
+                discount: discount
+            };
+
+            fetch('/admin/updateCategoryOffer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle response from server (if needed)
+                console.log('Response from server:', data);
+                
+                // Redirect to '/admin/offer' page if the server response indicates success
+                if (data.success) {
+                    window.location.href = '/admin/offer';
+                } else {
+                    // Handle error or display a message to the user
+                    console.error('Failed to add offer:', data.message);
+                }
+            })
+            .catch(error => {
+                // Handle error
+                console.error('Error:', error);
+            });
+
+            // Reset form fields
+            this.reset();
+        });
+    </script>    
+</body>
+</html>

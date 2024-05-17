@@ -57,38 +57,38 @@
   
 
     
-     <a id="resendOTP" href="/resend">Resend OTP</a>
+    <a id="resendOTP" href="/resend" style="display: none;">Resend OTP</a>
+
     </form>
   </div>
 
   <script>
-    
-
+  
     let countdownTime = 60;
 
   
-    function updateTimer() {
-      const minutes = Math.floor(countdownTime / 60);
-      let seconds = countdownTime % 60;
+    // function updateTimer() {
+    //   const minutes = Math.floor(countdownTime / 60);
+    //   let seconds = countdownTime % 60;
 
-      seconds = seconds < 10 ? '0' + seconds : seconds;
+    //   seconds = seconds < 10 ? '0' + seconds : seconds;
 
    
-      document.getElementById('timer').innerText = `${minutes}:${seconds}`;
+    //   document.getElementById('timer').innerText = `${minutes}:${seconds}`;
 
      
-      countdownTime--;
+    //   countdownTime--;
 
-      if (countdownTime < 0) {
-        clearInterval(timerInterval);
-        document.getElementById('timer').innerText = '00:00';
-        alert("OTP has been expired")
-      }
-    }
+    //   if (countdownTime < 0) {
+    //     clearInterval(timerInterval);
+    //     document.getElementById('timer').innerText = '00:00';
+    //     alert("OTP has been expired")
+    //   }
+    // }
 
    
-    const timerInterval = setInterval(updateTimer, 1000);
-  
+    // const timerInterval = setInterval(updateTimer, 1000);
+  let timerOn=true
     $('#generateOTPButton').click(function() {
       const otp = $('#otp').val(); 
       $.ajax({
@@ -98,7 +98,7 @@
         success: function(response) {
           console.log(response);
           if (response.otpverified) {
-            window.location.href = '/home'; 
+            window.location.href = '/shop'; 
           }
             else if(response.validataion){
 
@@ -115,15 +115,118 @@
         error: function() {
           $('#otpDisplay').text('Something went wrong.');
         }
+     
       });
-    });
-    document.getElementById('resendOTP').style.display = 'none';
-    setTimeout(function() {
-    document.getElementById('resendOTP').style.display = 'block';
-    }, 60000); 
+   
+    
+
+     // Reset the countdown time in localStorage when the page is refreshed
   
+   
+    });
+    
+  
+    window.addEventListener("load", (event) => {
+  // Function to show the "Resend OTP" link after one minute
+  setTimeout(() => {
+    document.getElementById("resendOTP").style.display = "inline"; // Show the link
+  }, 60000); // 60000 milliseconds = 1 minute
+});
+
+    window.addEventListener("load", (event) => {
+  event.preventDefault();
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
+  console.log(id);
+  if (id) {
+    console.log('sfghsgs');
+    fetch(`/get-remaining-time?id=${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log(response,"dsadas");
+        return response.json();
+      })
+      .then((responseData) => {
+        const createdAtTimestamp = responseData.data;
+        const createdAt = new Date(createdAtTimestamp);
+        console.log(createdAt);
+        const ttlMinutes = 1;
+        const expirationTime = new Date(
+          createdAt.getTime() + ttlMinutes * 60000
+        );
+
+        const remainingTime = Math.max(
+          0,
+          expirationTime.getTime() - Date.now()
+        );
+        const remainingTimeInSeconds = Math.ceil(remainingTime / 1000);
+
+        function timer(remaining) {
+          var m = Math.floor(remaining / 60);
+          var s = remaining % 60;
+
+          m = m < 10 ? "0" + m : m;
+          s = s < 10 ? "0" + s : s;
+          document.getElementById("timer").innerHTML = m + ":" + s;
+          remaining -= 1;
+
+          if (remaining >= 0 && timerOn) {
+            setTimeout(function () {
+              timer(remaining);
+            }, 1000);
+            return;
+          }
+
+          if (!timerOn) {
+            return;
+          }
+
+          button.setAttribute("disabled", "disabled");
+          document.getElementById("timer").classList.add("text-danger");
+        }
+
+        timer(remainingTimeInSeconds);
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      })
+  } else {
+    console.error("ID not found in URL");
+  }
+});
 
 
+
+
+// resend
+const resend = document.getElementById("resend");
+resend.addEventListener("click", (event) => {
+  event.preventDefault();
+  fetch("/resend", {
+    method: "POST",
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      return response.json();
+    })
+    .then((data) => {
+      if (data.success) {
+        // timer(data.timer);
+        alert("The otp is sent to your email");
+        document.getElementById("resend-message").innerHTML =
+          "The otp is sent to your email";
+        location.reload();
+      }
+    })
+    .catch((error) => {
+      throw error;
+    });
+});
    
   </script>
 </body>

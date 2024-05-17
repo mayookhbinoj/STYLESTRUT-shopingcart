@@ -44,6 +44,9 @@
         background-color: #f2dede;
         border-color: #ebccd1;
     }
+    .error-message {
+            color: red;
+        }
 
 
 
@@ -58,8 +61,7 @@
         <label for="price">Price:</label>
         <input type="text" id="price" name="price" required><br><br>
 
-        <label for="stock">Stock:</label>
-        <input type="number" id="stock" name="stock" min="0" ><br><br>
+     
 
         <label for="details">Details:</label><br>
         <textarea id="details" name="details" rows="4" cols="50"></textarea><br><br>
@@ -71,7 +73,35 @@
         <input type="file" class="image" id="images" name="images" multiple  ><br><br>
         <div id="imageContainer"></div>
         <div id="alert-container"></div>
+         <!-- Size input fields -->
+         <body>
+
         
+                <!-- Size and quantity inputs -->
+                <label for="sizes">Sizes and Quantities:</label><br>
+                <div id="sizeInputs">
+                    <!-- Initial size and quantity input -->
+                   <!-- Size input group for Large -->
+    <div class="sizeInput">
+    <input type="text" name="sizes[]" value="L" readonly> <!-- Default size is Large -->
+    <input type="number" name="quantities[]" placeholder="Quantity">
+</div>
+
+<!-- Size input group for Medium -->
+<div class="sizeInput">
+    <input type="text" name="sizes[]" value="M" readonly> <!-- Default size is Medium -->
+    <input type="number" name="quantities[]" placeholder="Quantity">
+</div>
+
+<!-- Size input group for XL -->
+<div class="sizeInput">
+    <input type="text" name="sizes[]" value="XL" readonly> <!-- Default size is XL -->
+    <input type="number" name="quantities[]" placeholder="Quantity">
+</div>
+
+                </div>
+              
+                <label >select a category:</label>
         <div>
           <select
             class="form-select"

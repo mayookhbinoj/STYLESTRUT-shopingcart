@@ -40,24 +40,22 @@
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                            <a href="/admin/home" class="nav-link menu-link"> <i class="bi bi-speedometer2"></i> <span data-key="t-dashboard">Dashboard</span> <span class="badge badge-pill bg-danger-subtle text-danger " data-key="t-hot">Hot</span></a>
-                        </li>
-
+                            <a href="/admin/home" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Dashboard</span> </a>
+                        </li>   
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarProducts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProducts">
                                 <i class="bi bi-box-seam"></i> <span data-key="t-products">Products</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarProducts">
                                 <ul class="nav nav-sm flex-column">
-  
+                                    <li class="nav-item">
+                                        <a href="/admin/productslist" class="nav-link" data-key="t-list-view">List View</a>
+                                    </li>
+                                  
                                     <li class="nav-item">       
                                         <a href="/admin/category" class="nav-link" data-key="t-categories">Categories</a>
                                     </li>
-  
-                                    <li class="nav-item">       
-                                        <a href="/admin/productslist" class="nav-link" data-key="t-categories">List view</a>
-                                    </li>
-                                   
+                                 
                                 </ul>
                             </div>
                         </li>
@@ -66,14 +64,33 @@
                             <a class="nav-link menu-link" href="#sidebarOrders" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrders">
                                 <i class="bi bi-cart4"></i> <span data-key="t-orders">Orders</span>
                             </a>
+                            <div class="collapse menu-dropdown" id="sidebarOrders">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="/admin/orderList" class="nav-link" data-key="t-list-view">List View</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/admin/salesReport" class="nav-link" data-key="t-list-view">Sales report</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
 
                         
-
+                                                                                 
                         <li class="nav-item">
-                            <a href="coupons.html" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Coupons</span> </a>
+                            <a href="/admin/users" class="nav-link menu-link"> <i class="bi bi-person-bounding-box"></i> <span data-key="t-users-list">Users List</span> </a>
+                        </li>
+
+                      
+                        <li class="nav-item">
+                            <a href="/admin/coupon" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Coupons</span> </a>
                         </li>   
-                        <li>
+                       
+                      
+                        <li class="nav-item">
+                            <a href="/admin/offer" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Offer</span> </a>
+                        </li>   
                             
                        
                     </ul>
@@ -102,52 +119,7 @@
 
                     <div class="row" id="sellersList">
                         <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row g-3">
-                                        <div class="col-lg-3">
-                                            <div class="search-box">
-                                                <input type="text" class="form-control search" placeholder="Search...">
-                                                <i class="ri-search-line search-icon"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-auto">
-                                            <select class="form-control" id="idStatus" name="choices-single-default">
-                                                <option value="">Status</option>
-                                                <option value="All" selected>All</option>
-                                                <option value="Active">Active</option>
-                                                <option value="Inactive">Inactive</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-auto">
-                                            <select class="form-control" data-choices data-choices-search-false name="choices-single-default">
-                                                <option value="all">All</option>
-                                                <option value="Today">Today</option>
-                                                <option value="Yesterday">Yesterday</option>
-                                                <option value="Last 7 Days">Last 7 Days</option>
-                                                <option value="Last 30 Days">Last 30 Days</option>
-                                                <option value="This Month" selected>This Month</option>
-                                                <option value="Last Month">Last Month</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-auto ms-auto">
-                                            <div class="hstack gap-2">
-                                                <a class="btn btn-primary add-btn" href="#showModal" data-bs-toggle="modal">Add Seller</a>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-icon btn-soft-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <i class="ph-dots-three-outline"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div class="card">
                                 <div class="card-body">
                                     <div class="table-responsive table-card mb-1">
@@ -162,6 +134,7 @@
                                                     <th class="sort" data-sort="name">NAME</th>
                                                     <th class="sort" data-sort="email">EMAIL</th>
                                                     <th class="sort" data-sort="phone">PHONE</th>
+                                                    <th class="sort" data-sort="Action">Action</th>
                                                     
                                                     
                                                 </tr>
@@ -204,7 +177,7 @@
                                             <a class="page-item pagination-prev disabled" href="#">
                                                 <i class="mdi mdi-chevron-left align-middle me-1"></i> Previous
                                             </a>
-                                            <ul class="pagination listjs-pagination mb-0"></ul>
+                                            <ul class="pagination listjs-pagination mb-0"><li class="active"><a class="page" href="#" data-i="1" data-page="10">1</a></li><li><a class="page" href="#" data-i="2" data-page="10">2</a></li><li><a class="page" href="#" data-i="3" data-page="10">3</a></li></ul>
                                             <a class="page-item pagination-next" href="#">
                                                 Next <i class="mdi mdi-chevron-right align-middle ms-1"></i>
                                             </a>

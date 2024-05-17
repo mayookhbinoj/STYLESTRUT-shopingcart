@@ -1,5 +1,5 @@
 const mongoose=require("mongoose")
-const employee=new mongoose.Schema({
+const user=new mongoose.Schema({
     
      email:{
         type:String,
@@ -7,12 +7,12 @@ const employee=new mongoose.Schema({
         unique: true
      },
      phone:{
-        type:Number,
-      //   required:true
+        type:String,
+       required:true
      },
      password:{
         type:String,
-      //   required:true
+        required:true
      },
 
      is_varified:{
@@ -25,16 +25,25 @@ const employee=new mongoose.Schema({
         },
       name: {
    type: String,
-   // required: true
+    required: true
 },
 googleId:{
    type:String,
 
+},
+image:{
+ 
+ 
+},
+coupon: {
+   type: [String] 
+},
+referralCode:{
+   type:String
 }
-
 
 
 })
 
-const Employee=mongoose.model("User",employee)
-module.exports=Employee
+const User=mongoose.model("User",user)
+module.exports=User

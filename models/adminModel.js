@@ -1,5 +1,5 @@
 const mongoose=require("mongoose")
-const employee=new mongoose.Schema({
+const admin=new mongoose.Schema({
     
      email:{
         type:String,
@@ -28,5 +28,5 @@ const employee=new mongoose.Schema({
 
 })
 
-const Employee=mongoose.model("admin",employee)
-module.exports=Employee
+const Admin=mongoose.model("admin",admin)
+module.exports=Admin

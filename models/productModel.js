@@ -1,46 +1,63 @@
 
-const mongoose=require("mongoose")
-const product=new mongoose.Schema({
-  name:{
-        type:String,
-        trim:true,
-        uppercase:true,
-        required: true,
-    },
-    price:{
-        type: Number,
-        required: true
-    },
+    const mongoose=require("mongoose")
+    const product=new mongoose.Schema({
+    name:{
+            type:String,
+            trim:true,
+            uppercase:true,
+         
+        },
+        price:{
+            type: Number,
+         
+        },
+        sizes: [{
+            size: {
+                type: String,
+                enum: ['L', 'M', 'XL'], 
+               
+            },
+            quantity: {
+                type: Number,
+                default: 0
+            }
+        }],
     
-    stock:{
-        type: Number,
-        required: true,
-        min: 0
-    },
-    details:{
-        type:String,
+        details:{
+            type:String,
 
-    },
-    brand:{
-        type:String
-    },
-    image:[{
-         type:String,
-         required:true
-     }],
-    description:{
-        type:String
-    },
-    isListed: {
-        type: Boolean,
-        default:false
-      },
-    category:{
-    type: mongoose.Schema.Types.ObjectId,
-     ref:"Category"
-        }
- 
+        },
+        brand:{
+            type:String
+        },
+        image:[{
+            type:String,
+           
+        }],
+        description:{
+            type:String
+        },
+        isListed: {
+            type: Boolean,
+            default:false
+        },
+        discountPercentage: {
+            type: Number,
+           
+        },
+        actualPrice:{
+            type:Number
+        },
+        category:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Category"
+            },
+            createdAt: {
+                type: Date,
+                default: Date.now 
+            }
 
-})
-const products=mongoose.model("products",product)
-module.exports=products
+
+    })
+    const products=mongoose.model("products",product)
+    module.exports=products

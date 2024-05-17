@@ -1,0 +1,73 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit User Details</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            #alert-container{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h2 class="mb-4">Edit Your Details</h2>
+            <form id="edit" action="/updateUser" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"  value="<%= User.name  %>" >
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter email" value=" <%= User.email  %>" >
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone" name="phone" class="form-control" placeholder="Enter phone number" value=" <%= User.phone %>"  >
+                 
+                </div>
+                <input type="hidden" name="id" >
+                <div id="alert-container"></div>
+                <button type="submit" class="btn btn-primary" style="background-color: #06d6a0;">Save Changes</button>
+            </form>
+        </div>
+        <script>
+           document.getElementById("edit").addEventListener("submit",()=>{
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+             const phone = document.getElementById('phone').value.trim();
+             if (name === "" || email === "" || phone === "") {
+                event.preventDefault(); // Prevent form submission
+               showAlert("Please fil all required fields")
+            }
+            if(phone.length<10){
+                event.preventDefault(); // Prevent form submission
+                showAlert("Please enter a 10 digit number")
+
+            }
+           })
+           function showAlert(message, className) {
+           const alertDiv = document.createElement('div');
+            alertDiv.className = `alert ${className}`;
+             alertDiv.textContent = message;
+
+  
+            const alertContainer = document.getElementById('alert-container');
+
+   
+             alertContainer.innerHTML = '';
+
+    
+             alertContainer.appendChild(alertDiv);
+           }
+
+
+
+         
+
+        </script>
+    </body>
+    </html>

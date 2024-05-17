@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Address Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div> 
+            <p class="mb-3 fw-semibold fs-12 d-block text-muted text-uppercase">Home Address</p> 
+            <h6 class="fs-14 mb-2 d-block"></h6> 
+            <form action="/editAddress" method="post">
+                <div class="mb-3">
+                    <label for="street" class="form-label">Street:</label>
+                    <input type="text" id="street" name="street" class="form-control" placeholder="Enter street address" value="<%= adress.street  %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City:</label>
+                    <input type="text" id="city" name="city" class="form-control" placeholder="Enter city" value="<%= adress.city %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="state" class="form-label">State:</label>
+                    <input type="text" id="state" name="state" class="form-control" placeholder="Enter state" value="<%= adress.state  %>"required>
+                </div>
+                <div class="mb-3">
+                    <label for="zipCode" class="form-label">ZIP Code:</label>
+                    <input type="text" id="zipCode" name="ZIPCode" class="form-control" placeholder="Enter ZIP code" value="<%= adress.ZIPCode  %>" required>
+                </div>
+                <input type="hidden" name="id" value="<%= adress._id  %>">
+                <button type="submit" class="btn btn-primary" style="background-color: #06d6a0;">Save Address</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Coupon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="date"] {
+            width: calc(100% - 22px);
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #06d6a0;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #97d8c7;
+        }
+    </style>
+</head>
+<body>
+   
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Coupon Form</title>
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var name = document.getElementById("coupon_title").value;
+            var code = document.getElementById("coupon_code").value;
+            var minimum = document.getElementById("Minimum").value;
+            var discount = document.getElementById("discount_value").value;
+            var validFrom = document.getElementById("valid_from").value;
+            var validTo = document.getElementById("valid_to").value;
+
+            // Clear previous error messages
+            document.getElementById("error-messages").innerHTML = "";
+
+            // Check if any field is empty
+            if (name == "" ||Minimum==""|| code == "" || discount == "" || validFrom == "" || validTo == "") {
+                displayErrorMessage("All fields must be filled out");
+                return false;
+            }
+
+            // Check if discount value is non-negative
+            if (discount < 0) {
+                displayErrorMessage("Discount value must be non-negative");
+                return false;
+            }
+
+            // Check if validTo is after validFrom
+            if (validTo <= validFrom) {
+                displayErrorMessage("Valid To date must be after Valid From date");
+                return false;
+            }
+            if (minimum === discount) {
+                displayErrorMessage("minimum value and discount value not be same ");
+                return false
+
+            }
+            if (discount >= minimum || minimum - discount !== 500) {
+                displayErrorMessage('Invalid coupon! The discount amount must be 500 less than the minimum purchase.')
+                return false
+
+            }
+
+            return true; // Form submission allowed
+        }
+
+        function displayErrorMessage(message) {
+            var errorMessageElement = document.createElement("div");
+            errorMessageElement.className = "error-message";
+            errorMessageElement.textContent = message;
+            document.getElementById("error-messages").appendChild(errorMessageElement);
+        }
+    </script>
+</head>
+<body>
+    <form action="/admin/addCoupon" method="post" onsubmit="return validateForm()">
+        <label for="coupon_title" >Coupon Title:</label>
+        <input type="text" id="coupon_title" name="name" placeholder="Enter your coupon title" >
+        <br>
+
+        <label for="coupon_code">Coupon Code:</label>
+        <input type="text" id="coupon_code" name="coupon_code"placeholder="Enter your coupon code" >
+
+        <br>
+
+        <label for="coupon_code">Minimum purchase:</label>
+        <input type="number" min="1000" id="Minimum" name="Minimum" placeholder="Enter your minimum number" >
+        <br>
+        
+        <label for="discount_value">Discount Value:</label>
+        <input type="number" id="discount_value" name="discount_amount" min="0"placeholder="Enter your discount number" >
+        <br>
+        
+        <label for="valid_from">Valid From:</label>
+        <input type="date" id="valid_from" name="valid_from" >
+        <br>
+        
+        <label for="valid_to">Valid To:</label>
+        <input type="date" id="valid_to" name="valid_to" >
+        <br> <br> <br>
+
+        <div id="error-messages"></div> <br> 
+        
+        <input type="submit" value="Add Coupon">
+    </form>
+</body>
+</html>
+

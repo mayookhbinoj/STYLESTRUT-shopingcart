@@ -418,9 +418,8 @@
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                             <li class="nav-item">
-                                <a href="/admin/home" class="nav-link menu-link"> <i class="bi bi-speedometer2"></i> <span data-key="t-dashboard">Dashboard</span> <span class="badge badge-pill bg-danger-subtle text-danger " data-key="t-hot">Hot</span></a>
-                            </li>
-
+                                <a href="/admin/home" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Dashboard</span> </a>
+                            </li>   
                             <li class="nav-item">
                                 <a class="nav-link menu-link" href="#sidebarProducts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProducts">
                                     <i class="bi bi-box-seam"></i> <span data-key="t-products">Products</span>
@@ -430,28 +429,46 @@
                                         <li class="nav-item">
                                             <a href="/admin/productslist" class="nav-link" data-key="t-list-view">List View</a>
                                         </li>
+                                      
+                                        <li class="nav-item">       
+                                            <a href="/admin/category" class="nav-link" data-key="t-categories">Categories</a>
+                                        </li>
+                                     
                                     </ul>
                                 </div>
                             </li>
-
+    
                             <li class="nav-item">
                                 <a class="nav-link menu-link" href="#sidebarOrders" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrders">
                                     <i class="bi bi-cart4"></i> <span data-key="t-orders">Orders</span>
                                 </a>
-                              
+                                <div class="collapse menu-dropdown" id="sidebarOrders">
+                                    <ul class="nav nav-sm flex-column">
+                                        <li class="nav-item">
+                                            <a href="/admin/orderList" class="nav-link" data-key="t-list-view">List View</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="/admin/salesReport" class="nav-link" data-key="t-list-view">Sales report</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
+    
+                            
+                                                                                     
                             <li class="nav-item">
                                 <a href="/admin/users" class="nav-link menu-link"> <i class="bi bi-person-bounding-box"></i> <span data-key="t-users-list">Users List</span> </a>
                             </li>
-
+    
+                          
                             <li class="nav-item">
-                                <a href="coupons.html" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Coupons</span> </a>
+                                <a href="/admin/coupon" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Coupons</span> </a>
                             </li>   
+                           
+                          
                             <li class="nav-item">
-                              
-                                <div class="collapse menu-dropdown" id="sidebarLocalization">
-                                </div>
-                            </li>
+                                <a href="/admin/offer" class="nav-link menu-link"> <i class="bi bi-tag"></i> <span data-key="t-coupons">Offer</span> </a>
+                            </li>   
 
                         </ul>
                     </div>
@@ -529,13 +546,10 @@
                                                             <div class="position-relative d-inline-block">
                                                                 <input type="file" id="image" accept="image/*" name="image">
                                                             </div>
-    
+                                                            <span class="text-danger" id="imageError"></span><br>
                                                             <div class="error-msg mt-1">Please add a category images.</div>
                                                             <% if( typeof image!== 'undefined') { %>
-                                                                <p class="mb-15" style="color: red;"><%= image%></p>
-                                                            <% } %>
-                                                            <% if( typeof images!== 'undefined') { %>
-                                                                <p class="mb-15" style="color: red;"><%= images%></p>
+                                                                <p class="mb-15" style="color: red;"><%= imag%></p>
                                                             <% } %>
                                                         </div>
                                                     </div>
@@ -1892,7 +1906,33 @@
 
         <script>
 
+document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('form').addEventListener('submit', function (event) {
+   
+                const image = document.getElementById('image').files[0]; // Get the selected image file
 
+              
+
+                // Validate image
+                if (!image) {
+                    document.getElementById('imageError').textContent = 'Please select an image.';
+                    event.preventDefault(); // Prevent form submission
+                    return;
+                }
+
+                // Check if the image file size exceeds the limit (5MB)
+                if (image.size > 5 * 1024 * 1024) {
+                    document.getElementById('imageError').textContent = 'Please select an image file with a size less than 5MB.';
+                    event.preventDefault(); // Prevent form submission
+                    return;
+                }
+
+                // Clear any previous error messages
+                document.getElementById('imageError').textContent = '';
+
+                // You can proceed with form submission or further processing here
+            });
+        });
 
             function unlist(userId){
                 console.log(userId);

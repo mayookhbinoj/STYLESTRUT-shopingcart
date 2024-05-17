@@ -1,6 +1,6 @@
     const mongoose=require("mongoose")
     const otp=new mongoose.Schema({
-        user_id:{
+        userId:{
             type: mongoose.Schema.Types.ObjectId,
             require:true,
             ref:"User"
@@ -18,7 +18,8 @@
             type: Date,
             default: Date.now,
             expires: 60
-        }    
+        },
+
     
 
     })

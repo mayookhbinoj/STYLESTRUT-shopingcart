@@ -6,7 +6,7 @@
 <head>
 
         <meta charset="utf-8">
-        <title>Product Grid | Toner eCommerce + Admin HTML Template</title>
+        <title> STYLESTRUT</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Toner - eCommerce + Admin HTML Template Build with HTML, React, Laravel, Nodejs" name="description">
         <meta content="Themesbrand" name="author">
@@ -25,6 +25,182 @@
         <!-- custom Css-->
         <link href="/user/css1/custom.min.css" rel="stylesheet" type="text/css">
 
+        <!-- icon link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-<HASH>" crossorigin="anonymous" />
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+   .no-underline {
+    text-decoration: none;
+}
+
+
+    .search-box {
+    display: flex;
+    align-items: center;
+}
+.pagination-container {
+        display: flex;
+        justify-content: center;
+    }
+.form-control {
+    flex: 1; /* Take up remaining space */
+    margin-right: 8px; /* Add some space between input and button */
+    border-radius: 4px; /* Rounded corners */
+    border: 1px solid #ccc; /* Add a border */
+    padding: 8px; /* Add padding for better appearance */
+}
+
+.search-button {
+    background-color: #007bff; /* Blue color for button */
+    color: #fff; /* White text color */
+    border: none; /* Remove button border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 8px 16px; /* Add padding */
+    cursor: pointer; /* Show pointer cursor on hover */
+    transition: background-color 0.3s; 
+}
+.pagination-button {
+        background-color: #4b93ff; /* Green background */
+        border: none;
+        color: white; /* White text */
+        padding: 5px 10px; /* Padding */
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px; /* Margin between buttons */
+        cursor: pointer;
+        border-radius: 5px; /* Rounded corners */
+        transition: background-color 0.3s;
+    }
+
+   
+
+    .category-list {
+    padding: 20px;
+}
+
+.search-header {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.category-link {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.category-link:hover {
+    color: #007bff; /* Bootstrap primary color */
+}
+
+
+.search-button:hover {
+    background-color: #0056b3; 
+}
+/* Pagination Styles */
+.page-pagination-area {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.page-pagination {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page-pagination li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.page-pagination li a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.page-pagination li a:hover {
+    background-color: #e9e9e9;
+}
+
+.page-pagination li.active a {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.page-pagination li.active a:hover {
+    background-color: #0056b3;
+}
+/* Example CSS */
+.btn-topbar {
+    font-size: 19px; /* Change the icon size */
+   
+   
+}
+/* Custom CSS for the price range slider */
+.price-range-slider-container {
+    width: 80%; /* Adjust width as needed */
+    margin: 0 auto; /* Center the slider */
+}
+
+.price-range-slider-container input[type=range] {
+    width: 100%; /* Full width of container */
+    height: 25px; /* Adjust height as needed */
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none;
+    background: #ddd; /* Background color of slider track */
+    border-radius: 10px; /* Rounded corners */
+    outline: none; /* Remove outline */
+}
+
+.price-range-slider-container input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none;
+    width: 25px; /* Width of slider thumb */
+    height: 25px; /* Height of slider thumb */
+    background: #007bff; /* Color of slider thumb */
+    border-radius: 50%; /* Rounded shape */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.price-range-slider-container input[type=range]::-moz-range-thumb {
+    width: 25px; /* Width of slider thumb */
+    height: 25px; /* Height of slider thumb */
+    background: #007bff; /* Color of slider thumb */
+    border-radius: 50%; /* Rounded shape */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.price-range-slider-container output {
+    display: block;
+    text-align: center;
+    margin-top: 10px; /* Spacing between slider and output */
+    font-size: 16px; /* Font size of output */
+    font-weight: bold; /* Bold font */
+    color: #007bff; /* Color of output text */
+}
+ .logo {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+           
+        }
+
+      
+
+
+
+  </style>
     </head>
 
     <body>
@@ -44,9 +220,7 @@
         <nav class="navbar navbar-expand-lg ecommerce-navbar" id="navbar">
             <div class="container">
                 <a class="navbar-brand d-none d-lg-block" href="index.html">
-                    <div class="logo-dark">
-                        <img src="/user/images/logo-dark.png" alt="" height="25">
-                    </div>
+                    <p class="logo">StyleStrut</p>
                     <div class="logo-light">
                         <img src="/user/images/logo-light.png" alt="" height="25">
                     </div>
@@ -62,364 +236,50 @@
                                 <img src="/user/images/logo-light.png" alt="" height="25" class="card-logo-light mx-auto">
                             </a>
                         </li>
-                        <li class="nav-item dropdown dropdown-hover">
-                            <a class="nav-link dropdown-toggle" data-key="t-demos" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Demos
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-md dropdown-menu-center dropdown-menu-list submenu">
-                                <li class="nav-item">
-                                    <a href="index.html" class="nav-link" data-key="t-main-layout">Main Layout</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="watch-main-layout.html" class="nav-link" data-key="t-unique-watches">Unique Watches</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="modern-fashion.html" class="nav-link" data-key="t-modern-fashion">Modern Fashion</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="trend-fashion.html" class="nav-link" data-key="t-trend-fashion">Trend Fashion</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown dropdown-hover dropdown-mega-full">
-                            <a class="nav-link dropdown-toggle" data-key="t-catalog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Catalog
-                            </a>
-                            <div class="dropdown-menu p-0">
-                                <div class="row g-0 g-lg-4">
-                                    <div class="col-lg-2 d-none d-lg-block">
-                                        <div class="card rounded-start rounded-0 border-0 h-100 mb-0 overflow-hidden" style="background-image: url('/user/images/ecommerce/img-1.jpg');background-size: cover;">
-                                            <div class="bg-overlay bg-light bg-opacity-25"></div>
-                                            <div class="card-body d-flex align-items-center justify-content-center">
-                                                <div class="text-center">
-                                                    <a href="product-grid-sidebar-banner.html" class="btn btn-secondary btn-hover"><i class="ph-storefront align-middle me-1"></i> <span data-key="t-shop-now">Shop Now</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <ul class="dropdown-menu-list list-unstyled mb-0 py-3">
-                                            <li>
-                                                <p class="mb-2 text-uppercase fs-11 fw-medium text-muted menu-title" data-key="t-men">Men</p>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-grid-sidebar-banner.html" class="nav-link" data-key="t-clothing">Clothing</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-grid-right.html" class="nav-link" data-key="t-watches">Watches</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-list-left.html" class="nav-link" data-key="t-bags-Luggage">Bags & Luggage</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-grid-right.html" class="nav-link" data-key="t-footwear">Footwear</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-list.html" class="nav-link" data-key="t-innerwear">Innerwear</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-list-right.html" class="nav-link" data-key="t-other-accessories">Other Accessories</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <ul class="dropdown-menu-list list-unstyled mb-0 py-3">
-                                            <li>
-                                                <p class="mb-2 text-uppercase fs-11 fw-medium text-muted menu-title" data-key="t-women">Women</p>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-list-defualt.html" class="nav-link" data-key="t-western-wear">Western Wear</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-list-left.html" class="nav-link" data-key="t-handbags-clutches">Handbags & Clutches</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-grid-right.html" class="nav-link" data-key="t-lingerie-nightwear">Lingerie & Nightwear</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-grid-sidebar-banner.html" class="nav-link" data-key="t-footwear">Footwear</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-grid-defualt.html" class="nav-link" data-key="t-fashion-silver-jewellery">Fashion & Silver Jewellery</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <ul class="dropdown-menu-list list-unstyled mb-0 py-3">
-                                            <li>
-                                                <p class="mb-2 text-uppercase fs-11 fw-medium text-muted menu-title" data-key="t-accessories-others">Accessories & Others</p>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-grid-right.html" class="nav-link" data-key="t-home-kitchen-pets">Home, Kitchen, Pets</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-list-left.html" class="nav-link" data-key="t-beauty-health-grocery">Beauty, Health, Grocery</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-grid-sidebar-banner.html" class="nav-link" data-key="t-sports-fitness-bags-luggage">Sports, Fitness, Bags, Luggage</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-list.html" class="nav-link" data-key="t-car-motorbike-industrial">Car, Motorbike, Industrial</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="product-list-right.html" class="nav-link" data-key="t-books">Books</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <ul class="dropdown-menu-list list-unstyled mb-0 py-3">
-                                            <li>
-                                                <p class="mb-2 text-uppercase fs-11 fw-medium text-muted menu-title" data-key="t-others">Others</p>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="auth-signup-basic.html" class="nav-link" data-key="t-sign-up">Sign Up</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="auth-signin-basic.html" class="nav-link" data-key="t-sign-in">Sign In</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="auth-pass-reset-basic.html" class="nav-link" data-key="t-passowrd-reset">Reset Password</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="auth-404.html" class="nav-link" data-key="t-error-404">Error 404</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-2 d-none d-lg-block">
-                                        <div class="p-3">
-                                            <p class="mb-3 text-uppercase fs-11 fw-medium text-muted" data-key="t-top-brands">Top Brands</p>
-                                            <div class="row g-2">
-                                                <div class="col-lg-4">
-                                                    <a href="#!" class="d-block p-2 border border-dashed text-center rounded-3">
-                                                        <img src="/user/images/brands/img-8.png" alt="" class="avatar-sm">
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <a href="#!" class="d-block p-2 border border-dashed text-center rounded-3">
-                                                        <img src="/user/images/brands/img-2.png" alt="" class="avatar-sm">
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <a href="#!" class="d-block p-2 border border-dashed text-center rounded-3">
-                                                        <img src="/user/images/brands/img-3.png" alt="" class="avatar-sm">
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <a href="#!" class="d-block p-2 border border-dashed text-center rounded-3">
-                                                        <img src="/user/images/brands/img-4.png" alt="" class="avatar-sm">
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <a href="#!" class="d-block p-2 border border-dashed text-center rounded-3">
-                                                        <img src="/user/images/brands/img-5.png" alt="" class="avatar-sm">
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <a href="#!" class="d-block p-2 border border-dashed text-center rounded-3">
-                                                        <img src="/user/images/brands/img-6.png" alt="" class="avatar-sm">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown dropdown-hover">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-key="t-shop">
-                                Shop
-                            </a>
-                            <div class="dropdown-menu dropdown-mega-menu-xl dropdown-menu-center p-0">
-                                <div class="row g-0 g-lg-4">
-                                    <div class="col-lg-5 d-none d-lg-block">
-                                        <div class="card rounded-start rounded-0 border-0 h-100 mb-0 overflow-hidden" style="background-image: url('/user/images/ecommerce/img-2.jpg'); background-size: cover;">
-                                            <div class="bg-overlay bg-primary" style="opacity: 0.90;"></div>
-                                            <div class="card-body d-flex align-items-center justify-content-center position-relative">
-                                                <div class="text-center">
-                                                    <h6 class="card-title text-white">Welcome to Toner</h6>
-                                                    <p class="text-white-75">See all the products at once.</p>
-                                                    <a href="#!" class="btn btn-light btn-sm btn-hover">Shop Now <i class="ph-arrow-right align-middle"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="row g-0 g-lg-4">
-                                            <div class="col-lg-6">
-                                                <div class="py-3">
-                                                    <ul class="dropdown-menu-list list-unstyled mb-0">
-                                                        <li>
-                                                            <p class="mb-2 text-uppercase fs-11 fw-medium text-muted menu-title" data-key="t-checkout-pages">Checkout Pages</p>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a href="address.html" class="nav-link" data-key="t-address"> Address</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a href="track-order.html" class="nav-link" data-key="t-track-order">Track Order</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a href="payment.html" class="nav-link" data-key="t-payment">Payment</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a href="review.html" class="nav-link" data-key="t-review">Review</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a href="confirmation.html" class="nav-link" data-key="t-confirmation">Confirmation</a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a href="order-history.html" class="nav-link" data-key="t-my-orders-order-history">My Orders / Order History</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <ul class="dropdown-menu-list list-unstyled mb-0 py-3">
-                                                    <li>
-                                                        <p class="mb-2 text-uppercase fs-11 fw-medium text-muted menu-title" data-key="t-support">Support</p>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="shop-cart.html" class="nav-link" data-key="t-shopping-cart">Shopping Cart</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="checkout.html" class="nav-link" data-key="t-checkout">Checkout</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="wishlist.html" class="nav-link" data-key="t-wishlist">Wishlist</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown dropdown-hover">
-                            <a class="nav-link dropdown-toggle" data-key="t-pages" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Pages
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-md dropdown-menu-center dropdown-menu-list submenu">
-                                <li class="nav-item dropdown dropdown-hover">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-key="t-products">Products</a>
-                                    <ul class="dropdown-menu submenu">
-                                        <li class="dropdown dropdown-hover">
-                                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-key="t-grid-view">Grid View</a>
-                                            <ul class="dropdown-menu submenu">
-                                                <li><a class="nav-link" href="product-grid-defualt.html" data-key="t-default">default</a></li>
-                                                <li><a class="nav-link" href="product-grid-sidebar-banner.html" data-key="t-sidebar-with-banner">Sidebar with Banner</a></li>
-                                                <li><a class="nav-link" href="product-grid-right.html" data-key="t-right-sidebar">Right Sidebar</a></li>
-                                                <li><a class="nav-link" href="product-grid.html" data-key="t-no-sidebar">No Sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown dropdown-hover">
-                                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-key="t-list-view">List View</a>
-                                            <ul class="dropdown-menu submenu">
-                                                <li><a class="nav-link" href="product-list-defualt.html" data-key="t-default">default</a></li>
-                                                <li><a class="nav-link" href="product-list-left.html" data-key="t-left-sidebar">Left Sidebar</a></li>
-                                                <li><a class="nav-link" href="product-list-right.html" data-key="t-right-sidebar">Right Sidebar</a></li>
-                                                <li><a class="nav-link" href="product-list.html" data-key="t-no-sidebar">No Sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="nav-link" href="product-details.html" data-key="t-product-details">Product Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown dropdown-hover">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-key="t-users">Users</a>
-                                    <ul class="dropdown-menu submenu">
-                                        
-                                        <li><a class="nav-link" href="/logout" >Logout</a></li>
-                                        
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="products-category.html" class="nav-link" data-key="t-categories">Categories</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="about-us.html" class="nav-link" data-key="t-about">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="purchase-guide.html" class="nav-link" data-key="t-purchase-guide">Purchase Guide</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="terms-conditions.html" class="nav-link" data-key="t-terms-of-service">Terms of Service</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="privacy-policy.html" class="nav-link" data-key="t-privacy-policy">Privacy Policy</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="store-locator.html" class="nav-link" data-key="t-store-locator">Store Locator</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="ecommerce-faq.html" class="nav-link" data-key="t-faq">FAQ</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="invoice.html" class="nav-link" data-key="t-invoice">Invoice</a>
-                                </li>
-                                <li class="nav-item dropdown dropdown-hover">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-key="t-email-template">Email Template</a>
-                                    <ul class="dropdown-menu submenu">
-                                        <li><a class="nav-link" href="email-black-friday.html" data-key="t-black-friday">Black Friday</a></li>
-                                        <li><a class="nav-link" href="email-flash-sale.html" data-key="t-flash-sale">Flash Sale</a></li>
-                                        <li><a class="nav-link" href="email-order-success.html" data-key="t-order-success">Order Success</a></li>
-                                        <li><a class="nav-link" href="email-order-success-2.html" data-key="t-order-success-2">Order Success 2</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="https://themesbrand.com/toner/html/components/index.html" class="nav-link" target="_blank" data-key="t-components">Components <span class="badge bg-danger align-bottom ms-1">1.0</span></a>
-                                </li>
-                                <li class="nav-item dropdown dropdown-hover">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-key="t-multi-level">Multi Level</a>
-                                    <ul class="dropdown-menu submenu">
-                                        <li><a class="nav-link" href="#" data-key="t-level-1.1">Level 1.1</a></li>
-                                        <li><a class="nav-link" href="#" data-key="t-level-1.2">Level 1.2</a></li>
-                                        <li class="dropdown dropdown-hover">
-                                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-key="t-level-1.3">Level 1.3</a>
-                                            <ul class="dropdown-menu submenu">
-                                                <li><a class="nav-link" href="#" data-key="t-level-2.1">Level 2.1</a></li>
-                                                <li><a class="nav-link" href="#" data-key="t-level-2.2">Level 2.2</a></li>
-                                                <li class="dropdown dropdown-hover">
-                                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-key="t-level-2.3">Level 2.3</a>
-                                                    <ul class="dropdown-menu submenu">
-                                                        <li><a class="nav-link" href="#" data-key="t-level-3.1">Level 3.1</a></li>
-                                                        <li><a class="nav-link" href="#" data-key="t-level-3.2">Level 3.2</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact-us.html" data-key="t-contact">Contact</a>
-                        </li>
+
+                       
                     </ul>
                 </div>
                 <div class="bg-overlay navbar-overlay" data-bs-toggle="collapse"  data-bs-target="#navbarSupportedContent.show"></div>
 
                 <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle text-muted" data-bs-toggle="modal" data-bs-target="#searchModal">
-                        <i class="bx bx-search fs-22"></i>
-                    </button>
                     <div class="topbar-head-dropdown ms-1 header-item">
-                        <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle text-muted" data-bs-toggle="offcanvas" data-bs-target="#ecommerceCart" aria-controls="ecommerceCart">
-                            <i class="ph-shopping-cart fs-18"></i>
-                            
-                        </button>
+                        <a href="/wishlistLoad"> 
+                            <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle text-muted" data-bs-toggle="offcanvas" data-bs-target="#ecommerceCart" aria-controls="ecommerceCart">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </a>
                     </div>
+                    
+                 
+                    <div class="topbar-head-dropdown ms-1 header-item">
+                        <a href="/cart"> 
+                            <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle text-muted" data-bs-toggle="offcanvas" data-bs-target="#ecommerceCart" aria-controls="ecommerceCart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </a>
+                    </div>
+                 
+                 
+                    
     
                     
                     <div class="dropdown header-item dropdown-hover-end">
                         <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle header-profile-user" src="/user/images/users/avatar-1.jpg" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user" src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg?w=740&t=st=1715001597~exp=1715002197~hmac=e3bc9c8cfbece21c42358bb9a0d7ab7bd20d9f933ce573f7db3ff5ee1eb11de7" alt="" onerror="this.onerror=null; this.src='/path/to/default/image.jpg';">
                         </button>
+                        
                         <!-- <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="ph-user-circle fs-22"></i>
                         </button>    -->
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
                             
-                            <a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+                           
+                            <a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right"></i>
+                                <span class="align-middle" data-key="t-logout">Logout</span></a>
+                          
+                            <a class="dropdown-item" href="/profile"><i class="bi bi-person-circle"></i> <span class="align-middle" data-key="t-logout">Acount</span></a>
                         </div>
                     </div>
                 </div>
@@ -427,177 +287,8 @@
         </nav>
 
         <!--cart -->
-        <div class="offcanvas offcanvas-end product-list" tabindex="-1" id="ecommerceCart" aria-labelledby="ecommerceCartLabel">
-            <div class="offcanvas-header border-bottom">
-                <h5 class="offcanvas-title" id="ecommerceCartLabel">My Cart <span class="badge bg-danger align-middle ms-1 cartitem-badge">4</span></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body px-0">
-                <div data-simplebar  class="h-100">
-                    <ul class="list-group list-group-flush cartlist">
-                        <li class="list-group-item product">
-                            <div class="d-flex gap-3">
-                                <div class="flex-shrink-0">
-                                    <div class="avatar-md" style="height: 100%;">
-                                        <div class="avatar-title bg-warning-subtle rounded-3">
-                                            <img src="/user/images/products/img-4.png" alt="" class="avatar-sm">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <a href="#!">
-                                        <h5 class="fs-15">Borosil Paper Cup</h5>
-                                    </a>
-                                    <div class="d-flex mb-3 gap-2">
-                                        <div class="text-muted fw-medium mb-0">$<span class="product-price">24.00</span></div>
-                                        <div class="vr"></div>
-                                        <span class="text-success fw-medium">In Stock</span>
-                                    </div>
-                                    <div class="input-step">
-                                        <button type="button" class="minus">–</button>
-                                        <input type="number" class="product-quantity" value="2" min="0" max="100" readonly>
-                                        <button type="button" class="plus">+</button>
-                                    </div>
-                                </div>
-                                <div class="flex-shrink-0 d-flex flex-column justify-content-between align-items-end">
-                                    <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn" data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-close-fill fs-16"></i></button>
-                                    <div class="fw-medium mb-0 fs-16">$<span class="product-line-price">48.00</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item product">
-                            <div class="d-flex gap-3">
-                                <div class="flex-shrink-0">
-                                    <div class="avatar-md" style="height: 100%;">
-                                        <div class="avatar-title bg-info-subtle rounded-3">
-                                            <img src="/user/images/products/img-1.png" alt="" class="avatar-sm">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <a href="#!">
-                                        <h5 class="fs-15">Rockerz Ear Bluetooth Hea...</h5>
-                                    </a>
-                                    <div class="d-flex mb-3 gap-2">
-                                        <div class="text-muted fw-medium mb-0">$<span class="product-price">160.00</span></div>
-                                        <div class="vr"></div>
-                                        <span class="text-success fw-medium">In Stock</span>
-                                    </div>
-                                    <div class="input-step">
-                                        <button type="button" class="minus">–</button>
-                                        <input type="number" class="product-quantity" value="1" min="0" max="100" readonly>
-                                        <button type="button" class="plus">+</button>
-                                    </div>
-                                </div>
-                                <div class="flex-shrink-0 d-flex flex-column justify-content-between align-items-end">
-                                    <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn" data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-close-fill fs-16"></i></button>
-                                    <div class="fw-medium mb-0 fs-16">$<span class="product-line-price">160.00</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item product">
-                            <div class="d-flex gap-3">
-                                <div class="flex-shrink-0">
-                                    <div class="avatar-md" style="height: 100%;">
-                                        <div class="avatar-title bg-danger-subtle rounded-3">
-                                            <img src="/user/images/products/img-6.png" alt="" class="avatar-sm">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <a href="#!">
-                                        <h5 class="fs-15">Monte Carlo Sweaters</h5>
-                                    </a>
-                                    <div class="d-flex mb-3 gap-2">
-                                        <div class="text-muted fw-medium mb-0">$ <span class="product-price">244.99</span></div>
-                                        <div class="vr"></div>
-                                        <span class="text-success fw-medium">In Stock</span>
-                                    </div>
-                                    <div class="input-step">
-                                        <button type="button" class="minus">–</button>
-                                        <input type="number" class="product-quantity" value="3" min="0" max="100" readonly>
-                                        <button type="button" class="plus">+</button>
-                                    </div>
-                                </div>
-                                <div class="flex-shrink-0 d-flex flex-column justify-content-between align-items-end">
-                                    <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn" data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-close-fill fs-16"></i></button>
-                                    <div class="fw-medium mb-0 fs-16">$<span class="product-line-price">734.97</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item product">
-                            <div class="d-flex gap-3">
-                                <div class="flex-shrink-0">
-                                    <div class="avatar-md" style="height: 100%;">
-                                        <div class="avatar-title bg-primary-subtle rounded-3">
-                                            <img src="/user/images/products/img-8.png" alt="" class="avatar-sm">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <a href="#!">
-                                        <h5 class="fs-15">Men's Running Shoes Act...</h5>
-                                    </a>
-                                    <div class="d-flex mb-3 gap-2">
-                                        <div class="text-muted fw-medium mb-0">$<span class="product-price">120.30</span></div>
-                                        <div class="vr"></div>
-                                        <span class="text-success fw-medium">In Stock</span>
-                                    </div>
-                                    <div class="input-step">
-                                        <button type="button" class="minus">–</button>
-                                        <input type="number" class="product-quantity" value="2" min="0" max="100" readonly>
-                                        <button type="button" class="plus">+</button>
-                                    </div>
-                                </div>
-                                <div class="flex-shrink-0 d-flex flex-column justify-content-between align-items-end">
-                                    <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn" data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-close-fill fs-16"></i></button>
-                                    <div class="fw-medium mb-0 fs-16">$<span class="product-line-price">240.60</span></div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+      
 
-                    <div class="table-responsive mx-2 border-top border-top-dashed">
-                        <table class="table table-borderless mb-0 fs-14 fw-semibold">
-                            <tbody>
-                                <tr>
-                                    <td>Sub Total :</td>
-                                    <td class="text-end cart-subtotal">$1183.57</td>
-                                </tr>
-                                <tr>
-                                    <td>Discount <span class="text-muted">(Toner15)</span>:</td>
-                                    <td class="text-end cart-discount">- $177.54</td>
-                                </tr>
-                                <tr>
-                                    <td>Shipping Charge :</td>
-                                    <td class="text-end cart-shipping">$65.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Estimated Tax (12.5%) : </td>
-                                    <td class="text-end cart-tax">$147.95</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="offcanvas-footer border-top p-3 text-center">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h6 class="m-0 fs-16 text-muted">Total:</h6>
-                    <div class="px-2">
-                        <h6 class="m-0 fs-16 cart-total">$1218.98</h6>
-                    </div>
-                </div>
-                <div class="row g-2">
-                    <div class="col-6">
-                        <button type="button" class="btn btn-light w-100" id="reset-layout">View Cart</button>
-                    </div>
-                    <div class="col-6">
-                        <a href="#!" target="_blank" class="btn btn-info w-100">Continue to Checkout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Modal -->
         <div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
@@ -607,7 +298,7 @@
                         <div class="position-relative w-100">
                             <input type="text" class="form-control form-control-lg border-2" placeholder="Search for Toner..." autocomplete="off" id="search-options" value="">
                             <span class="bi bi-search search-widget-icon fs-17"></span>
-                            <a href="javascript:void(0);" class="search-widget-icon fs-14 link-secondary text-decoration-underline search-widget-icon-close d-none" id="search-close-options">Clear</a>
+                            <a href="" class="search-widget-icon fs-14 link-secondary text-decoration-underline search-widget-icon-close d-none" id="search-close-options">Clear</a>
                         </div>
                     </div>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 overflow-hidden" id="search-dropdown">
@@ -830,7 +521,7 @@
                 <div class="row g-2">
                     
                     <div class="col-lg-5">
-                       >
+                  
                 </div><!--end row-->
             </div><!--end container-->
         </section>
@@ -838,58 +529,62 @@
         <div class="position-relative section">
             <div class="container">
                 <div class="ecommerce-product gap-4">
+                   
                     <div class="sidebar small-sidebar flex-shrink-0">
                         <div class="card overflow-hidden">
-                            
-                            <div class="accordion accordion-flush filter-accordion">
+                            <div class="card-header">
+                                <div class="d-flex mb-3">
+                                    <div class="flex-grow-1">
+                                        <h5 class="fs-16">Filters</h5>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <a href="/shop" class="no-underline" id="clearall">Clear All</a>
 
 
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingColors">
-                                        <button class="accordion-button bg-transparent shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseColors" aria-expanded="true" aria-controls="flush-collapseColors">
-                                            <span class="text-muted text-uppercase fs-13 fw-medium">Colors</span> <span class="badge bg-success rounded-pill align-middle ms-1 filter-badge"></span>
-                                        </button>
-                                    </h2>
-                                
-                                    <div id="flush-collapseColors" class="accordion-collapse collapse show" aria-labelledby="flush-headingColors">
-                                        <div class="accordion-body text-body pt-0">
-                                            <ul class="clothe-colors list-unstyled hstack gap-3 mb-0 flex-wrap" id="color-filter">
-                                                <li>
-                                                    <input type="radio" name="colors" value="success" id="color-1">
-                                                    <label class="avatar-xs btn btn-success p-0 d-flex align-items-center justify-content-center rounded-circle" for="color-1"></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="colors" value="info" id="color-2">
-                                                    <label class="avatar-xs btn btn-info p-0 d-flex align-items-center justify-content-center rounded-circle" for="color-2"></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="colors" value="warning" id="color-3">
-                                                    <label class="avatar-xs btn btn-warning p-0 d-flex align-items-center justify-content-center rounded-circle" for="color-3"></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="colors" value="danger" id="color-4">
-                                                    <label class="avatar-xs btn btn-danger p-0 d-flex align-items-center justify-content-center rounded-circle" for="color-4"></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="colors" value="primary" id="color-5">
-                                                    <label class="avatar-xs btn btn-primary p-0 d-flex align-items-center justify-content-center rounded-circle" for="color-5"></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="colors" value="secondary" id="color-6">
-                                                    <label class="avatar-xs btn btn-secondary p-0 d-flex align-items-center justify-content-center rounded-circle" for="color-6"></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="colors" value="dark" id="color-7">
-                                                    <label class="avatar-xs btn btn-dark p-0 d-flex align-items-center justify-content-center rounded-circle" for="color-7"></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="colors" value="light" id="color-8">
-                                                    <label class="avatar-xs btn btn-light p-0 d-flex align-items-center justify-content-center rounded-circle" for="color-8"></label>
-                                                </li>
-                                            </ul>
-                                        </div>
+
+
                                     </div>
                                 </div>
+                                <form id="searchForm" action="/search" method="post">
+                                    <% if (inputLetter) { %>
+                                        <input type="text" class="form-control" id="searchSortOptions" name="search" placeholder="Search" value="<%= inputLetter %>">
+                                    <% } else { %>
+                                        <input type="text" class="form-control" id="searchSortOptions" name="search" placeholder="Search">
+                                    <% } %>
+                                
+                                    <label for="sort-dropdown">Sort By:</label><br>
+                                    <select id="sort-dropdown" name="sortOption" class="form-select">
+                                        <option value="option">Select</option>
+                                        <option value="lowtohigh">Low to High</option>
+                                        <option value="hightolow">High to Low</option>
+                                        <option value="alphabeticallyAZ">Alphabetically A-Z</option>
+                                        <option value="alphabeticallyZA">Alphabetically Z-A</option>
+                                        <option value="newArrivals">New Arrivals</option>
+                                    </select>
+                                
+                                    <!-- Hidden input fields to store sort option and search term -->
+                                    <input type="hidden" name="inputStatus" id="inputStatus" value="">
+                                    <input type="hidden" name="inputLetter" id="inputLetter" value="">
+                                
+                                    <br>
+                                    <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                                </form>
+                                
+                                <!-- Display sorted products -->
+                              
+                                
+                            </div>
+                            <div class="accordion accordion-flush filter-accordion">
+                                <div class="card-body border-bottom">
+                                    <div class="category-list">
+                                        <p class="search-header">Search Categories</p>
+                                        <% Category.forEach(item => { %>
+                                            <a href="/search?id=<%= item._id  %>" class="category-link"><%= item.categoryName %></a> <br>
+                                        <% }) %>
+                                    </div>
+                                </div>
+
+                                   
                                 <!-- end accordion-item -->
 
                                 <div class="accordion-item">
@@ -902,198 +597,42 @@
                                     <div id="flush-collapseSize" class="accordion-collapse collapse show" aria-labelledby="flush-headingSize">
                                         <div class="accordion-body text-body pt-0">
                                             <ul class="clothe-size list-unstyled hstack gap-3 mb-0 flex-wrap" id="size-filter">
-                                                <li>
-                                                    <input type="radio" name="sizes" value="xs" id="sizeXs">
-                                                    <label class="avatar-xs btn btn-soft-primary p-0 d-flex align-items-center justify-content-center rounded-circle" for="sizeXs">XS</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="sizes" value="s" id="sizeS">
-                                                    <label class="avatar-xs btn btn-soft-primary p-0 d-flex align-items-center justify-content-center rounded-circle" for="sizeS">S</label>
-                                                </li>
+                                               
+                                               
                                                 <li>
                                                     <input type="radio" name="sizes" value="m" id="sizeM">
-                                                    <label class="avatar-xs btn btn-soft-primary p-0 d-flex align-items-center justify-content-center rounded-circle" for="sizeM">M</label>
+                                                    <a class="avatar-xs btn btn-soft-primary p-0 d-flex align-items-center justify-content-center rounded-circle" for="size4xl"href="/search?size=M">M</a>
                                                 </li>
                                                 <li>
                                                     <input type="radio" name="sizes" value="l" id="sizeL">
-                                                    <label class="avatar-xs btn btn-soft-primary p-0 d-flex align-items-center justify-content-center rounded-circle" for="sizeL">L</label>
+                                                    <a class="avatar-xs btn btn-soft-primary p-0 d-flex align-items-center justify-content-center rounded-circle" for="size4xl"href="/search?size=L">L</a>
                                                 </li>
                                                 <li>
                                                     <input type="radio" name="sizes" value="xl" id="sizeXl">
-                                                    <label class="avatar-xs btn btn-soft-primary p-0 d-flex align-items-center justify-content-center rounded-circle" for="sizeXl">XL</label>
+                                                    <a class="avatar-xs btn btn-soft-primary p-0 d-flex align-items-center justify-content-center rounded-circle" for="size4xl"href="/search?size=XL">xl</a>
                                                 </li>
-                                                <li>
-                                                    <input type="radio" name="sizes" value="2xl" id="size2xl">
-                                                    <label class="avatar-xs btn btn-soft-primary p-0 d-flex align-items-center justify-content-center rounded-circle" for="size2xl">2XL</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="sizes" value="3xl" id="size3xl">
-                                                    <label class="avatar-xs btn btn-soft-primary p-0 d-flex align-items-center justify-content-center rounded-circle" for="size3xl">3XL</label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="sizes" value="4xl" id="size4xl">
-                                                    <label class="avatar-xs btn btn-soft-primary p-0 d-flex align-items-center justify-content-center rounded-circle" for="size4xl">4XL</label>
-                                                </li>
+                                                
+                                               
+                                                
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- end accordion-item -->
 
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingBrands">
-                                        <button class="accordion-button bg-transparent shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseBrands" aria-expanded="true" aria-controls="flush-collapseBrands">
-                                            <span class="text-muted text-uppercase fs-13 fw-medium">Brands</span> <span class="badge bg-success rounded-pill align-middle ms-1 filter-badge"></span>
-                                        </button>
-                                    </h2>
-
-                                    <div id="flush-collapseBrands" class="accordion-collapse collapse show" aria-labelledby="flush-headingBrands">
-                                        <div class="accordion-body text-body pt-0">
-                                            <div class="search-box search-box-sm">
-                                                <input type="text" class="form-control bg-light border-0" id="searchBrandsList" placeholder="Search Brands...">
-                                                <i class="ri-search-line search-icon"></i>
-                                            </div>
-                                            <div class="d-flex flex-column gap-2 mt-3 filter-check">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="Boat" id="productBrandRadio5">
-                                                    <label class="form-check-label" for="productBrandRadio5">Boat</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="OnePlus" id="productBrandRadio4">
-                                                    <label class="form-check-label" for="productBrandRadio4">OnePlus</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="Realme" id="productBrandRadio3">
-                                                    <label class="form-check-label" for="productBrandRadio3">Realme</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="Sony" id="productBrandRadio2">
-                                                    <label class="form-check-label" for="productBrandRadio2">Sony</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="JBL" id="productBrandRadio1">
-                                                    <label class="form-check-label" for="productBrandRadio1">JBL</label>
-                                                </div>
-
-                                                <div>
-                                                    <button type="button" class="btn btn-link text-decoration-none text-uppercase fw-medium p-0">1,235
-                                                        More</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                             
+                                    
+                                                  
                                 <!-- end accordion-item -->
 
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingDiscount">
-                                        <button class="accordion-button bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseDiscount" aria-expanded="true" aria-controls="flush-collapseDiscount">
-                                            <span class="text-muted text-uppercase fs-13 fw-medium">Discount</span> <span class="badge bg-success rounded-pill align-middle ms-1 filter-badge"></span>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseDiscount" class="accordion-collapse collapse" aria-labelledby="flush-headingDiscount">
-                                        <div class="accordion-body text-body pt-1">
-                                            <div class="d-flex flex-column gap-2 filter-check" id="discount-filter">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="50" id="productdiscountRadio6">
-                                                    <label class="form-check-label" for="productdiscountRadio6">50% or more</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="40" id="productdiscountRadio5">
-                                                    <label class="form-check-label" for="productdiscountRadio5">40% or more</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="30" id="productdiscountRadio4">
-                                                    <label class="form-check-label" for="productdiscountRadio4">
-                                                        30% or more
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="20" id="productdiscountRadio3">
-                                                    <label class="form-check-label" for="productdiscountRadio3">
-                                                        20% or more
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="10" id="productdiscountRadio2">
-                                                    <label class="form-check-label" for="productdiscountRadio2">
-                                                        10% or more
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="0" id="productdiscountRadio1">
-                                                    <label class="form-check-label" for="productdiscountRadio1">
-                                                        Less than 10%
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                              
+                                                 
+                                              
                                 <!-- end accordion-item -->
 
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingRating">
-                                        <button class="accordion-button bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseRating" aria-expanded="false" aria-controls="flush-collapseRating">
-                                            <span class="text-muted text-uppercase fs-13 fw-medium">Rating</span> <span class="badge bg-success rounded-pill align-middle ms-1 filter-badge"></span>
-                                        </button>
-                                    </h2>
-
-                                    <div id="flush-collapseRating" class="accordion-collapse collapse" aria-labelledby="flush-headingRating">
-                                        <div class="accordion-body text-body">
-                                            <div class="d-flex flex-column gap-2 filter-check" id="rating-filter">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="4" id="productratingRadio4">
-                                                    <label class="form-check-label" for="productratingRadio4">
-                                                        <span class="text-muted">
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star"></i>
-                                                        </span> 4 & Above
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="3" id="productratingRadio3">
-                                                    <label class="form-check-label" for="productratingRadio3">
-                                                        <span class="text-muted">
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star"></i>
-                                                            <i class="mdi mdi-star"></i>
-                                                        </span> 3 & Above
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="2" id="productratingRadio2">
-                                                    <label class="form-check-label" for="productratingRadio2">
-                                                        <span class="text-muted">
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star"></i>
-                                                            <i class="mdi mdi-star"></i>
-                                                            <i class="mdi mdi-star"></i>
-                                                        </span> 2 & Above
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="1" id="productratingRadio1">
-                                                    <label class="form-check-label" for="productratingRadio1">
-                                                        <span class="text-muted">
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star"></i>
-                                                            <i class="mdi mdi-star"></i>
-                                                            <i class="mdi mdi-star"></i>
-                                                            <i class="mdi mdi-star"></i>
-                                                        </span> 1
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                               
+                                               
+                                                         
                                 <!-- end accordion-item -->
                             </div>
                         </div>
@@ -1105,49 +644,76 @@
                         <div class="row" id="ps">
                            
                             <div class="row" id="ps">
+                              
+                              
                                 <% if(product.length > 0) { %>
                                     <% for (let i = 0; i < product.length; i++) { %>
                                         <% if(product[i].isListed===false){%>
 
-                    
-                                        <div class="col-xxl-4 col-lg-4 col-md-6">
-                                            <div class="card ecommerce-product-widgets border-0 rounded-0 shadow-none overflow-hidden">
-                                                <div class="bg-light bg-opacity-50 rounded py-4 position-relative">
-                                                    <!-- Displaying the first image of the product -->
-                                                    <img src="<%= product[i].image[0] %>" alt="<%= product[i].name %>" style="max-height: 200px; max-width: 100%;" class="mx-auto d-block rounded-2">
-                                                    <div class="action vstack gap-2"> 
-                                                        <button class="btn btn-danger avatar-xs p-0 btn-soft-warning custom-toggle product-action " data-bs-toggle="button"> 
-                                                            <span class="icon-on"><i class="ri-heart-line"></i></span> 
-                                                            <span class="icon-off"><i class="ri-heart-fill"></i></span> 
-                                                        </button> 
-                                                    </div>
+                        
+                                            <div class="col-xxl-4 col-lg-4 col-md-6">
+                                                <div class="card ecommerce-product-widgets border-0 rounded-0 shadow-none overflow-hidden">
                                                     
-                                                </div>
-                                                <div class="pt-4">
-                                                    <div>
-                                                        <ul class="clothe-colors list-unstyled hstack gap-1 mb-3 flex-wrap">
-                                                            <!-- Your color options -->
-                                                        </ul> 
-                                                        <a href="/single-product?id=<%= product[i]._id%>"
-                                                            <h6 class="text-capitalize fs-15 lh-base text-truncate mb-0"><%= product[i].name %></h6>
-                                                        </a>
-                                                        <div class="mt-2"> 
-                                                            <span class="float-end">4.9 <i class="ri-star-half-fill text-warning align-bottom"></i></span> 
-                                                            <h5 class="text-secondary mb-0"> ₹<%= product[i].price %> <span class="text-muted fs-12"><del> ₹600</del></span></h5> 
+                                                        <!-- Displaying the first image of the product -->
+                                                        <img src="<%= product[i].image[0] %>" alt="<%= product[i].name %>" style="max-height: 200px; max-width: 100%;" class="mx-auto d-block rounded-2">
+                                                        <div class="action vstack gap-2"> 
+                                                            <a href="#" class="btn btn-danger avatar-xs p-0 btn-soft-warning custom-toggle product-action" data-bs-toggle="button">
+                                                                <span class="icon-on" onclick="addToWishlist('<%= product[i]._id %>')"><i class="far fa-heart"></i></span> 
+                                                                <span class="icon-off"><i class="far fa-heart"></i></span>
+                                                            </a>
+                                                            
+                                                            
                                                         </div>
-                                                        <div class="tn mt-3"> 
-                                                            <a href="#!" class="btn btn-primary btn-hover w-100 add-btn"><i class="mdi mdi-cart me-1"></i> Add To Cart</a> 
+                                                        
+                                                
+                                                    <div class="pt-4">
+                                                        <div>
+                                                            <ul class="clothe-colors list-unstyled hstack gap-1 mb-3 flex-wrap">
+                                                                <!-- Your color options -->
+                                                            </ul> 
+                                                            <a href="/single-product?id=<%= product[i]._id%>"
+                                                                <h6 class="text-capitalize fs-15 lh-base text-truncate mb-0"><%= product[i].name %></h6>
+                                                            </a>
+                                                            <div class="mt-2"> 
+                                                                <span class="float-end">4.9 <i class="ri-star-half-fill text-warning align-bottom"></i></span> 
+                                                                <h5 class="text-secondary mb-0"> ₹<%= product[i].price %> <span class="text-muted fs-12"><% if( product[i].discountPercentage>0){%>
+                                                                    <%= product[i].
+                                                                    discountPercentage %> %off  <del><%= product[i].actualPrice %></del></span></h5>
+                                                               <% } %>  
+                                                            </div>
+                                                            <div class="tn mt-3"> 
+                                                                <a href="/single-product?id=<%= product[i]._id%>" class="btn btn-primary btn-hover w-100 add-btn"> View Product</a> 
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        
-                                      <%  } %>
+                                            
+                                        <%  } %>
+                                        <% } %>
                                     <% } %>
-                                <% } %>
-                            </div>
+                                </div>
                             
+                            <div class="page-pagination-area">
+                                <ul class="page-pagination justify-content-center mt-0">
+                                    <div class="pagination-container">
+                                    <form id="searchForm" action="/search" method="post">
+                                        <input type="hidden" name="currentPage" value="<%= currentPage %>">
+                                        <!-- Add hidden input fields for other parameters if needed, e.g., sorting option -->
+                                        <% /* Example sorting option */ %>
+                                        <input type="hidden" name="sortOption" value="<%= locals.a %>">
+                                        
+                                        <ul class="pagination">
+                                            <% for (let i = 1; i <= totalPages; i++) { %>
+                                                <li <% if (i === currentPage) { %>class="active"<% } %>>
+                                                    <button type="submit" name="page" value="<%= i %>" class="pagination-button"><%= i %></button>
+                                                </li>
+                                            <% } %>
+                                        </ul>
+                                    </form>
+                                </ul>
+                             
+                            </div>
                         </div>
                     </a>
                         
@@ -1175,13 +741,13 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-lg-6">
                         <div>
-                            <p class="fs-15 text-uppercase fw-medium"><span class="fw-semibold text-danger">25% Up to</span> off all Products</p>
+                           
                             <h1 class="lh-base text-capitalize mb-3">Stay home & get your daily needs from our shop</h1>
-                            <p class="fs-15 mb-4 pb-2">Start You'r Daily Shopping with <a href="#!" class="link-info fw-medium">Toner</a></p>
+                            <p class="fs-15 mb-4 pb-2">Start You'r Daily Shopping with   STYLESTRUT</p>
                             <form action="#!">
                                 <div class="position-relative ecommerce-subscript">
-                                    <input type="email" class="form-control rounded-pill" placeholder="Enter your email">
-                                    <button type="submit" class="btn btn-primary btn-hover rounded-pill">Subscript Now</button>
+                                   
+                                    
                                 </div>
                             </form>
                         </div>
@@ -1251,26 +817,11 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="footer-info">
-                            <img src="/user/images/logo-light.png" alt="" height="28" class="logo-light">
+                            <p class="logo" style="color: white;">StyleStrut</p>
                             <img src="/user/images/logo-dark.png" alt="" height="28" class="logo-dark">
-                            <p class="footer-desc mt-4 mb-2 me-3">Toner provides best fashion experience for both men and women at best pricing. We follow New fashion approach to give best premium feel.</p>
+                            <p class="footer-desc mt-4 mb-2 me-3"> StyleStrut provides best fashion experience for both men and women at best pricing. We follow New fashion approach to give best premium feel.</p>
 
-                            <div class="footer-social mt-4">
-                                <ul class="list-inline mb-0">
-                                    <li class="list-inline-item">
-                                        <a href="#!" class="text-reset"><i class="mdi mdi-facebook"></i></a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#!" class="text-reset"><i class="mdi mdi-twitter"></i></a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#!" class="text-reset"><i class="mdi mdi-google"></i></a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#!" class="text-reset"><i class="mdi mdi-pinterest"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
+                          
                         </div>
                     </div>
                     <div class="col-lg-8">
@@ -1278,24 +829,18 @@
                             <div class="col-md-3">
                                 <div class="mt-lg-0 mt-4">
                                     <h5 class="footer-title">Categories</h5>
-                                    <ul class="list-unstyled footer-link mt-3">
-                                        <li><a href="#!">Men</a></li>
-                                        <li><a href="#!">Jewellers</a></li>
-                                        <li><a href="#!">Accessories</a></li>
-                                        <li><a href="#!">Clothing</a></li>
-                                        <li><a href="#!">Beauty Items</a></li>
-                                    </ul>
+                                    <% Category.forEach(item => { %>
+                                        <a class="footer-title" href="/search?id=<%= item._id  %>" class="category-link"><%= item.categoryName %></a> <br> <br>
+                                    <% }) %>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mt-lg-0 mt-4">
                                     <h5 class="footer-title">Information</h5>
                                     <ul class="list-unstyled footer-link mt-3">
-                                        <li><a href="#!">Custom Service</a></li>
-                                        <li><a href="#!">FAQs</a></li>
-                                        <li><a href="#!">Ordering</a></li>
-                                        <li><a href="#!">Tracking</a></li>
-                                        <li><a href="#!">Contacts</a></li>
+                                        <li><a href="/profile">Ordering</a></li>
+                                        <li><a href="/profile">Tracking</a></li>
+                                        <li><a href="/profile">Contacts</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -1304,35 +849,22 @@
                                 <div class="mt-lg-0 mt-4">
                                     <h5 class="footer-title">My Account</h5>
                                     <ul class="list-unstyled footer-link mt-3">
-                                        <li><a href="#!">Sign In</a></li>
-                                        <li><a href="#!">View Cart</a></li>
-                                        <li><a href="#!">My Wishlist</a></li>
-                                        <li><a href="#!">Track My Order</a></li>
-                                        <li><a href="#!">Help</a></li>
+                            
+                                        <li><a href="/cart ">View Cart</a></li>
+                                        <li><a href="/wishlistLoad">My Wishlist</a></li>
+                                        <li><a href="/profile">Track My Order</a></li>
+                                      
                                     </ul>
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
-                                <div class="mt-lg-0 mt-4">
-                                    <h5 class="footer-title">Customer Service</h5>
-                                    <ul class="list-unstyled footer-link mt-3">
-                                        <li><a href="#!">Payment Methods</a></li>
-                                        <li><a href="#!">Money-back!</a></li>
-                                        <li><a href="#!">Returns</a></li>
-                                        <li><a href="#!">Shipping</a></li>
-                                        <li><a href="#!">Terms and conditions</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                          
                         </div>
                     </div>
                 </div>
 
                 <div class="row footer-border-alt mt-4 align-items-center fs-15">
-                    <div class="col-sm-6">
-                        <script>document.write(new Date().getFullYear())</script> © Toner. Design &amp; Develop by <a href="https://themesbrand.com/" target="_blank" class="text-reset text-decoration-underline">Themesbrand</a>
-                    </div>
+                    
                     <div class="col-sm-6">
                         <div class="text-sm-end d-none d-sm-block">
                             <ul class="list-inline mb-0">
@@ -1369,6 +901,96 @@
 
         <!-- landing-index js -->
         <script src="/user/js/frontend/menu.init.js"></script>
+        
+
+        <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const defaultValue = document.getElementById('defaultValue').value;
+    console.log('asd',defaultValue);
+
+    function setDefaultOption(selectElement, value) {
+    console.log('ethypoi',selectElement,value);
+
+        for (var i = 0; i < selectElement.options.length; i++) {
+            if (selectElement.options[i].value === value) {
+                selectElement.selectedIndex = i;
+                break;
+            }
+        }
+    }
+
+    // Call the function to set the default value
+    var dropdown = document.getElementById("sort-dropdown");
+    setDefaultOption(dropdown, defaultValue);
+});
+
+       document.getElementById("searchForm").addEventListener("submit", function(event) {
+    const searchInput = document.getElementById("searchSortOptions").value.trim();
+    const sortOption = document.getElementById("sort-dropdown").value;
+    const inputLetter = document.getElementById("inputLetter").value; // Get the input letter
+    
+    if (!searchInput) {
+        // If search input is empty, set a specific value for inputStatus
+        document.getElementById("inputStatus").value = "EMPTY";
+    }
+    
+    // Set the sorting option
+    document.getElementById("sortOption").value = sortOption;
+    
+    // Set the input letter
+    document.getElementById("inputLetter").value = inputLetter;
+});
+
+document.getElementById("searchSortOptions").addEventListener("input", function(event) {
+    const inputLetter = event.target.value.charAt(event.target.value.length - 1);
+    console.log("Input letter:", inputLetter);
+    document.getElementById("inputLetter").value = inputLetter; // Update the hidden input with the input letter
+});
+
+
+//Wishlist
+function addToWishlist(productId) {
+    console.log(productId);
+    fetch('/wishlist', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ productId: productId })
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Parse response body as JSON
+        } else {
+            throw new Error('Failed to add product to wishlist');
+        }
+    })
+    .then(data => {
+        console.log(data.message); // Display success message
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+
+    const priceSlider = document.getElementById('price-slider');
+    const priceOutput = document.getElementById('price-output');
+
+    // Function to update the output value
+    function updatePriceOutput() {
+        priceOutput.textContent = priceSlider.value;
+    }
+
+    // Add event listener to update output when slider value changes
+    priceSlider.addEventListener('input', updatePriceOutput);
+
+    
+</script>
+
+
+</script>
     </body>
 
 

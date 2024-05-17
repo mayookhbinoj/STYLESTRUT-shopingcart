@@ -170,7 +170,13 @@ function isCustomDropdown() {
             if (plus) {
                 Array.from(plus).forEach(function (e) {
                     e.addEventListener('click', function (event) {
+                        console.log(e.previousElementSibling.value);
+                        console.log(plus);
                         // if(event.target.previousElementSibling.value )
+                        // if(parseInt(e.previousElementSibling.value) >= event.target.previousElementSibling.getAttribute('max')){
+                        //     plus.disabled = true;
+                        //     return
+                        // }
                         if (parseInt(e.previousElementSibling.value) < event.target.previousElementSibling.getAttribute('max')) {
                             event.target.previousElementSibling.value++;
                             if (product) {

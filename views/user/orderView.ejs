@@ -1,0 +1,1621 @@
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-body-image="none">
+
+
+<!-- Mirrored from themesbrand.com/toner/html/backend/orders-overview.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Feb 2024 08:49:08 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <title>Order Overview | Toner eCommerce + Admin HTML Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="eCommerce + Admin HTML Template" name="description">
+    <meta content="Themesbrand" name="author">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+
+    <!-- Layout config Js -->
+    <script src="../assets/js/layout.js"></script>
+    <!-- Bootstrap Css -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <!-- App Css-->
+    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css">
+    <!-- custom Css-->
+    <link href="../assets/css/custom.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   
+
+<style>
+    .no-orders-message {
+    color: red;
+    font-size: 300px;
+    font-weight: bold;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    
+                             
+    </div>
+</div>
+        <header id="page-topbar">
+            <div class="layout-width">
+             
+            </div>
+        </header>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content rounded">
+                    <div class="modal-header p-3">
+                        <div class="position-relative w-100">
+                            <input type="text" class="form-control form-control-lg border-2" placeholder="Search for Toner..." autocomplete="off" id="search-options" value="">
+                            <span class="bi bi-search search-widget-icon fs-17"></span>
+                            <a href="javascript:void(0);" class="search-widget-icon fs-14 link-secondary text-decoration-underline search-widget-icon-close d-none" id="search-close-options">Clear</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 overflow-hidden" id="search-dropdown">
+
+                        <div class="dropdown-head rounded-top">
+                            <div class="p-3">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h6 class="m-0 fs-14 text-muted fw-semibold"> RECENT SEARCHES </h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-item bg-transparent text-wrap">
+                                <a href="index-2.html" class="btn btn-soft-secondary btn-sm btn-rounded">how to setup <i class="mdi mdi-magnify ms-1 align-middle"></i></a>
+                                <a href="index-2.html" class="btn btn-soft-secondary btn-sm btn-rounded">buttons <i class="mdi mdi-magnify ms-1 align-middle"></i></a>
+                            </div>
+                        </div>
+
+                        <div data-simplebar style="max-height: 300px;" class="pe-2 ps-3 mt-3">
+                            <div class="list-group list-group-flush border-dashed">
+                              
+                        
+                                <div class="notification-group-list">
+                                    <h5 class="text-overflow text-muted fs-13 mb-2 mt-3 text-uppercase notification-title">Links</h5>
+                                    <a href="javascript:void(0);" class="list-group-item dropdown-item notify-item"><i class="bi bi-link-45deg me-2 align-middle"></i> <span>www.themesbrand.com</span></a>
+                                </div>
+
+                                <div class="notification-group-list">
+                                    <h5 class="text-overflow text-muted fs-13 mb-2 mt-3 text-uppercase notification-title">People</h5>
+                                    <a href="javascript:void(0);" class="list-group-item dropdown-item notify-item">
+                                        <div class="d-flex align-items-center">
+                                            <img src="../assets/images/users/avatar-1.jpg" alt="" class="avatar-xs rounded-circle flex-shrink-0 me-2">
+                                            <div>
+                                                <h6 class="mb-0">Ayaan Bowen</h6>
+                                                <span class="fs-12 text-muted">React Developer</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);" class="list-group-item dropdown-item notify-item">
+                                        <div class="d-flex align-items-center">
+                                            <img src="../assets/images/users/avatar-7.jpg" alt="" class="avatar-xs rounded-circle flex-shrink-0 me-2">
+                                            <div>
+                                                <h6 class="mb-0">Alexander Kristi</h6>
+                                                <span class="fs-12 text-muted">React Developer</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);" class="list-group-item dropdown-item notify-item">
+                                        <div class="d-flex align-items-center">
+                                            <img src="../assets/images/users/avatar-5.jpg" alt="" class="avatar-xs rounded-circle flex-shrink-0 me-2">
+                                            <div>
+                                                <h6 class="mb-0">Alan Carla</h6>
+                                                <span class="fs-12 text-muted">React Developer</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- removeNotificationModal -->
+        <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="NotificationModalbtn-close"></button>
+                    </div>
+                    <div class="modal-body p-md-5">
+                        <div class="text-center">
+                            <div class="text-danger">
+                                <i class="bi bi-trash display-4"></i>
+                            </div>
+                            <div class="mt-4 fs-15">
+                                <h4 class="mb-1">Are you sure ?</h4>
+                                <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                            <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete It!</button>
+                        </div>
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- ========== App Menu ========== -->
+     
+    
+        <!-- Left Sidebar End -->
+        <!-- Vertical Overlay-->
+        <div class="vertical-overlay"></div>
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+                   
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">Overview</h4>
+
+                              
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <div class="row mb-4 align-items-center">
+                       
+                        
+                    </div>
+
+
+
+                    <div>
+
+                        
+
+                  
+
+                    <div class="row">
+                        <div class="col-xxl-3 col-lg-6">
+                            <div class="card bg-success bg-opacity-10 border-0">
+                                <div class="card-body">
+                                    <div class="d-flex gap-3">
+                                        <div class="flex-grow-1">
+                                           
+                                            <h6 class="fs-18 mb-3">Customer Info</h6>
+                                            <p class="mb-0 fw-medium"><%= Adresss.street %></p>
+                                           
+                                            <p class="mb-0"><%= Adresss.city %><%= Adresss.state %> <%= Adresss.ZIPCode %></p>
+                                         
+                                        </div>
+                                        <div class="avatar-sm flex-shrink-0">
+                                            <div class="avatar-title bg-success-subtle text-success rounded fs-3">
+                                                <i class="ph-user-circle"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+      
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xxl-9">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive table-card">
+                                        <table  id="myTable"  class="table align-middle table-nowrap mb-0">
+                                            <thead class="text-muted table-light">
+                                                <tr>
+                                                   
+                                                    <th scope="col">Product Name</th>
+                                                    <th scope="col">Amount</th>
+                                                    <th scope="col">Quantity</th>
+                                                    <th scope="col" class="text-end">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                                 <% order.cartItems.forEach(item => { %>
+                                                  
+
+                              
+                                                
+                                              
+                                                <tr>
+                                                   
+                                                   
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                           
+                                                            <div class="flex-grow-1"><%= item.product.name %></div>
+                                        
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                           
+                                                            <div class="flex-grow-1"><%= item.product.price.toFixed(2) %></div>
+                                        
+                                                    </td>
+
+                                                    <td>
+                                                        <span class="text-secondary"><%= item.quantity%></span>
+                                                    </td>
+
+                                                   
+                                                    <td class="text-end"><%= (item.product.price * item.quantity).toFixed(2) %></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3"></td>
+                                                    <td colspan="2" class="p-0">
+                                                       
+                                                    </td>
+                                                </tr>
+                                                
+                                                <% }) %>
+                
+                                            </tbody>
+                                        </table>
+                                       
+                                    </div>
+                                </div>
+                            </div><!--end card-->
+                        </div><!--end col-->
+                        <div class="col-xxl-3">
+                            <div class="row">
+                                
+                                </div>
+                           
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-lg-12">
+                            <div class="card" id="track-order">
+                                <div class="card-header d-flex  align-items-center gap-3">
+                                    <h5 class="card-title flex-grow-1 mb-0">Order Status</h5> -->
+
+                                     <div class="flex-shrink-0">
+                                        <% if(order.status === "payment failed") { %>
+                                            <button type="button" onclick="retryPayment()" class="btn btn-soft-danger btn-sm mt-2 mt-sm-0">
+                                                <i class="fas fa-times cancel-icon"></i> Continue Payment
+                                            </button>
+                                        <% } else{%>
+                                        <button type="button" onclick="cancel()" class="btn btn-soft-danger btn-sm mt-2 mt-sm-0"> &nbsp &nbsp  <i class="fas fa-times cancel-icon"></i>   &nbsp Cancel Order&nbsp&nbsp&nbsp&nbsp</button>
+                                        <%} %> &nbsp; &nbsp; &nbsp; 
+                                        <button id="downloadPdf" class="btn btn-primary btn-sm mt-2 mt-sm-0">Download Invoice</button>
+                                    </div>  
+                                    
+                                 <!-- </div>
+                                <div class="card-body">
+                                    <div class="row justify-content-between">
+                                        <div class="col-lg-2 order-tracking text-center completed">
+                                            <span class="is-complete"></span>
+                                            <div class="card mt-3 mb-0">
+                                                <div class="card-body">
+                                                    <h6 class="fs-17">Order Process</h6>
+                                                    <p class="text-muted fs-15 mb-0">Mon, 24 Dec, 2022</p>
+                                                </div>
+                                            </div>
+                                        </div>end col
+                                        <!-- <div class="col-lg-2 order-tracking text-center completed"> -->
+                                            <!-- <span class="is-complete"></span>
+                                            <div class="card mt-3 mb-0">
+                                                <div class="card-body">
+                                                    <h6 class="fs-17">Packed</h6>
+                                                    <p class="text-muted fs-15 mb-0">Thu, 28 Dec, 2022</p>
+                                                </div> --> 
+                                            <!-- </div>
+                                        </div><!--end col-->
+                                        <!-- <div class="col-lg-2 order-tracking text-center completed">
+                                            <span class="is-complete"></span>
+                                            <div class="card mt-3 mb-0"> -->
+                                                <!-- <div class="card-body">
+                                                    <h6 class="fs-17">Order Shipped</h6>
+                                                    <p class="text-muted fs-15 mb-0">Thu, 02 Jan, 2023</p>
+                                               </div> -->
+                                            <!-- </div> 
+                                        </div>end col
+                                        <div class="col-lg-2 order-tracking text-center">
+                                            <span class="is-complete"></span>
+                                            <div class="card mt-3 mb-0"> --> 
+                                                <!-- <div class="card-body">
+                                                    <h6 class="fs-17">Out Of Delivery</h6>
+                                                    <p class="text-muted fs-15 mb-0">Thu, 10 Jan, 2023</p>
+                                                </div>
+                                            </div>
+                                        </div><!--end col-->
+                                        <!-- <div class="col-lg-2 order-tracking text-center">
+                                            <span class="is-complete"></span>
+                                            <div class="card mt-3 mb-0">
+                                                <div class="card-body">
+                                                    <h6 class="fs-17">Delivered</h6>
+                                                    <p class="text-muted fs-15 mb-0">Thu, 16 Jan, 2023</p>
+                                                </div>
+                                            </div>
+                                        </div><!--end col-->
+                                    <!-- </div><!--end row-->
+                                <!-- </div>
+                            </div>
+                        </div><!--end container-->
+                    </div>    
+
+                   
+
+
+                </div>
+                    
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                       
+                       
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+
+
+    <!--start back-to-top-->
+    <button onclick="topFunction()" class="btn btn-info btn-icon" id="back-to-top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+    <!--end back-to-top-->
+
+   
+    <div class="collapse chat-box" id="chatBot">
+        <div class="card shadow-lg border-0 rounded-bottom-0 mb-0">
+            <div class="card-header bg-success d-flex align-items-center border-0">
+                <h5 class="text-white fs-16 fw-medium flex-grow-1 mb-0">Hi, Raquel Murillo 👋</h5>
+                <button type="button" class="btn-close btn-close-white flex-shrink-0" onclick="chatBot()" data-bs-dismiss="collapse" aria-label="Close"></button>
+            </div>
+            <div class="card-body p-0">
+                <div id="users-chat-widget">
+                    <div class="chat-conversation p-3" id="chat-conversation" data-simplebar style="height: 280px;">
+                        <ul class="list-unstyled chat-conversation-list chat-sm" id="users-conversation">
+                            <li class="chat-list left">
+                                <div class="conversation-list">
+                                    <div class="chat-avatar">
+                                        <img src="../assets/images/logo-sm.png" alt="">
+                                    </div>
+                                    <div class="user-chat-content">
+                                        <div class="ctext-wrap">
+                                            <div class="ctext-wrap-content">
+                                                <p class="mb-0 ctext-content">Welcome to Themesbrand. We are here to help you. You can also directly email us at Support@themesbrand.com to schedule a meeting with our Technology Consultant.</p>
+                                            </div>
+                                            <div class="dropdown align-self-start message-box-drop">
+                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="ri-more-2-fill"></i>
+                                                </a>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#"><i class="ri-reply-line me-2 text-muted align-bottom"></i>Reply</a>
+                                                    <a class="dropdown-item" href="#"><i class="ri-file-copy-line me-2 text-muted align-bottom"></i>Copy</a>
+                                                    <a class="dropdown-item delete-item" href="#"><i class="ri-delete-bin-5-line me-2 text-muted align-bottom"></i>Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="conversation-name"><small class="text-muted time">09:07 am</small> <span class="text-success check-message-icon"><i class="ri-check-double-line align-bottom"></i></span></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- chat-list -->
+            
+                            <li class="chat-list right">
+                                <div class="conversation-list">
+                                    <div class="user-chat-content">
+                                        <div class="ctext-wrap">
+                                            <div class="ctext-wrap-content">
+                                                <p class="mb-0 ctext-content">Good morning, How are you? What about our next meeting?</p>
+                                            </div>
+                                            <div class="dropdown align-self-start message-box-drop">
+                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="ri-more-2-fill"></i>
+                                                </a>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#"><i class="ri-reply-line me-2 text-muted align-bottom"></i>Reply</a>
+                                                    <a class="dropdown-item" href="#"><i class="ri-file-copy-line me-2 text-muted align-bottom"></i>Copy</a>
+                                                    <a class="dropdown-item delete-item" href="#"><i class="ri-delete-bin-5-line me-2 text-muted align-bottom"></i>Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="conversation-name"><small class="text-muted time">09:08 am</small> <span class="text-success check-message-icon"><i class="ri-check-double-line align-bottom"></i></span></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- chat-list -->
+            
+                            <li class="chat-list left">
+                                <div class="conversation-list">
+                                    <div class="chat-avatar">
+                                        <img src="../assets/images/logo-sm.png" alt="">
+                                    </div>
+                                    <div class="user-chat-content">
+                                        <div class="ctext-wrap">
+                                            <div class="ctext-wrap-content">
+                                                <p class="mb-0 ctext-content">Yeah everything is fine. Our next meeting tomorrow at 10.00 AM</p>
+                                            </div>
+                                            <div class="dropdown align-self-start message-box-drop">
+                                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="ri-more-2-fill"></i>
+                                                </a>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#"><i class="ri-reply-line me-2 text-muted align-bottom"></i>Reply</a>
+                                                    <a class="dropdown-item" href="#"><i class="ri-file-copy-line me-2 text-muted align-bottom"></i>Copy</a>
+                                                    <a class="dropdown-item delete-item" href="#"><i class="ri-delete-bin-5-line me-2 text-muted align-bottom"></i>Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="conversation-name"><small class="text-muted time">09:10 am</small> <span class="text-success check-message-icon"><i class="ri-check-double-line align-bottom"></i></span></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- chat-list -->
+            
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-top border-top-dashed">
+                    <div class="row g-2 mt-2 mx-3 mb-3">
+                        <div class="col">
+                            <div class="position-relative">
+                                <input type="text" class="form-control border-light bg-light" placeholder="Enter Message...">
+                            </div>
+                        </div><!-- end col -->
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-info"><i class="mdi mdi-send"></i></button>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--preloader-->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner-border text-primary avatar-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Theme Settings -->
+    <div class="offcanvas offcanvas-end border-0" tabindex="-1" id="theme-settings-offcanvas">
+        <div class="d-flex align-items-center bg-primary p-3 offcanvas-header">
+            <h5 class="m-0 me-2 text-white">Theme Customizer</h5>
+
+            <button type="button" class="btn-close btn-close-white ms-auto" id="customizerclose-btn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div data-simplebar class="h-100">
+                <div class="p-4">
+
+                    <!-- <h6 class="mb-1 fs-15 fw-semibold text-uppercase">View Website</h6>
+                    <p class="text-muted">Choose your</p> -->
+
+                    <div class="mb-4 hstack gap-2">
+                        <a href="https://themesbrand.com/toner/html/frontend/index.html" target="_blank" class="btn btn-secondary">Visit Your Website</a>
+                        <a href="https://themesbrand.com/toner/html/components/index.html" target="_blank" class="btn btn-success">Components</a>
+                    </div>
+
+                    <h6 class="mb-1 fs-15 fw-semibold text-uppercase">Layout</h6>
+                    <p class="text-muted">Choose your layout</p>
+
+                    <div class="row gy-3">
+                        <div class="col-6">
+                            <div class="form-check card-radio customize-widget">
+                                <input id="customizer-layout01" name="data-layout" type="radio" value="vertical" class="form-check-input">
+                                <label class="form-check-label p-0 avatar-xl w-100" for="customizer-layout01">
+                                    <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                        <span class="d-flex align-items-center gap-1 ps-1">
+                                            <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                        </span>
+                                    </span>
+                                    <span class="d-flex gap-1 h-100">
+                                        <span class="flex-shrink-0">
+                                            <span class="bg-light d-flex h-100 flex-column gap-1 p-2">
+                                                <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="flex-grow-1">
+                                            <span class="d-flex h-100 flex-column">
+                                                <span class="bg-light d-block p-2"></span>
+                                                <span class="bg-light d-block p-2 mt-auto"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                            <h5 class="fs-14 text-center mt-2">Vertical</h5>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check card-radio customize-widget">
+                                <input id="customizer-layout02" name="data-layout" type="radio" value="horizontal" class="form-check-input">
+                                <label class="form-check-label p-0 avatar-xl w-100" for="customizer-layout02">
+                                    <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                        <span class="d-flex align-items-center gap-1 ps-1">
+                                            <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                        </span>
+                                    </span>
+                                    <span class="d-flex h-100 flex-column gap-1">
+                                        <span class="bg-light d-flex p-1 gap-1 align-items-center">
+                                            <span class="d-block p-1 bg-primary-subtle rounded me-1"></span>
+                                            <span class="d-block p-1 pb-0 px-2 bg-primary-subtle ms-auto"></span>
+                                            <span class="d-block p-1 pb-0 px-2 bg-primary-subtle"></span>
+                                        </span>
+                                        <span class="bg-light d-block p-1"></span>
+                                        <span class="bg-light d-block p-1 mt-auto"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <h5 class="fs-14 text-center mt-2">Horizontal</h5>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check card-radio customize-widget">
+                                <input id="customizer-layout03" name="data-layout" type="radio" value="twocolumn" class="form-check-input">
+                                <label class="form-check-label p-0 avatar-xl w-100" for="customizer-layout03">
+                                    <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                        <span class="d-flex align-items-center gap-1 ps-1">
+                                            <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                        </span>
+                                    </span>
+                                    <span class="d-flex gap-1 h-100">
+                                        <span class="flex-shrink-0">
+                                            <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                <span class="d-block p-1 bg-primary-subtle mb-2"></span>
+                                                <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="flex-shrink-0">
+                                            <span class="bg-light d-flex h-100 flex-column gap-1 p-2">
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="flex-grow-1">
+                                            <span class="d-flex h-100 flex-column">
+                                                <span class="bg-light d-block p-2"></span>
+                                                <span class="bg-light d-block p-1 mt-auto"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                            <h5 class="fs-14 text-center mt-2">Two Column</h5>
+                        </div>
+                        <!-- end col -->
+                    </div>
+
+                    <h6 class="mt-4 mb-1 fs-15 fw-semibold text-uppercase">Color Scheme</h6>
+                    <p class="text-muted">Choose Light or Dark Scheme.</p>
+
+                    <div class="colorscheme-cardradio">
+                        <div class="row gy-3">
+                            <div class="col-6">
+                                <div class="form-check card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-bs-theme" id="layout-mode-light" value="light">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="layout-mode-light">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                    <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Light</h5>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-check card-radio dark customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-bs-theme" id="layout-mode-dark" value="dark">
+                                    <label class="form-check-label p-0 avatar-xl w-100 bg-dark" for="layout-mode-dark">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-light bg-opacity-10 d-flex h-100 flex-column gap-1 p-1">
+                                                    <span class="d-block p-1 px-2 bg-light bg-opacity-10 rounded mb-2"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-light bg-opacity-10"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-light bg-opacity-10"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-light bg-opacity-10"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light bg-opacity-10 d-block p-1"></span>
+                                                    <span class="bg-light bg-opacity-10 d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Dark</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="layout-width">
+                        <h6 class="mt-4 mb-1 fs-15 fw-semibold text-uppercase">Layout Width</h6>
+                        <p class="text-muted">Choose Fluid or Boxed layout.</p>
+
+                        <div class="row gy-3">
+                            <div class="col-6">
+                                <div class="form-check card-radio customize-widget" data-bs-toggle="collapse" data-bs-target="#collapseLayoutWidth.show">
+                                    <input class="form-check-input" type="radio" name="data-layout-width" id="layout-width-fluid" value="fluid">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="layout-width-fluid">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                    <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Fluid</h5>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check card-radio customize-widget collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayoutWidth">
+                                    <input class="form-check-input" type="radio" name="data-layout-width" id="layout-width-boxed" value="boxed">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="layout-width-boxed">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100 border-start border-end px-3">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                    <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Boxed</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="collapseLayoutWidth">
+                        <h6 class="mt-4 mb-1 fs-15 fw-semibold text-uppercase">Boxed Layout Body Images</h6>
+                        <p class="text-muted">Choose image.</p>
+                
+                        <div class="row gy-3">
+                            <div class="col-6">
+                                <div class="form-check card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-body-image" id="data-body-image-none" value="none">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="data-body-image-none">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100 border-start border-end px-3">
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">None</h5>
+                            </div><!--end col-->
+                            <div class="col-6">
+                                <div class="form-check card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-body-image" id="data-body-image-1" value="img-1">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="data-body-image-1">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100 border-start border-end px-3" style="background-image: url('../assets/images/sidebar/body-light-1.png');">
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Img 1</h5>
+                            </div><!--end col-->
+                            <div class="col-6">
+                                <div class="form-check card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-body-image" id="data-body-image-2" value="img-2">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="data-body-image-2">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100 border-start border-end px-3" style="background-image: url('../assets/images/sidebar/body-light-2.png');">
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Img 2</h5>
+                            </div><!--end col-->
+                            <div class="col-6">
+                                <div class="form-check card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-body-image" id="data-body-image-3" value="img-3">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="data-body-image-3">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100 border-start border-end px-3" style="background-image: url('../assets/images/sidebar/body-light-3.png');">
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Img 3</h5>
+                            </div><!--end col-->
+                        </div><!--end row-->
+                    </div>
+
+                    <div id="layout-position">
+                        <h6 class="mt-4 mb-1 fs-15 fw-semibold text-uppercase">Layout Position</h6>
+                        <p class="text-muted">Choose Fixed or Scrollable Layout Position.</p>
+
+                        <div class="btn-group radio" role="group">
+                            <input type="radio" class="btn-check" name="data-layout-position" id="layout-position-fixed" value="fixed">
+                            <label class="btn btn-light w-sm" for="layout-position-fixed">Fixed</label>
+
+                            <input type="radio" class="btn-check" name="data-layout-position" id="layout-position-scrollable" value="scrollable">
+                            <label class="btn btn-light w-sm ms-0" for="layout-position-scrollable">Scrollable</label>
+                        </div>
+                    </div>
+                    <h6 class="mt-4 mb-1 fs-15 fw-semibold text-uppercase">Topbar Color</h6>
+                    <p class="text-muted">Choose Light or Dark Topbar Color.</p>
+
+                    <div class="row gy-3">
+                        <div class="col-6">
+                            <div class="form-check card-radio customize-widget">
+                                <input class="form-check-input" type="radio" name="data-topbar" id="topbar-color-light" value="light">
+                                <label class="form-check-label p-0 avatar-xl w-100" for="topbar-color-light">
+                                    <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                        <span class="d-flex align-items-center gap-1 ps-1">
+                                            <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                        </span>
+                                    </span>
+                                    <span class="d-flex gap-1 h-100">
+                                        <span class="flex-shrink-0">
+                                            <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="flex-grow-1">
+                                            <span class="d-flex h-100 flex-column">
+                                                <span class="bg-light d-block p-1"></span>
+                                                <span class="bg-light d-block p-1 mt-auto"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                            <h5 class="fs-14 text-center mt-2">Light</h5>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check card-radio customize-widget">
+                                <input class="form-check-input" type="radio" name="data-topbar" id="topbar-color-dark" value="dark">
+                                <label class="form-check-label p-0 avatar-xl w-100" for="topbar-color-dark">
+                                    <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                        <span class="d-flex align-items-center gap-1 ps-1">
+                                            <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                        </span>
+                                    </span>
+                                    <span class="d-flex gap-1 h-100">
+                                        <span class="flex-shrink-0">
+                                            <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="flex-grow-1">
+                                            <span class="d-flex h-100 flex-column">
+                                                <span class="bg-dark d-block p-1"></span>
+                                                <span class="bg-light d-block p-1 mt-auto"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                            <h5 class="fs-14 text-center mt-2">Dark</h5>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-check card-radio customize-widget">
+                                <input class="form-check-input" type="radio" name="data-topbar" id="topbar-color-brand" value="brand">
+                                <label class="form-check-label p-0 avatar-xl w-100" for="topbar-color-brand">
+                                    <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                        <span class="d-flex align-items-center gap-1 ps-1">
+                                            <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                        </span>
+                                    </span>
+                                    <span class="d-flex gap-1 h-100">
+                                        <span class="flex-shrink-0">
+                                            <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="flex-grow-1">
+                                            <span class="d-flex h-100 flex-column">
+                                                <span class="bg-primary d-block p-1"></span>
+                                                <span class="bg-light d-block p-1 mt-auto"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                            <h5 class="fs-14 text-center mt-2">Brand</h5>
+                        </div>
+                    </div>
+
+                    <div id="sidebar-size">
+                        <h6 class="mt-4 mb-1 fs-15 fw-semibold text-uppercase">Sidebar Size</h6>
+                        <p class="text-muted">Choose a size of Sidebar.</p>
+
+                        <div class="row gy-3">
+                            <div class="col-6">
+                                <div class="form-check sidebar-setting card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-sidebar-size" id="sidebar-size-default" value="lg">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="sidebar-size-default">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                    <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Default</h5>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-check sidebar-setting card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-sidebar-size" id="sidebar-size-compact" value="md">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="sidebar-size-compact">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                    <span class="d-block p-1 bg-primary-subtle rounded mb-2"></span>
+                                                    <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Compact</h5>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-check sidebar-setting card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-sidebar-size" id="sidebar-size-small" value="sm">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="sidebar-size-small">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-light d-flex h-100 flex-column gap-1">
+                                                    <span class="d-block p-1 bg-primary-subtle mb-2"></span>
+                                                    <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Small (Icon View)</h5>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-check sidebar-setting card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-sidebar-size" id="sidebar-size-small-hover" value="sm-hover">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="sidebar-size-small-hover">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-light d-flex h-100 flex-column gap-1">
+                                                    <span class="d-block p-1 bg-primary-subtle mb-2"></span>
+                                                    <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Small Hover View</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="sidebar-view">
+                        <h6 class="mt-4 mb-1 fs-15 fw-semibold text-uppercase">Sidebar View</h6>
+                        <p class="text-muted">Choose Default or Detached Sidebar view.</p>
+
+                        <div class="row gy-3">
+                            <div class="col-6">
+                                <div class="form-check sidebar-setting card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-layout-style" id="sidebar-view-default" value="default">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="sidebar-view-default">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                    <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Default</h5>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check sidebar-setting card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-layout-style" id="sidebar-view-detached" value="detached">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="sidebar-view-detached">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex h-100 flex-column">
+                                            <span class="bg-light d-flex p-1 gap-1 align-items-center px-2">
+                                                <span class="d-block p-1 bg-primary-subtle rounded me-1"></span>
+                                                <span class="d-block p-1 pb-0 px-2 bg-primary-subtle ms-auto"></span>
+                                                <span class="d-block p-1 pb-0 px-2 bg-primary-subtle"></span>
+                                            </span>
+                                            <span class="d-flex gap-1 h-100 p-1 px-2">
+                                                <span class="flex-shrink-0">
+                                                    <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                        <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                        <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                        <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <span class="bg-light d-block p-1 mt-auto px-2"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Detached</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sidebar-color">
+                        <h6 class="mt-4 mb-1 fs-15 fw-semibold text-uppercase">Sidebar Color</h6>
+                        <p class="text-muted">Choose a color of Sidebar.</p>
+
+                        <div class="row gy-3">
+                            <div class="col-6">
+                                <div class="form-check sidebar-setting card-radio customize-widget" data-bs-toggle="collapse" data-bs-target="#collapseBgGradient.show">
+                                    <input class="form-check-input" type="radio" name="data-sidebar" id="sidebar-color-light" value="light">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="sidebar-color-light">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-white border-end d-flex h-100 flex-column gap-1 p-1">
+                                                    <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Light</h5>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check sidebar-setting card-radio customize-widget" data-bs-toggle="collapse" data-bs-target="#collapseBgGradient.show">
+                                    <input class="form-check-input" type="radio" name="data-sidebar" id="sidebar-color-dark" value="dark">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="sidebar-color-dark">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-dark d-flex h-100 flex-column gap-1 p-1">
+                                                    <span class="d-block p-1 px-2 bg-light bg-opacity-10 rounded mb-2"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-light bg-opacity-10"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-light bg-opacity-10"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-light bg-opacity-10"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Dark</h5>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-link avatar-xl w-100 p-0 overflow-hidden border collapsed customize-widget" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBgGradient" aria-expanded="false" aria-controls="collapseBgGradient">
+                                    <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                        <span class="d-flex align-items-center gap-1 ps-1">
+                                            <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                            <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                        </span>
+                                    </span>
+                                    <span class="d-flex gap-1 h-100">
+                                        <span class="flex-shrink-0">
+                                            <span class="bg-vertical-gradient d-flex h-100 flex-column gap-1 p-1">
+                                                <span class="d-block p-1 px-2 bg-light bg-opacity-10 rounded mb-2"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-white bg-opacity-10"></span>
+                                            </span>
+                                        </span>
+                                        <span class="flex-grow-1">
+                                            <span class="d-flex h-100 flex-column">
+                                                <span class="bg-light d-block p-1"></span>
+                                                <span class="bg-light d-block p-1 mt-auto"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </button>
+                                <h5 class="fs-14 text-center mt-2">Gradient</h5>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                        <div class="collapse" id="collapseBgGradient">
+                            <div class="d-flex gap-2 flex-wrap img-switch p-2 px-3 bg-light rounded">
+
+                                <div class="form-check sidebar-setting card-radio">
+                                    <input class="form-check-input" type="radio" name="data-sidebar" id="sidebar-color-gradient" value="gradient">
+                                    <label class="form-check-label p-0 avatar-xs rounded-circle" for="sidebar-color-gradient">
+                                        <span class="avatar-title rounded-circle bg-vertical-gradient"></span>
+                                    </label>
+                                </div>
+                                <div class="form-check sidebar-setting card-radio">
+                                    <input class="form-check-input" type="radio" name="data-sidebar" id="sidebar-color-gradient-2" value="gradient-2">
+                                    <label class="form-check-label p-0 avatar-xs rounded-circle" for="sidebar-color-gradient-2">
+                                        <span class="avatar-title rounded-circle bg-vertical-gradient-2"></span>
+                                    </label>
+                                </div>
+                                <div class="form-check sidebar-setting card-radio">
+                                    <input class="form-check-input" type="radio" name="data-sidebar" id="sidebar-color-gradient-3" value="gradient-3">
+                                    <label class="form-check-label p-0 avatar-xs rounded-circle" for="sidebar-color-gradient-3">
+                                        <span class="avatar-title rounded-circle bg-vertical-gradient-3"></span>
+                                    </label>
+                                </div>
+                                <div class="form-check sidebar-setting card-radio">
+                                    <input class="form-check-input" type="radio" name="data-sidebar" id="sidebar-color-gradient-4" value="gradient-4">
+                                    <label class="form-check-label p-0 avatar-xs rounded-circle" for="sidebar-color-gradient-4">
+                                        <span class="avatar-title rounded-circle bg-vertical-gradient-4"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="sidebar-img">
+                        <h6 class="mt-4 mb-1 fs-15 fw-semibold text-uppercase">Sidebar Images</h6>
+                        <p class="text-muted">Choose a image of Sidebar.</p>
+
+                    
+                        <div class="img-switch">
+                            <div class="row gy-3">
+                                <div class="col-6">
+                                    <div class="form-check sidebar-setting card-radio customize-widget">
+                                        <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-none" value="none">
+                                        <label class="form-check-label p-0 avatar-xl w-100" for="sidebarimg-none">
+                                            <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                                <span class="d-flex align-items-center gap-1 ps-1">
+                                                    <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                    <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                    <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="d-flex gap-1 h-100">
+                                                <span class="flex-shrink-0">
+                                                    <span class="bg-light d-flex h-100 flex-column gap-1 p-2 d-flex align-items-center justify-content-center">
+                                                        <i class="ri-close-fill fs-20"></i>
+                                                    </span>
+                                                </span>
+                                                <span class="flex-grow-1">
+                                                    <span class="d-flex h-100 flex-column">
+                                                        <span class="bg-light d-block p-1"></span>
+                                                        <span class="bg-light d-block p-1 mt-auto"></span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check sidebar-setting card-radio customize-widget">
+                                        <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-01" value="img-1">
+                                        <label class="form-check-label p-0 avatar-xl w-100" for="sidebarimg-01">
+                                            <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                                <span class="d-flex align-items-center gap-1 ps-1">
+                                                    <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                    <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                    <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="d-flex gap-1 h-100">
+                                                <span class="flex-shrink-0">
+                                                    <img src="../assets/images/sidebar/img-1.jpg" alt="" class="avatar-sm h-100 object-fit-cover">
+                                                </span>
+                                                <span class="flex-grow-1">
+                                                    <span class="d-flex h-100 flex-column">
+                                                        <span class="bg-light d-block p-1"></span>
+                                                        <span class="bg-light d-block p-1 mt-auto"></span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-6">
+                                    <div class="form-check sidebar-setting card-radio customize-widget">
+                                        <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-02" value="img-2">
+                                        <label class="form-check-label p-0 avatar-xl w-100" for="sidebarimg-02">
+                                            <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                                <span class="d-flex align-items-center gap-1 ps-1">
+                                                    <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                    <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                    <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="d-flex gap-1 h-100">
+                                                <span class="flex-shrink-0">
+                                                    <img src="../assets/images/sidebar/img-2.jpg" alt="" class="avatar-sm h-100 object-fit-cover">
+                                                </span>
+                                                <span class="flex-grow-1">
+                                                    <span class="d-flex h-100 flex-column">
+                                                        <span class="bg-light d-block p-1"></span>
+                                                        <span class="bg-light d-block p-1 mt-auto"></span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-6">
+                                    <div class="form-check sidebar-setting card-radio customize-widget">
+                                        <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-03" value="img-3">
+                                        <label class="form-check-label p-0 avatar-xl w-100" for="sidebarimg-03">
+                                            <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                                <span class="d-flex align-items-center gap-1 ps-1">
+                                                    <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                    <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                    <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="d-flex gap-1 h-100">
+                                                <span class="flex-shrink-0">
+                                                    <img src="../assets/images/sidebar/img-3.jpg" alt="" class="avatar-sm h-100 object-fit-cover">
+                                                </span>
+                                                <span class="flex-grow-1">
+                                                    <span class="d-flex h-100 flex-column">
+                                                        <span class="bg-light d-block p-1"></span>
+                                                        <span class="bg-light d-block p-1 mt-auto"></span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-6">
+                                    <div class="form-check sidebar-setting card-radio customize-widget">
+                                        <input class="form-check-input" type="radio" name="data-sidebar-image" id="sidebarimg-04" value="img-4">
+                                        <label class="form-check-label p-0 avatar-xl w-100" for="sidebarimg-04">
+                                            <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                                <span class="d-flex align-items-center gap-1 ps-1">
+                                                    <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                    <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                    <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="d-flex gap-1 h-100">
+                                                <span class="flex-shrink-0">
+                                                    <img src="../assets/images/sidebar/img-4.jpg" alt="" class="avatar-sm h-100 object-fit-cover">
+                                                </span>
+                                                <span class="flex-grow-1">
+                                                    <span class="d-flex h-100 flex-column">
+                                                        <span class="bg-light d-block p-1"></span>
+                                                        <span class="bg-light d-block p-1 mt-auto"></span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                        </div>
+                    </div>
+
+                    <div id="preloader-menu">
+                        <h6 class="mt-4 mb-1 fs-15 fw-semibold text-uppercase">Preloader</h6>
+                        <p class="text-muted">Choose a preloader.</p>
+
+                        <div class="row gy-3">
+                            <div class="col-6">
+                                <div class="form-check sidebar-setting card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-preloader" id="preloader-view-custom" value="enable">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="preloader-view-custom">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                    <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <!-- <div id="preloader"> -->
+                                        <span class="d-flex align-items-center justify-content-center">
+                                            <span class="spinner-border text-primary avatar-xxs m-auto" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </span>
+                                        </span>
+                                        <!-- </div> -->
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Enable</h5>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check sidebar-setting card-radio customize-widget">
+                                    <input class="form-check-input" type="radio" name="data-preloader" id="preloader-view-none" value="disable">
+                                    <label class="form-check-label p-0 avatar-xl w-100" for="preloader-view-none">
+                                        <span class="customize-penal-main w-100 d-block d-flex align-items-center">
+                                            <span class="d-flex align-items-center gap-1 ps-1">
+                                                <span class="d-inline-block badge p-0 text-bg-danger rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-success rounded-circle"></span>
+                                                <span class="d-inline-block badge p-0 text-bg-warning rounded-circle"></span>
+                                            </span>
+                                        </span>
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0">
+                                                <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                    <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-14 text-center mt-2">Disable</h5>
+                            </div>
+                        </div>
+
+                    </div><!-- end preloader-menu -->
+                </div>
+            </div>
+
+        </div>
+        <div class="offcanvas-footer border-top p-3 text-center">
+            <div class="row">
+                <div class="col-6">
+                    <button type="button" class="btn btn-light w-100" id="reset-layout">Reset</button>
+                </div>
+                <div class="col-6">
+                    <a href="#!" target="_blank" class="btn btn-primary w-100">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../assets/js/plugins.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- App js -->
+    <script src="../assets/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+          function cancel(){
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            console.log(id);
+              
+                Swal.fire({
+               title: 'Are you sure?',
+                text: 'your order will cancel',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, cancel  it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+    if (result.isConfirmed) {
+        let request = {
+            method: 'PATCH'
+        };
+        fetch(`/cancelOrder?id=${id}`, request)
+            .then(response => response.json())
+            .then(data=>{
+                if (data.success) {
+                    Swal.fire('canceled', 'The order has been canceled.', 'success');
+                  
+                 
+                    window.location.href = "/profile";
+                } else {
+                    throw new Error('Failed to cancel  user.');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                Swal.fire('Error!', 'Failed to cancel the order.', 'error');
+            });
+    }
+});
+        }
+        //retry payment
+        function retryPayment(){
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            console.log(id);
+              
+                Swal.fire({
+               title: 'Are you sure you want to continue the payment?',
+                text: '',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, confirm!',
+                cancelButtonText: 'cancel'
+            }).then((result) => {
+    if (result.isConfirmed) {
+        let request = {
+            method: 'POST'
+        };
+        fetch(`/retryPayment?id=${id}`, request)
+            .then(response => response.json())
+            .then(data=>{
+                if (data.sucess) {
+                    Swal.fire('you can continue the payment', 'success');
+                    window.location.href="/checkoutLoad"
+                  
+                 
+                 
+                } else {
+                    throw new Error('Failed to cancel  user.');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                Swal.fire('Error!', 'Failed to cancel the order.', 'error');
+            });
+    }
+});
+            
+        }
+        const downloadPdf = document.getElementById('downloadPdf');
+
+    downloadPdf.addEventListener('click', () => {
+      const element = document.getElementById('myTable');
+      html2pdf().from(element).save('table.pdf');
+    });
+    </script>
+</body>
+
+
+<!-- Mirrored from themesbrand.com/toner/html/backend/orders-overview.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Feb 2024 08:49:08 GMT -->
+</html>
