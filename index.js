@@ -1,7 +1,17 @@
 const mongoose=require("mongoose")
 const path = require('path')
+require('dotenv').config()
 
-mongoose.connect("mongodb://localhost:27017/shopingkart")
+const mongodbURI = process.env.MONGODB_URI; 
+
+console.log(mongodbURI);
+mongoose.connect(mongodbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+})
+
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error('MongoDB connection error:', err));
 const express=require("express")
 const cookieParser=require("cookie-parser")
 const app=express()
@@ -21,6 +31,7 @@ app.use("/",userRoute)
 const adminRoute=require("./routes/adminroute")
 
 app.use("/admin",adminRoute)
+
 
 
 app.listen(3001,()=>{
