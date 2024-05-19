@@ -34,6 +34,6 @@ app.use("/admin",adminRoute)
 
 
 
-app.listen(3001,()=>{
+app.listen(3002,()=>{
     console.log("running in ");
 })
