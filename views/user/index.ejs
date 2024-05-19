@@ -987,49 +987,19 @@
 
                 <div class="row mt-5">
                     <div class="col-lg-12">
-                      
-
                         <div class="row gallery-wrapper mt-4 pt-2">
-                        <% data.forEach(item => {%>
-                            
-                 
-
-                            <div class="element-item col-xxl-3 col-xl-4 col-sm-6 seller hot arrival" data-category="hot arrival">
-                                <div class="card overflow-hidden">
-                                    <div class="bg-warning-subtle rounded-top py-4">
-                                        <div class="gallery-product">
-                                            <img src="<%= item.image[0]  %>" alt="" style="max-height: 200px;max-width: 250px;" class="mx-auto d-block">
-                                        </div>
-                                     
-                                        <div class="gallery-product-actions">
-                                         
-
-                                        </div>
-                                      
-                                    </div>
+                            <% data.forEach(item => { %>
+                                <div class="card" style="width: 17rem;">
+                                    <img class="card-img-top" src="<%=  item.image[0]  %>" alt="Card image cap">
                                     <div class="card-body">
-                                        <div>
-                                          
-                                                <h6 class="fs-15 lh-base text-truncate mb-0"><%= item.name  %></h6>
-                                         
-                                            <div class="mt-3">
-                                                
-                                                <h5 class="mb-0"> ₹ <%= item.price  %> <span class="text-muted fs-12"></span></h5>
-                                            </div>
-                                            <div class="tn mt-3"> 
-                                                <a href="/login" class="btn btn-primary btn-hover w-100 add-btn">Shop Now</a> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <%}); %>
-                
-                            <!-- end col -->
-                        </div>
+                                      <h5 class="card-title"><%= item.name  %></h5>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. <br>  <span style="font-weight: bold; ">₹ <%= item.price  %></span></p>
 
-                      
-                    </div>
+                                      <a href="/login" class="btn btn-primary">Shop now</a>
+                                    </div>
+                                  </div>
+                            <% }); %>
+                
                 </div>
             </div>
         </section>
