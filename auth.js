@@ -12,7 +12,7 @@ const Google_secret=process.env.Google_secret
 passport.use(new GoogleStrategy({
     clientID: Google_client_id,
     clientSecret: Google_secret,
-    callbackURL: "http://localhost:3001/google/callback"
+    callbackURL: "http://localhost:3002/google/callback"
   },
   
 
