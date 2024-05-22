@@ -248,21 +248,21 @@ const onlineOrder = async (req, res) => {
        if (order.paymentMethod === "Online") {
        const userId=req.id.id
        for (const product of order.cartItems) {
-        let wallet = await Wallet.findOne({ userId: userId });
-        if (!wallet) {
+        let Wallet = await wallet.findOne({ userId: userId });
+        if (!Wallet) {
             wallet = new Wallet({ userId: userId });
         }
-        wallet.refund.push({
+        Wallet.refund.push({
             productName: product.product.name,
             amount: order.total
         });
 
        
-        wallet.totalAmount += parseInt(order.total)
-        console.log(wallet.totalAmount);
+        Wallet.totalAmount += parseInt(order.total)
+        console.log(Wallet.totalAmount);
 
        
-        await wallet.save();
+        await Wallet.save();
         const cancelOrder=await Order.findOneAndUpdate({_id:id},{cancel:true,status: 'cancel'},{new:true})
         res.json({ success: true, message: 'order has been canceled.' });
     }

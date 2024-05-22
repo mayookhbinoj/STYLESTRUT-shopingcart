@@ -59,7 +59,7 @@ const addressEditLoad=async(req,res)=>{
   
     } catch (error) {
       console.log(error)
-        
+      res.status(500).render("error500").send('Internal Server Error');
     }
   }
   module.exports={
