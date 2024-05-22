@@ -250,7 +250,7 @@ const onlineOrder = async (req, res) => {
        for (const product of order.cartItems) {
         let Wallet = await wallet.findOne({ userId: userId });
         if (!Wallet) {
-            wallet = new Wallet({ userId: userId });
+            wallet = new wallet({ userId: userId });
         }
         Wallet.refund.push({
             productName: product.product.name,
