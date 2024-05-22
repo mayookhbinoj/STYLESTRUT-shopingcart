@@ -645,20 +645,19 @@
                            
                             <div class="row" id="ps">
                               
-                              
-                                <% if(product.length > 0) { %>
-                                    <% for (let i = 0; i < product.length; i++) { %>
-                                        <% if(product[i].isListed===false){%>
+                                   <%product.forEach(product => {%>
+                                    
+                                        <% if(product.isListed===false){%>
 
                         
                                             <div class="col-xxl-4 col-lg-4 col-md-6">
                                                 <div class="card ecommerce-product-widgets border-0 rounded-0 shadow-none overflow-hidden">
                                                     
                                                         <!-- Displaying the first image of the product -->
-                                                        <img src="<%= product[i].image[0] %>" alt="<%= product[i].name %>" style="max-height: 200px; max-width: 100%;" class="mx-auto d-block rounded-2">
+                                                        <img src="<%= product.image[0] %>" alt="<%= product.name %>" style="max-height: 200px; max-width: 100%;" class="mx-auto d-block rounded-2">
                                                         <div class="action vstack gap-2"> 
                                                             <a href="#" class="btn btn-danger avatar-xs p-0 btn-soft-warning custom-toggle product-action" data-bs-toggle="button">
-                                                                <span class="icon-on" onclick="addToWishlist('<%= product[i]._id %>')"><i class="far fa-heart"></i></span> 
+                                                                <span class="icon-on" onclick="addToWishlist('<%= product._id %>')"><i class="far fa-heart"></i></span> 
                                                                 <span class="icon-off"><i class="far fa-heart"></i></span>
                                                             </a>
                                                             
@@ -671,18 +670,17 @@
                                                             <ul class="clothe-colors list-unstyled hstack gap-1 mb-3 flex-wrap">
                                                                 <!-- Your color options -->
                                                             </ul> 
-                                                            <a href="/single-product?id=<%= product[i]._id%>"
-                                                                <h6 class="text-capitalize fs-15 lh-base text-truncate mb-0"><%= product[i].name %></h6>
+                                                            <a href="/single-product?id=<%= product._id%>"
+                                                                <h6 class="text-capitalize fs-15 lh-base text-truncate mb-0"><%= product.name %></h6>
                                                             </a>
                                                             <div class="mt-2"> 
                                                                 <span class="float-end">4.9 <i class="ri-star-half-fill text-warning align-bottom"></i></span> 
-                                                                <h5 class="text-secondary mb-0"> ₹<%= product[i].price %> <span class="text-muted fs-12"><% if( product[i].discountPercentage>0){%>
-                                                                    <%= product[i].
-                                                                    discountPercentage %> %off  <del><%= product[i].actualPrice %></del></span></h5>
+                                                                <h5 class="text-secondary mb-0"> ₹<%= product.price %> <span class="text-muted fs-12"><% if( product.discountPercentage>0){%>
+                                                                    <%= product.discountPercentage %> %off  <del><%= product.actualPrice %></del></span></h5>
                                                                <% } %>  
                                                             </div>
                                                             <div class="tn mt-3"> 
-                                                                <a href="/single-product?id=<%= product[i]._id%>" class="btn btn-primary btn-hover w-100 add-btn"> View Product</a> 
+                                                                <a href="/single-product?id=<%= product._id%>" class="btn btn-primary btn-hover w-100 add-btn"> View Product</a> 
                                                             </div>
                                                         </div>
                                                     </div>
@@ -690,8 +688,8 @@
                                             </div>
                                             
                                         <%  } %>
-                                        <% } %>
-                                    <% } %>
+                                        <%});  %>
+                                
                                 </div>
                             
                             <div class="page-pagination-area">
@@ -699,8 +697,7 @@
                                     <div class="pagination-container">
                                     <form id="searchForm" action="/search" method="post">
                                         <input type="hidden" name="currentPage" value="<%= currentPage %>">
-                                        <!-- Add hidden input fields for other parameters if needed, e.g., sorting option -->
-                                        <% /* Example sorting option */ %>
+                                  
                                         <input type="hidden" name="sortOption" value="<%= locals.a %>">
                                         
                                         <ul class="pagination">

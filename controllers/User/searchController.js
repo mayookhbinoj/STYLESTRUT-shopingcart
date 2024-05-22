@@ -38,11 +38,8 @@ const searchProduct = async (req, res) => {
       const Category =await category.find()
       const inputLetter = req.body.search
   
-      
-      
+
   let sortOption = {}
-  
-     
         if(inputLetter){
           const escapedInput = escapeRegex(inputLetter);
           const regex = new RegExp(`^${escapedInput}`, "i");
@@ -62,10 +59,10 @@ const searchProduct = async (req, res) => {
           }
         }
         console.log("sort",sortOption);
-  let a =req.body.sortOption || req.body.a
-  console.log(req.body);
-      let products;
-      const limit = 6; 
+  let a =req.body.sortOption || "option"
+  console.log('yftyftftyft===========',req.body);
+      let products=[]
+      const limit = 9; 
       const page = parseInt(req.body.page) || 1; 
       const skip = (page - 1) * limit; 
   console.log(limit,page,skip);
@@ -96,7 +93,7 @@ const searchProduct = async (req, res) => {
           .sort({ name: -1 })
           .skip(skip)
           .limit(limit);
-      } else {
+      } else  if(a==="newArrivals"){
         console.log("Sorting by new arrivals");
         products = await Product.find( sortOption )
           .sort({ createdAt: -1 })
@@ -105,9 +102,11 @@ const searchProduct = async (req, res) => {
       }
   
       const totalProducts = await Product.countDocuments( sortOption );
+      console.log("total products",totalProducts)
       const totalPages = Math.ceil(totalProducts / limit);
+      console.log("total",totalPages)
   
-      //console.log("Products:", products);
+  
       res.render("home", { inputLetter: inputLetter, product: products, user: userId, currentPage: page, totalPages: totalPages ,a, Category});
     } catch (error) {
       console.error("Error:", error.message);
