@@ -548,15 +548,15 @@
                        
                                         <script>
                                window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const id = urlParams.get('id');
-            console.log(id);
+               const urlParams = new URLSearchParams(window.location.search);
+               const id = urlParams.get('id');
+               console.log('search category id.....',id);
 
-            // Update the form action with the id
-            if (id) {
-                document.getElementById('searchForm').action = `search?id=${id}`;
-            }
-        }
+                 if (id) {
+                   
+                   document.getElementById('searchForm').action = `search?id=${id}`;
+             }
+               }
 
                                 </script>
 
