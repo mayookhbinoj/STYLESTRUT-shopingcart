@@ -32,6 +32,7 @@ const searchProduct = async (req, res) => {
       const user = await User.findOne({ _id: userId });
       console.log("User:", user);
       const id=req.query.id
+      console.log(id)
       const size = req.query.size;
       const product=await Product.find({isListed:false})
       console.log("product",product);
@@ -42,7 +43,7 @@ const searchProduct = async (req, res) => {
   let sortOption = {}
         if(inputLetter){
           const escapedInput = escapeRegex(inputLetter);
-          const regex = new RegExp(`^${escapedInput}`, "i");
+          const regex = new RegExp(`(^${escapedInput}|${escapedInput})`, "i");
           sortOption.name =  {$regex :regex}
          
       console.log("Regex:", regex);
@@ -52,6 +53,7 @@ const searchProduct = async (req, res) => {
           sortOption.category=id
         }
         if(size){
+          console.log("enter in to size")
           sortOption.sizes={
             "$elemMatch": {
               "size": size

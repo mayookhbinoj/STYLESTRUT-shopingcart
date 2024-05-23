@@ -15,6 +15,7 @@ const jwt=require("jsonwebtoken")
 const mongoose=require("mongoose");
 const User = require("../../models/userModel");
 const wishlist = require("../../models/Wishlist");
+const { response } = require("express");
 const loadCart = async (req, res) => {
     try {
       
@@ -39,14 +40,16 @@ const loadCart = async (req, res) => {
                 }
             },
             {
-                $unwind: "$productDetails" // Unwind the productDetails array
+                $unwind: "$productDetails" 
             },
             {
                 $project: {
                     _id: 0,
+                    subtotal:1,
                     product: "$productDetails",
                     quantity: "$products.quantity",
                     size: "$products.size"
+                    
                 }
             },
             {
@@ -72,7 +75,7 @@ const loadCart = async (req, res) => {
       ]);
       
            
-        console.log("cart::::",cartItems);
+        
   
   
           res.render("cart",{cartItems:cartItems})
@@ -84,14 +87,22 @@ const loadCart = async (req, res) => {
   };
   const addCart = async (req, res) => {
     try {
-      console.log("enter in to addkart");
+      console.log("enter in to addCart");
       const { productId, size, quantity } = req.query;
-     const selectSize=size
       const userId = req.id.id;
       
+   
+      if (!productId || !size || !quantity || isNaN(quantity)) {
+        return res.status(400).json({ success: false, message: 'Invalid input data' });
+      }
+      
       const product = await Product.findById(productId);
-    
-      const subtotal = product.price * quantity;
+      if (!product) {
+        return res.status(404).json({ success: false, message: 'Product not found' });
+      }
+  
+      const parsedQuantity = parseInt(quantity);
+      const subtotal = product.price * parsedQuantity;
   
       let userCart = await cart.findOne({ user: userId });
       if (!userCart) {
@@ -102,35 +113,41 @@ const loadCart = async (req, res) => {
         });
       }
   
-      userCart.products.push({
-        productId: productId,
-        size: size,
-        quantity: quantity,
-      });
+      const existingProductIndex = userCart.products.findIndex(p => p.productId.toString() === productId && p.size === size);
+      if (existingProductIndex > -1) {
+        userCart.products[existingProductIndex].quantity += parsedQuantity;
+      } else {
+        userCart.products.push({
+          productId: productId,
+          size: size,
+          quantity: parsedQuantity,
+        });
+      }
   
       let totalAmount = 0;
       for (const product of userCart.products) {
-        const pr = await Product.findOne({ _id: product.productId }); 
-        totalAmount += pr.price * product.quantity;
+        const pr = await Product.findById(product.productId);
+        if (pr) {
+          totalAmount += pr.price * product.quantity;
+        }
       }
   
       userCart.subtotal = totalAmount;
   
       const savedCart = await userCart.save();
-      console.log('New cart item created:', savedCart);
   
-      res.json({ success: true, message: 'Cart item added' });
+      res.json({ success: true, message: 'Cart item added', cart: savedCart });
     } catch (error) {
       console.log('Error adding item to cart:', error);
       res.status(500).json({ success: false, message: 'Failed to add item to cart' });
     }
-  }
+  };
   const wishListAddCart=async(req,res)=>{
     try {
       console.log("entering in to the wishlist cart controlller")
       const { productId,quantity}=req.body
       console.log(productId,quantity)
-      
+      const parsedQuantity = parseInt(quantity);
       const userId = req.id.id;
   
       const product = await Product.findById(productId);
@@ -144,11 +161,18 @@ const loadCart = async (req, res) => {
           subtotal: 0
         });
       }
+
+     const existingProductIndex = userCart.products.findIndex(p => p.productId.toString() === productId );
+    if (existingProductIndex > -1) {
+      userCart.products[existingProductIndex].quantity += parsedQuantity;
+    } else {
       userCart.products.push({
         productId: productId,
-        size: "M",
-        quantity: quantity,
+        size: size,
+        quantity: parsedQuantity,
       });
+    }
+
       let totalAmount = 0;
       for (const product of userCart.products) {
         const pr = await Product.findOne({ _id: product.productId }); 
@@ -206,14 +230,16 @@ const deleteCart=async(req,res)=>{
   const editQuantity=async(req,res)=>{
     try {
     console.log("enter in to the edit the quantity")
-     const {productId,quantity}=req.body
+     const {productId,quantity,totalPrice}=req.body
+    console.log(req.body)
      const userId=req.id.id
      const app=await cart.findOne({ user: userId, 'products.productId': productId })
      let totalAmount = app.subtotal
+     console.log(totalAmount)
      console.log("save",totalAmount)
-     const updatedCart = await cart.findOneAndUpdate( { user: userId, 'products.productId': productId },{ $set: { 'products.$.quantity':quantity} },{ new: true })
-
-     console.log("update cart:",updatedCart);
+     const updatedCart = await cart.findOneAndUpdate( { user: userId, 'products.productId': productId },{ $set: { 'products.$.quantity':quantity,subtotal:totalPrice} },{ new: true })
+     res.json({ success: true, updatedCart });
+     console.log("update",updatedCart)
   
     } catch (error) {
       console.error('Error in editQuantity function:', error);

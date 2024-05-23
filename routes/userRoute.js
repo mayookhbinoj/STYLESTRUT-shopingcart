@@ -108,10 +108,10 @@ userRoute.get("/editAdressLoad",aut.requirelogin,aut.isBlocked,adressController.
 userRoute.post("/editAddress",aut.requirelogin,aut.isBlocked,adressController.addressEdit)
 userRoute.get("/deleteAdress",aut.requirelogin,aut.isBlocked,adressController.adressDelete)
 userRoute.patch("/submitReturn",aut.requirelogin,aut.isBlocked,profileController.submitReuturn)
-
 userRoute.get("/orderView",aut.requirelogin,aut.isBlocked,orderController.orderView)
 userRoute.patch("/cancelOrder",aut.requirelogin,aut.isBlocked,orderController.orderCancel)
 userRoute.post("/changepassword", aut.requirelogin, aut.isBlocked,profileController.changePasswordHandler);
+userRoute.get("/invoice",aut.requirelogin,aut.isBlocked,orderController.invoice)
 
 //cart
 userRoute.get("/cart",aut.requirelogin,aut.isBlocked,cartcontroller.loadCart)

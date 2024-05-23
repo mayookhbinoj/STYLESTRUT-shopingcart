@@ -985,7 +985,7 @@
                                                         <th scope="col">Total Amount</th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Payment Details</th>
-                                                        <th scope="col">View</th>
+                                                        <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -1009,12 +1009,14 @@
                                                             paymentMethod %></td>
                                                             <td>
                                                             
-                                                                <% if (order.status.toLowerCase() !== 'cancel' && order.status.toLowerCase() !== 'delivered') { %>
+                                                                <% if (order.status.toLowerCase() !== 'cancel' &order.status.toLowerCase() !== 'delivered') { %>
                                                                     <!-- Render the view button if the status is not 'cancel' and not 'delivered' -->
                                                                     <a href="/orderView?id=<%= order._id %>" class="view-button">View</a>
                                                                 <% } else if(order.status.toLowerCase() == 'delivered'){%>
                                                                     <input type="hidden" id="orderId" value="<%= order._id  %>">
-                                                                    <a  class="view-button" id="openReturnReasonModal">Return</a>
+                                                                    <a  class="view-button" id="openReturnReasonModal">Return</a> &nbsp &nbsp
+                                                                    <a href="/orderView?id=<%= order._id %>" class="view-button">View</a>
+
 
                                                                 <%} %>
                                                             </td>

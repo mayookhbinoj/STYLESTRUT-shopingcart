@@ -545,7 +545,22 @@
 
                                     </div>
                                 </div>
-                                <form id="searchForm" action="/search" method="post">
+                       
+                                        <script>
+                               window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            console.log(id);
+
+            // Update the form action with the id
+            if (id) {
+                document.getElementById('searchForm').action = `search?id=${id}`;
+            }
+        }
+
+                                </script>
+
+                                  <form id="searchForm" action="/search" method="post">
                                     <% if (inputLetter) { %>
                                         <input type="text" class="form-control" id="searchSortOptions" name="search" placeholder="Search" value="<%= inputLetter %>">
                                     <% } else { %>
@@ -899,8 +914,7 @@
         <!-- landing-index js -->
         <script src="/user/js/frontend/menu.init.js"></script>
         
-
-        <script>
+<script>
 
 document.addEventListener("DOMContentLoaded", function() {
     const defaultValue = document.getElementById('defaultValue').value;
@@ -984,10 +998,10 @@ function addToWishlist(productId) {
     priceSlider.addEventListener('input', updatePriceOutput);
 
     
-</script>
 
 
 </script>
+
     </body>
 
 

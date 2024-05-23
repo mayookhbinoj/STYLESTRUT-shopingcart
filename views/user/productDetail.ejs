@@ -1424,7 +1424,23 @@ new ImageZoom(document.getElementById("img-container"), options);
                 text: 'Out of Stock!.'
             });
                
-            }else{
+            }else if(!selectedSize){
+                Swal.fire({
+                icon: 'error',
+                title: 'Please select a size',
+                text: 'select the size'
+            });
+
+            }
+            else if(!selectedQuantity){
+                Swal.fire({
+                icon: 'error',
+                title: 'Please select a quantity',
+                text: 'select a quantity'
+            });
+            }
+
+            else{
 
         
             fetch(`/saveCart?productId=${productId}&size=${selectedSize}&quantity=${quantity}`, {

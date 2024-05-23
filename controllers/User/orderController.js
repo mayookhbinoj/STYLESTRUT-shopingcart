@@ -3,7 +3,7 @@ const { check, validationResult } = require("express-validator");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 const bcrypt=require("bcrypt")
-const speakeasy=require("speakeasy")
+const PDFDocument=require("pdfkit")
 const otp=require("../../models/otpModel")
 const Product=require("../../models/productModel")
 const adress=require("../../models/addressModel")
@@ -281,12 +281,64 @@ const onlineOrder = async (req, res) => {
       res.status(500).json({ success: false, message: 'Internal Server Error' });
   }
   }
-  
+  const invoice = async (req, res) => {
+    try {
+      
+        const saveData = await Order.findById(req.query.id).populate('addressId');
+        if (!saveData) {
+            return res.status(404).send("Order not found");
+        } 
+        console.log(saveData)
 
+        const ad=await adress.findOne({_id:saveData.addressId})
+        console.log("fdsaf",ad)
+    
+
+  
+        const doc = new PDFDocument();
+        const filename = `Invoice_${saveData._id}.pdf`;
+        res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"');
+        res.setHeader('Content-type', 'application/pdf');
+
+      
+        doc.fontSize(16).text('stylerust Invoice ', { align: 'center' });
+        doc.moveDown();
+
+   
+        doc.fontSize(12).text(`Order ID: ${saveData._id}`);
+        doc.text(`Date: ${new Date(saveData.createdAt).toDateString()}`);
+        doc.text(`Status: ${saveData.status}`);
+        doc.moveDown();
+
+     
+        doc.fontSize(14).text('Customer Details:');
+        doc.text(`Address: ${ad.street}, ${ad.city}, ${ad.state}, ${ad.ZIPCode}`);
+        doc.moveDown();
+
+      
+        doc.fontSize(14).text('Product Details:');
+        saveData.cartItems.forEach((item, index) => {
+            doc.text(`${index + 1}. Product: ${item.product.name}, Quantity: ${item.quantity}, Price: ${item.product.price}`);
+        });
+        doc.moveDown();
+
+      
+        doc.fontSize(16).text(`Total Amount: ${saveData.total}`, { align: 'left' });
+      
+
+      
+        doc.pipe(res);
+        doc.end();
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+    }
+};
   module.exports={
     orderSucess,
     orderComplete,
     onlineOrder,
     orderView,
     orderCancel,
+    invoice
   }

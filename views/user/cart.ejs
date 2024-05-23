@@ -506,7 +506,7 @@
                           
                                 
                                 <% if(cartItems.length>0){%>
-                                    <button type="button" class="btn btn-hover btn-success" onclick="checkOut()">Check Out <i class="fas fa-check"></i></button>
+                                    <button type="button" class="btn btn-hover btn-success" id="checkoutButton">Check Out <i class="fas fa-check"></i></button>
                                <% } else{%>
                                 <a href="/shop" class="btn btn-hover btn-success" >Shop Now<i class="fas fa-check"></i></a>
     
@@ -514,49 +514,43 @@
                                 
                          
                         </div>
-                        <!-- <div class="card overflow-hidden"> -->
-                            <!-- <div class="card-header border-bottom-dashed">
-                                <h5 class="card-title mb-0 fs-15">Order Summary</h5>
-                            </div> -->
-                            <!-- <div class="card-body pt-4">
-                                <div class="table-responsive table-card"> -->
-<!--                                    
+                        <% if(cartItems.length>0){%>
+                         
+                       
+                      <div class="card overflow-hidden"> 
+                             <div class="card-header border-bottom-dashed">
+                                <h5 class="card-title mb-0 fs-15">Price Details</h5>
+                            </div>
+                            <div class="card-body pt-4">
+                                <div class="table-responsive table-card"> 
+                      
                                     <table class="table table-borderless mb-0 fs-15">
                                         <tbody>
                                             <tr>
-                                                <td>Sub Total :</td>
-                                                <td id="subtotal" class="text-end cart-subtotal"></td>
+                                                <td style="font-weight: bold;">Sub Total : </td>
+                                                <td id="subtotal" class="text-end cart-subtotal">₹ <%= cartItems[0].subtotal  %></td>
                                             </tr>
+                                          
                                             <tr>
-                                                <td>Discount <span class="text-muted">(Toner15)</span>:</td>
-                                                <td class="text-end cart-discount"></td>
+                                               <td >Delivery Charges:  </td>
+                                                <td id="sub" class="text-end cart-subtotal" style="color: green;">Free</td>
                                             </tr>
-                                            <tr>
-                                                <td>Shipping Charge :</td>
-                                                <td class="text-end cart-shipping"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Estimated Tax (12.5%) : </td>
-                                                <td class="text-end cart-tax"></td>
-                                            </tr>
+                                          
                                             <tr class="table-active">
-                                                <th>Total (USD) :</th>
+                                                <th >Total (INR) :</th>
                                                 <td class="text-end">
-                                                    <span class="fw-semibold cart-total"></span>
+                                                    <span class="fw-semibold cart-total">₹  <%=cartItems[0].subtotal%> </span>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     
                                     </table>
-                                  -->
-                                <!-- </div> -->
-                                <!-- end table-responsive -->
-                            <!-- </div>
-                        </div> -->
-                        <div class="hstack gap-2 justify-content-end">
-                            
                           
-                        </div>
+                                </div> 
+                            </div>
+                        </div> 
+                        <% } %>
+                      
                     <!-- </div> -->
                     <!-- end sticky -->
                 </div>
@@ -644,137 +638,92 @@
 
    
  
-    <script>
-            document.addEventListener('DOMContentLoaded', function() {
-            
-            const plusButtons = document.querySelectorAll('.plus');
-            const minusButtons = document.querySelectorAll('.minus');
-            const productItems = document.querySelectorAll('.card.product');
-        
-            
-            plusButtons.forEach(function(button) {
-            button.addEventListener('click', function(event) {
-                const inputField = event.target.parentElement.querySelector('.product-quantity');
-                const productId= inputField.getAttribute("data-id")
-                const max = inputField.getAttribute("max");
-                console.log(max);
-            
-                console.log(productId);
-                const newQuantity = parseInt(inputField.value) + 1;
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const plusButtons = document.querySelectorAll('.plus');
+    const minusButtons = document.querySelectorAll('.minus');
+    const productItems = document.querySelectorAll('.card.product');
 
-                console.log(newQuantity,"new quantity");
+    plusButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            const inputField = event.target.parentElement.querySelector('.product-quantity');
+            const productId = inputField.getAttribute("data-id");
+            const maxStock = parseInt(inputField.getAttribute('max'));
+            const newQuantity = parseInt(inputField.value) + 1;
 
-
-                
-                const maxStock = parseInt(inputField.getAttribute('max'));
-                if (parseInt(inputField.value) < maxStock) {
-                    inputField.value = parseInt(inputField.value) + 1;
-                    updateTotal();
-                // }
-                fetch(`/updateQuantity?id=${productId}&quantity=${newQuantity}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                productId: productId,
-                quantity: newQuantity
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-                if(data.success){
-                    window.location.href = '/cart';
-                    console.log("minus");
-
-                }
-                else {
-                console.log(wrong);
-                        throw new Error('Failed unlist user.');
-                    }
-                })
-        .catch(error => {
-            console.error('Error sending total price to backend:', error);
-        });
-                }
-           
-    });
-        });
-
-        minusButtons.forEach(function(button) {
-            button.addEventListener('click', function(event) {
-                const inputField = event.target.parentElement.querySelector('.product-quantity');
-                const minStock = parseInt(inputField.getAttribute('min'));
-                const productId= inputField.getAttribute("data-id")
-                const newQuantity = parseInt(inputField.value) - 1;
-                console.log(newQuantity,"new quantity");
-                if (parseInt(inputField.value) > minStock) {
-                    inputField.value = parseInt(inputField.value) - 1;
-                    updateTotal();
-                }
-                fetch(`/updateQuantity?id=${productId}&quantity=${newQuantity}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                productId: productId,
-                quantity: newQuantity
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-                if(data.success){
-                    window.location.href = '/cart';
-
-                }
-                else {
-                console.log(wrong);
-                        throw new Error('Failed unlist user.');
-                    }
-                })
-        .catch(error => {
-            console.error('Error sending total price to backend:', error);
-        });
-            });
-        });
-
-
-            function updateTotal() {
-                let totalQuantity = 0;
-                let totalPrice = 0;
-
-                productItems.forEach(function(productItem) {
-                    const inputField = productItem.querySelector('.product-quantity');
-                    const priceElement = productItem.querySelector('.product-price');
-
-                    const quantity = parseInt(inputField.value);
-                    const price = parseFloat(priceElement.innerText.replace('$', ''));
-
-                    totalQuantity += quantity;
-                    totalPrice += quantity * price;
-
-                    
-                    const productTotalPrice = quantity * price;
-                    const totalElement = productItem.querySelector('.product-line-price');
-                    totalElement.innerText = productTotalPrice.toFixed(2);
-                
-                });
-            
-                
-                console.log('Total Quantity:', totalQuantity);
-                console.log('Total Price:', totalPrice.toFixed(2));
+            if (newQuantity <= maxStock) {
+                inputField.value = newQuantity;
+                updateTotalAndFetch(productId, newQuantity);
             }
-            
+        });
+    });
+
+    minusButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            const inputField = event.target.parentElement.querySelector('.product-quantity');
+            const minStock = parseInt(inputField.getAttribute('min'));
+            const productId = inputField.getAttribute("data-id");
+            const newQuantity = parseInt(inputField.value) - 1;
+
+            if (newQuantity >= minStock) {
+                inputField.value = newQuantity;
+                updateTotalAndFetch(productId, newQuantity);
+            }
+        });
+    });
+
+    function updateTotalAndFetch(productId, newQuantity) {
+        let totalQuantity = 0;
+        let totalPrice = 0;
+
+        productItems.forEach(function(productItem) {
+            const inputField = productItem.querySelector('.product-quantity');
+            const priceElement = productItem.querySelector('.product-price');
+            const quantity = parseInt(inputField.value);
+            const price = parseFloat(priceElement.innerText.replace('$', ''));
+
+            totalQuantity += quantity;
+            totalPrice += quantity * price;
+
+            const productTotalPrice = quantity * price;
+            const totalElement = productItem.querySelector('.product-line-price');
+            totalElement.innerText = productTotalPrice.toFixed(2);
         });
 
-    function checkOut(){
-       
-             window.location.href="/checkoutLoad" 
+        console.log('Total Quantity:', totalQuantity);
+        console.log('Total Price:', totalPrice.toFixed(2));
+
+        fetch(`/updateQuantity?id=${productId}&quantity=${newQuantity}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                productId: productId,
+                quantity: newQuantity,
+                totalPrice: totalPrice.toFixed(2)
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.reload();
+            } else {
+                console.log('Failed to update quantity.');
+                throw new Error('Failed to update quantity.');
+            }
+        })
+        .catch(error => {
+            console.error('Error sending total price to backend:', error);
+        });
     }
 
+    document.getElementById('checkoutButton').addEventListener('click', function() {
+        window.location.href = "/checkoutLoad";
+    });
+});
+</script>
 
-        </script>
 </body>
 
 

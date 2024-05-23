@@ -296,10 +296,10 @@
                                             <button type="button" onclick="retryPayment()" class="btn btn-soft-danger btn-sm mt-2 mt-sm-0">
                                                 <i class="fas fa-times cancel-icon"></i> Continue Payment
                                             </button>
-                                        <% } else{%>
+                                        <% } else if(order.status.toLowerCase() !== 'delivered'){%>
                                         <button type="button" onclick="cancel()" class="btn btn-soft-danger btn-sm mt-2 mt-sm-0"> &nbsp &nbsp  <i class="fas fa-times cancel-icon"></i>   &nbsp Cancel Order&nbsp&nbsp&nbsp&nbsp</button>
                                         <%} %> &nbsp; &nbsp; &nbsp; 
-                                        <button id="downloadPdf" class="btn btn-primary btn-sm mt-2 mt-sm-0">Download Invoice</button>
+                                        <a  class="btn btn-primary btn-sm mt-2 mt-sm-0" href="/invoice?id=<%=order._id%>">Download Invoice</a>
                                     </div>  
                                     
                                  <!-- </div>
@@ -1607,12 +1607,7 @@
 });
             
         }
-        const downloadPdf = document.getElementById('downloadPdf');
-
-    downloadPdf.addEventListener('click', () => {
-      const element = document.getElementById('myTable');
-      html2pdf().from(element).save('table.pdf');
-    });
+     
     </script>
 </body>
 
