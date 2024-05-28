@@ -29,7 +29,7 @@ const payment=async(req,res)=>{
       console.log("enter in to payment page");
       const userId=req.id.id
       const saveWallet=await wallet.findOne({userId:userId})
-      console.log("wallet ",saveWallet)
+    
       const findCart=await cart.findOne()
       console.log("findcart",findCart);
       res.render("payment",{findCart:findCart,saveWallet:saveWallet})
