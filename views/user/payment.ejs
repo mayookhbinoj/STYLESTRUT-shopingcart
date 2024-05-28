@@ -595,7 +595,7 @@
                             </form>
                     
                             <ul class="nav nav-pills arrow-navtabs nav-success bg-light mb-3 mt-4 nav-justified custom-nav" role="tablist">
-                                <% if(findCart.subtotal < 1000) { %>
+                                <% if(findCart[0].subtotal < 1000) { %>
                                     <li class="nav-item">
                                         <a class="nav-link py-3" data-bs-toggle="tab" href="#cash" role="tab" onclick="toggleActive(this)">
                                             <span class="d-block d-sm-none"></span>
