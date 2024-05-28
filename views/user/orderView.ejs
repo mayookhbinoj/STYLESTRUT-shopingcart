@@ -227,6 +227,7 @@
                                                    
                                                     <th scope="col">Product Name</th>
                                                     <th scope="col">Amount</th>
+                                                    <th scope="col">Size</th>
                                                     <th scope="col">Quantity</th>
                                                     <th scope="col" class="text-end">Total</th>
                                                 </tr>
@@ -253,6 +254,9 @@
                                                            
                                                             <div class="flex-grow-1"><%= item.product.price.toFixed(2) %></div>
                                         
+                                                    </td>
+                                                    <td>
+                                                        <span class="text-secondary"><%= item.size%></span>
                                                     </td>
 
                                                     <td>

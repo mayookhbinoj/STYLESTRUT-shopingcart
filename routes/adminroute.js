@@ -134,6 +134,7 @@ adminRoute.post(
   auth.requireAuth,
   orderController.changeStatusOrders
 );
+adminRoute.get("/orderView", auth.requireAuth, orderController.orderView);
 
 //sales report
 adminRoute.get(

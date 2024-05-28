@@ -80,10 +80,30 @@ const changeStatusOrders = async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 };
+const orderView=async(req,res)=>{
+    try {
+        console.log("enter in to orderviewof admin")
+       
+        const id = req.query.id;
+        console.log(id);
+        const Order = await order.findOne({_id:id});
+         const AdressId= Order.addressId
+        const Adresss=await adress.findOne({_id:AdressId})
+        console.log("fsfa",Adresss);
+         console.log("order",Order,);
+        console.log(Order.cancel,"ordercancel");
+        res.render("orderViewAdmin",{Order:Order,Adresss:Adresss})
+    } catch (error) {
+        console.log('Something went wrong canot enter in to order view', error);
+        res.status(500).json({ error: "Internal server error" });
+        
+    }
+}
 
 
    module.exports={
     orderListLoad,
     cancelOrder,
-    changeStatusOrders
+    changeStatusOrders,
+    orderView
    }

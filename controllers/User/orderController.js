@@ -318,7 +318,7 @@ const onlineOrder = async (req, res) => {
       
         doc.fontSize(14).text('Product Details:');
         saveData.cartItems.forEach((item, index) => {
-            doc.text(`${index + 1}. Product: ${item.product.name}, Quantity: ${item.quantity}, Price: ${item.product.price}`);
+            doc.text(`${index + 1}. Product: ${item.product.name},Size: ${item.size}, Quantity: ${item.quantity}, Price: ${item.product.price}`);
         });
         doc.moveDown();
 
