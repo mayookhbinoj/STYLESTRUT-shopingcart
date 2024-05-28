@@ -593,27 +593,30 @@
                                     </li>
                                 </ul>
                             </form>
-                    
+                        
                             <ul class="nav nav-pills arrow-navtabs nav-success bg-light mb-3 mt-4 nav-justified custom-nav" role="tablist">
-                                <% if(findCart.subtotal < 1000) { %>
+                                <% console.log('Subtotal:', findCart.subtotal); %>
+                                <% if( findCart.subtotal < 1000) { %>
                                     <li class="nav-item">
                                         <a class="nav-link py-3" data-bs-toggle="tab" href="#cash" role="tab" onclick="toggleActive(this)">
                                             <span class="d-block d-sm-none"></span>
                                             <span class="d-none d-sm-block">Cash on Delivery</span>
                                         </a>
                                     </li>
+                                <% } else { %>
+                                    
                                 <% } %>
                             </ul>
-                    
-                            <ul class="nav nav-pills arrow-navtabs nav-success bg-light mb-3 mt-4 nav-justified custom-nav" role="tablist">
-                                <% if(findCart.subtotal <= saveWallet.totalAmount) { %>
-                                    <li class="nav-item">
-                                        <a class="nav-link py-3" data-bs-toggle="tab" href="#wallet" role="tab" onclick="toggleActive(this)">
-                                            <span class="d-block d-sm-none"></span>
-                                            <span class="d-none d-sm-block">Wallet Payment</span>
-                                        </a>
-                                    </li>
-                                <% } %>
+                            
+                                <ul class="nav nav-pills arrow-navtabs nav-success bg-light mb-3 mt-4 nav-justified custom-nav" role="tablist">
+                                    <% if(findCart.subtotal <= saveWallet.totalAmount) { %>
+                                        <li class="nav-item">
+                                            <a class="nav-link py-3" data-bs-toggle="tab" href="#wallet" role="tab" onclick="toggleActive(this)">
+                                                <span class="d-block d-sm-none"></span>
+                                                <span class="d-none d-sm-block">Wallet Payment</span>
+                                            </a>
+                                        </li>
+                                    <% } %>
                             </ul>
                         </div>
                            
