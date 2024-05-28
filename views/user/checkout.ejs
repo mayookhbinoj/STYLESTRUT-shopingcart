@@ -53,6 +53,28 @@
             letter-spacing: 3px;
            
         }
+        #enteredCouponSection {
+    margin-top: 20px;
+}
+
+#enteredCouponSection p {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#enteredCouponSection p strong {
+    font-weight: bold;
+}
+
+#enteredCouponSection p span {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #666;
+}
 
 
 
@@ -816,15 +838,19 @@
                                     <input type="text" class="form-control"  id="couponCode" name="couponCode" required>
                                 </div>
                                 <div class="mt-3" id="enteredCouponSection">
-                                    <% if (applycoupon.length===0) { %>
-                                        <p>No coupon available</p>
+                                    <% if (cartIt[0].coupon === "Not Applied") { %> <!-- Check if no coupon is applied -->
+                                        <% if (applycoupon.length === 0) { %>
+                                            <p>No coupon available</p>
+                                        <% } else { %>
+                                            <% applycoupon.forEach((item) => { %>
+                                                <p id="coupon">
+                                                    <strong>Coupon: <%= item.couponCode %></strong>
+                                                    <span id="enteredCouponCode"></span>
+                                                </p>
+                                            <% }); %>
+                                        <% } %>
                                     <% } else { %>
-                                        <% applycoupon.forEach((item) => { %>
-                                            <p id="coupon">
-                                                <strong>Use This Coupon: <%= item.couponCode %></strong>
-                                                <span id="enteredCouponCode"></span>
-                                            </p>
-                                        <% }); %>
+                                        <p>Coupon Applied: <strong><%= cartIt.coupon %></strong></p>
                                     <% } %>
                                 </div>
                                 
@@ -1052,7 +1078,9 @@
   document.getElementById('applyCouponBtn').addEventListener('click', function() {
     // Get the coupon code entered by the user
     var couponCode = document.getElementById('couponCode').value;
+    console.log(couponCode)
     var productId = document.querySelector('input[type="hidden"]').value;
+   
     
 
     // Display confirmation message using SweetAlert
@@ -1065,12 +1093,14 @@
         cancelButtonText: 'Cancel'
     }).then((result) => {
         if (result.isConfirmed) {
+           
             // Send a fetch request to your server with couponCode and productId in the body
-            fetch('/applyCoupon', {
+            fetch(`/applyCoupon`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                
                 body: JSON.stringify({ couponCode: couponCode, productId: productId })
             })
             .then(response => response.json())
@@ -1097,7 +1127,11 @@
 //remove coupon 
 function removeCoupon() {
 document.getElementById('removeCouponBtn').addEventListener('click', function() {
-    console.log("hello remove");
+    
+    var couponCode1= document.getElementById('couponCode').value;
+     console.log("fdsfs",couponCode1)
+    
+    
     // Send a fetch request to remove the coupon
     Swal.fire({
         title: 'Are you sure?',
@@ -1113,7 +1147,7 @@ document.getElementById('removeCouponBtn').addEventListener('click', function() 
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ couponCode: 'YOUR_COUPON_CODE_HERE' }) // Replace with actual coupon code
+                body: JSON.stringify({ couponCode: couponCode1 }) // Replace with actual coupon code
             })
             .then(response => response.json())
             .then(data => {
@@ -1142,7 +1176,7 @@ document.getElementById('removeCouponBtn').addEventListener('click', function() 
 function validateForm() {
     let isValid = true;
 
-    // Validate street
+    
     const streetInput = document.getElementById("street");
     const streetError = document.getElementById("streetError");
     const streetValue = streetInput.value.trim();
@@ -1151,6 +1185,7 @@ function validateForm() {
         isValid = false;
     } else {
         streetError.textContent = "";
+        
     }
 
     // Validate city

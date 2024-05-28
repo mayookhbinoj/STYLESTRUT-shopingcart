@@ -984,14 +984,20 @@ option:hover {
                                     </div>
                                     <!-- <br> -->
                                     &nbsp;<p>Custom Date</p>
-                                    <div class="col-md-2 col-6" style="display: flex;">
+                                 
                                         
-                                        <input type="date" name="startDate" value="" class="form-control">
-                                   
-                                           &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; <input type="date" name="endDate" value="" class="form-control">
+                                   <label for="valid_from">Valid From:</label>
+                                    <input type="date" id="startDate" name="valid_from" >
+        
+        
+                                  <label for="valid_to">Valid To:</label>
+                                    <input type="date" id="endDate" name="valid_to" >
+
+                                      <br> <br> <br>
+                                      <div ><button type="submit" style="color: white; background-color: black; ;" id="button">Search</button></div> <br>
+                                      <div style="color: red;" id="error-message" class="error"></div>
                                          
                                     </div>
-                                    <div ><button type="submit" style="color: white; background-color: black;" id="button" >Search</button></div>
                                    
                                 </div>
                              
@@ -2574,6 +2580,30 @@ console.log("nijas");
       
     });
   });
+
+//validation
+
+document.getElementById('button').addEventListener('click', function(event) {
+       
+            document.getElementById('error-message').innerText = '';
+
+           
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+
+          
+            if (startDate && endDate) {
+                const start = new Date(startDate);
+                const end = new Date(endDate);
+
+          
+                if (end < start) {
+                    document.getElementById('error-message').innerText = 'End date cannot be earlier than start date.';
+                    event.preventDefault(); 
+                }
+               
+            }
+        });
 
 
 

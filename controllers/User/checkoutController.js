@@ -25,11 +25,10 @@ const checkOutLoad=async(req,res)=>{
     try {
       console.log("enter in to check load");
       const userId = req.id.id; 
-      const id=req.query.id
-      console.log(id);
       console.log("userid 2",userId);
       const Adress=await adress.find({user: userId, isDelete: false })
       const cartIt=await cart.find({user: userId})
+      console.log("cart",cartIt)
       const userData=await user.findOne({_id:userId})
       console.log("cartIt",);
       let couponStatus=cartIt[0].coupon
@@ -76,9 +75,9 @@ const checkOutLoad=async(req,res)=>{
   const saveCoupon = await coupon.find({
     minimum: { $lte: subtotal }
    })
-  console.log("sub",saveCoupon)
 
-      res.render("checkout",{cartItems:cartItems,Adress:Adress,id:id,applycoupon:saveCoupon,cartIt:cartIt,subtotal:subtotal,couponData:couponData,couponStatus:couponStatus})
+
+      res.render("checkout",{cartItems:cartItems,Adress:Adress,applycoupon:saveCoupon,cartIt:cartIt,subtotal:subtotal,couponData:couponData,couponStatus:couponStatus})
     } catch (error) {
       console.error("Error in checkoutLoad function:", error);
       res.status(500).render("error500", { message: "Internal Server Error" })
@@ -89,12 +88,16 @@ const checkOutLoad=async(req,res)=>{
      
       console.log("coupon load");
      const {couponCode,productId}=req.body
+     const couponFind=await coupon.findOne({couponCode:couponCode})
      const userId=req.id.id
+   
+     
      
    
      const user = await User.findById(userId)
+     
      console.log("userrrr",user,);
-     if (user.coupon.includes(couponCode)) {
+     if (user.coupon.includes(couponFind._id)) {
         return res.status(400).json({ success: false, message: 'Coupon already used' });
     }
 
@@ -149,9 +152,10 @@ const Coupon = await coupon.findOne({
         { user: userId },
         { coupon: "Applied" },{new:true}
     );
+    const cartUpdate=await cart.updateOne({user: userId },{couponId:couponFind._id},{new:true})
    
 
-    user.coupon.push(couponCode); // Assuming `coupon` is an array field in the user schema
+    user.coupon.push(couponFind._id); // Assuming `coupon` is an array field in the user schema
     await user.save()
     res.json({ success: true, message: 'Coupon applied successfully' });
    }else{
@@ -168,7 +172,14 @@ const Coupon = await coupon.findOne({
   const removeCoupon=async(req,res)=>{
     try {
         console.log("enter in to remove coupon ");
+       
         const userId=req.id.id
+        const couponCode=req.body.couponCode
+        const cartData=await cart.findOne({user:userId})
+        
+        console.log("remove id",couponCode)
+        console.log("body id",req.body)
+        
         const cartItems = await cart.aggregate([
             {
                 $match: { user:new mongoose.Types.ObjectId(userId)} 
@@ -208,10 +219,14 @@ const Coupon = await coupon.findOne({
      if (updateCart) {
         const updateCouponStatus = await cart.updateOne(
             { user: userId },
-            { coupon: "Not Applied" },{new:true}
+            { coupon: "Not Applied" , couponId: null },{new:true}
         )
+        await user.updateOne(
+            { _id: userId },
+            { $pull: { coupon: cartData.couponId } }
+        );
        
-        res.json({ success: true, message: 'Coupon applied successfully' });
+        res.json({ success: true, message: 'Coupon removed successfully' });
      }
      console.log(updateCart,);
 

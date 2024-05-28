@@ -1007,19 +1007,20 @@
                                                           </td>
                                                           <td class="fw-medium"><%= order.
                                                             paymentMethod %></td>
-                                                            <td>
-                                                            
-                                                                <% if (order.status.toLowerCase() !== 'cancel' &order.status.toLowerCase() !== 'delivered') { %>
-                                                                    <!-- Render the view button if the status is not 'cancel' and not 'delivered' -->
-                                                                    <a href="/orderView?id=<%= order._id %>" class="view-button">View</a>
-                                                                <% } else if(order.status.toLowerCase() == 'delivered'){%>
-                                                                    <input type="hidden" id="orderId" value="<%= order._id  %>">
-                                                                    <a  class="view-button" id="openReturnReasonModal">Return</a> &nbsp &nbsp
-                                                                    <a href="/orderView?id=<%= order._id %>" class="view-button">View</a>
-
-
-                                                                <%} %>
-                                                            </td>
+                                            <td>
+                                                <% if (order.status.toLowerCase() !== 'cancel' && order.status.toLowerCase() !== 'delivered' && order.status.toLowerCase() !== 'requested for return') { %>
+                                                    <!-- Render the view button if the status is not 'cancel', 'delivered', or 'requested for return' -->
+                                                    <a href="/orderView?id=<%= order._id %>" class="view-button">View</a>
+                                                <% } else if(order.status.toLowerCase() == 'delivered'){ %>
+                                                    <input type="hidden" id="orderId" value="<%= order._id %>">
+                                                    <a class="view-button" id="openReturnReasonModal">Return</a> &nbsp &nbsp
+                                                    <a href="/orderView?id=<%= order._id %>" class="view-button">View</a>
+                                                <% } else if(order.status.toLowerCase() == 'requested for return') { %>
+                                                    <br>
+                                                    <p>Sorry, return requested.</p>
+                                                <% } %>
+                                            </td>
+                                            
 
                                                       
                                                         <!-- #invoiceModal -->

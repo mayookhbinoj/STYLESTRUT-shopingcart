@@ -291,16 +291,23 @@
                                 <div class="card-header d-flex  align-items-center gap-3">
                                     <h5 class="card-title flex-grow-1 mb-0">Order Status</h5> -->
 
-                                     <div class="flex-shrink-0">
+                                    <div class="flex-shrink-0">
                                         <% if(order.status === "payment failed") { %>
                                             <button type="button" onclick="retryPayment()" class="btn btn-soft-danger btn-sm mt-2 mt-sm-0">
                                                 <i class="fas fa-times cancel-icon"></i> Continue Payment
                                             </button>
-                                        <% } else if(order.status.toLowerCase() !== 'delivered'){%>
-                                        <button type="button" onclick="cancel()" class="btn btn-soft-danger btn-sm mt-2 mt-sm-0"> &nbsp &nbsp  <i class="fas fa-times cancel-icon"></i>   &nbsp Cancel Order&nbsp&nbsp&nbsp&nbsp</button>
-                                        <%} %> &nbsp; &nbsp; &nbsp; 
-                                        <a  class="btn btn-primary btn-sm mt-2 mt-sm-0" href="/invoice?id=<%=order._id%>">Download Invoice</a>
-                                    </div>  
+                                        <% } else if(order.status.toLowerCase() !== 'delivered' && order.status.toLowerCase() !== 'return') { %>
+                                            <button type="button" onclick="cancel()" class="btn btn-soft-danger btn-sm mt-2 mt-sm-0">
+                                                &nbsp;&nbsp;<i class="fas fa-times cancel-icon"></i>&nbsp; Cancel Order &nbsp;&nbsp;&nbsp;&nbsp;
+                                            </button>
+                                        <% } else if(order.status.toLowerCase() === 'delivered') { %>
+                                            &nbsp; &nbsp; &nbsp;
+                                            <a class="btn btn-primary btn-sm mt-2 mt-sm-0" href="/invoice?id=<%= order._id %>">Download Invoice</a>
+                                        <% } else if(order.status.toLowerCase() === 'return') { %>
+                                            <p style="color: red;">Product has been returned</p>
+                                        <% } %> 
+                                    </div>
+                                    
                                     
                                  <!-- </div>
                                 <div class="card-body">

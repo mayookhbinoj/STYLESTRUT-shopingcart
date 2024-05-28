@@ -112,7 +112,7 @@ adminRoute.get(
 adminRoute.post(
   "/update-product",
   auth.requireAuth,
-  upload.single("image"),
+  upload.array("image", 4),
   productController.updateProduct
 );
 adminRoute.patch(
@@ -181,3 +181,4 @@ adminRoute.get("*", (req, res) => {
 });
 
 module.exports = adminRoute;
+ 

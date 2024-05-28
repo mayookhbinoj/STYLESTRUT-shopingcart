@@ -63,7 +63,12 @@ const wishListLoad=async(req,res)=>{
         })
     
     }
-   
+    const productExists = wishlistNew.products.some(product => product.productId.toString() === productId);
+
+        if (productExists) {
+            return res.json({ success: false, message: 'Product is already in the wishlist' });
+        }
+
       
       wishlistNew.products.push({
         productId:productId

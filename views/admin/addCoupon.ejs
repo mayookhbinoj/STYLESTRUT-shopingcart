@@ -101,16 +101,12 @@
                 displayErrorMessage("Valid To date must be after Valid From date");
                 return false;
             }
-            if (minimum === discount) {
+            if (minimum === discount ) {
                 displayErrorMessage("minimum value and discount value not be same ");
                 return false
 
             }
-            if (discount >= minimum || minimum - discount !== 500) {
-                displayErrorMessage('Invalid coupon! The discount amount must be 500 less than the minimum purchase.')
-                return false
-
-            }
+           
 
             return true; // Form submission allowed
         }

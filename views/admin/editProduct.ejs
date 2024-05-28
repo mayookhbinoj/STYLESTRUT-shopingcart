@@ -17,7 +17,7 @@
             <span id="productNameValidationMessage" style="color: red;"></span>
 
             <label for="price">Price:</label>
-            <input type="number" id="price" name="price" step="0.01"  value="<%= product.price%>" required>
+            <input type="number" id="price" name="price" step="0.01"  value="<%= product.price%>" >
             <span id="priceValidationMessage" style="color: red;"></span>
           
 
@@ -98,9 +98,10 @@
 
       for (let i = 0; i < quantities.length; i++) {
           if (quantities[i].value < 0) {
+            console.log("invalid error")
               event.preventDefault();
               document.getElementById('quantitiesValidationMessage').innerText = 'Quantity cannot be negative.';
-              return;
+              return
           }
       }
 

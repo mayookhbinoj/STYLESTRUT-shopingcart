@@ -737,6 +737,9 @@
                                             <button type="button" id="addToCartButton" class="btn btn-success btn-hover w-100">
                                                 <i class="fas fa-shopping-cart"></i>   Add To Cart
                                             </button>
+                                            <button type="button" id="addToCartButton"  onclick="addToWishlist()" class="btn btn-success btn-hover w-100">
+                                                <i class="fas fa-heart"></i>   Add To Wishlist
+                                            </button>
                         
                                         
                                     </div>
@@ -1365,7 +1368,8 @@
                 </div>
             </div>
         </section>
-        <!-- JAVASCRIPT -->
+        <!-- JAVASCRIPT -->x    
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="/user/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/user/libs/simplebar/simplebar.min.js"></script>
         <script src="/user/js/plugins.js"></script>
@@ -1467,6 +1471,51 @@ new ImageZoom(document.getElementById("img-container"), options);
         });
     });
 
+
+    //add to wishlist
+  
+   
+
+    function addToWishlist() {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    console.log(productId)
+    
+    fetch('/wishlist', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ productId: productId })
+    })
+    .then(response => {
+        if (response.ok) {
+    
+            return response.json(); 
+        } else {
+            throw new Error('Failed to add product to wishlist');
+        }
+    })
+    .then(data => {
+        if(data.success){
+            Swal.fire({
+                title: "Wishlist",
+                text: "Product has been added to Wishlist!",
+                icon: "success"
+            });
+        } else {
+            Swal.fire({
+                title: "Wishlist",
+                text: "Product is already in the Wishlist!",
+                icon: "info"
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+} 
             </script>
     </body>
 

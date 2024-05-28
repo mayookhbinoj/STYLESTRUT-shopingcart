@@ -28,6 +28,11 @@
             letter-spacing: 3px;
            
         }
+        .nav-link.active-custom {
+            background-color: #4b93ff;
+            color: white !important;
+        }
+    </style
 
       
         </style>
@@ -577,52 +582,40 @@
                     <div class="col-xl-8">
                      
                         <h5 class="mb-0 flex-grow-1">Payment Selection  </h5>%> 
-                           
-                        <form class="razorpayForm" method="post">
+                        <div class="container mt-5">
+                            <form class="razorpayForm" method="post">
+                                <ul class="nav nav-pills arrow-navtabs nav-success bg-light mb-3 mt-4 nav-justified custom-nav" role="tablist">
+                                    <li class="nav-item">
+                                        <button id="razorpayTab" class="nav-link py-3" type="submit" role="tab">
+                                            <span class="d-block d-sm-none"></span>
+                                            <span class="d-none d-sm-block">Razorpay</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </form>
+                    
                             <ul class="nav nav-pills arrow-navtabs nav-success bg-light mb-3 mt-4 nav-justified custom-nav" role="tablist">
-                                <li class="nav-item">
-                                    <button id="paypalTab" class="nav-link active py-3" type="submit" role="tab">
-                                        <span class="d-block d-sm-none"> </span>
-                                        <span class="d-none d-sm-block">  Razopay</span>
-                                    </button>
-                                </li>
+                                <% if(findCart.subtotal < 1000) { %>
+                                    <li class="nav-item">
+                                        <a class="nav-link py-3" data-bs-toggle="tab" href="#cash" role="tab" onclick="toggleActive(this)">
+                                            <span class="d-block d-sm-none"></span>
+                                            <span class="d-none d-sm-block">Cash on Delivery</span>
+                                        </a>
+                                    </li>
+                                <% } %>
                             </ul>
-                        </form>
-                        
-                        
-                            
-                     
-
-                        
-
-                        
+                    
                             <ul class="nav nav-pills arrow-navtabs nav-success bg-light mb-3 mt-4 nav-justified custom-nav" role="tablist">
-                                <% if(findCart.subtotal<1000){%>
-                                <li class="nav-item">
-                                <a class="nav-link py-3" data-bs-toggle="tab" href="#cash" role="tab">
-                                    <span class="d-block d-sm-none"></span>
-                                    <span class="d-none d-sm-block">  Cash on Delivery</span>
-                                </a>
-                            </li>
-                            <% }%>
-                                
-                            
-                                  
-                           
-                        </ul>
-                            <ul class="nav nav-pills arrow-navtabs nav-success bg-light mb-3 mt-4 nav-justified custom-nav" role="tablist">
-                                <% if(findCart.subtotal<=saveWallet.totalAmount){%>
-                                <li class="nav-item">
-                                <a class="nav-link py-3" data-bs-toggle="tab" href="#wallet" role="tab">
-                                    <span class="d-block d-sm-none"></span>
-                                    <span class="d-none d-sm-block"> Wallet Payment</span>
-                                </a>
-                            </li>
-                        <%}%>
-                            
-                                  
-                           
-                        </ul>
+                                <% if(findCart.subtotal <= saveWallet.totalAmount) { %>
+                                    <li class="nav-item">
+                                        <a class="nav-link py-3" data-bs-toggle="tab" href="#wallet" role="tab" onclick="toggleActive(this)">
+                                            <span class="d-block d-sm-none"></span>
+                                            <span class="d-none d-sm-block">Wallet Payment</span>
+                                        </a>
+                                    </li>
+                                <% } %>
+                            </ul>
+                        </div>
                            
                         <!-- Tab panes -->
                         <div class="tab-content text-muted">
@@ -802,6 +795,7 @@
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="../assets/js/frontend/menu.init.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script>
       function sendData() {
    
@@ -942,7 +936,15 @@ function saveFailedOrder(formData, id) {
 }
 
 
+function toggleActive(element) {
+            // Remove 'active-custom' class from all nav-link elements
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active-custom');
+            });
 
+            // Add 'active-custom' class to the clicked element
+            element.classList.add('active-custom');
+        }
     
   
         </script>

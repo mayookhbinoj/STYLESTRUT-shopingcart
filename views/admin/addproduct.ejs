@@ -53,78 +53,63 @@
     </style >
 </head>
 <body>
-    <h1>Add a New Product</h1>
-    <form id="addProduct" enctype="multipart/form-data" action="/admin/addNewproduct" method="POST"   >
-        <label for="productname">Product Name:</label>
-        <input type="text" id="productname" name="name" required><br><br>
-
-        <label for="price">Price:</label>
-        <input type="text" id="price" name="price" required><br><br>
-
-     
-
-        <label for="details">Details:</label><br>
-        <textarea id="details" name="details" rows="4" cols="50"></textarea><br><br>
-
-        <label for="brand">Brand:</label>
-        <input type="text" id="brand" name="brand"><br><br>
-
-        <label for="image">Product Image:</label>
-        <input type="file" class="image" id="images" name="images" multiple  ><br><br>
-        <div id="imageContainer"></div>
-        <div id="alert-container"></div>
-         <!-- Size input fields -->
-         <body>
-
-        
-                <!-- Size and quantity inputs -->
-                <label for="sizes">Sizes and Quantities:</label><br>
-                <div id="sizeInputs">
-                    <!-- Initial size and quantity input -->
-                   <!-- Size input group for Large -->
-    <div class="sizeInput">
-    <input type="text" name="sizes[]" value="L" readonly> <!-- Default size is Large -->
-    <input type="number" name="quantities[]" placeholder="Quantity">
-</div>
-
-<!-- Size input group for Medium -->
-<div class="sizeInput">
-    <input type="text" name="sizes[]" value="M" readonly> <!-- Default size is Medium -->
-    <input type="number" name="quantities[]" placeholder="Quantity">
-</div>
-
-<!-- Size input group for XL -->
-<div class="sizeInput">
-    <input type="text" name="sizes[]" value="XL" readonly> <!-- Default size is XL -->
-    <input type="number" name="quantities[]" placeholder="Quantity">
-</div>
-
-                </div>
-              
-                <label >select a category:</label>
-        <div>
-          <select
-            class="form-select"
-            id="choices-category-input"
-            name="category"
-          >
-            <% categories.forEach(category => { %>
-            <option value="<%=category._id  %>">
-              <% if(category.isListed==false){%>
-                <%=category. categoryName%>
-             <% }%>
-                
-
-            
-             
-            </option>
-
-            <% }); %>
-          </select>
-          </div>
-        <button type="submit">Add Product</button>
-       
-    </form>
+  <h1>Add a New Product</h1>
+  <form id="addProduct" enctype="multipart/form-data" action="/admin/addNewproduct" method="POST">
+      <label for="productname">Product Name:</label>
+      <input type="text" oninput="validateForm()" id="productname" name="name"><br><br>
+      <span id="nameError" class="text-danger"></span>
+  
+      <label for="price">Price:</label>
+      <input type="number" id="price" oninput="validateForm()" name="price"><br><br>
+      <span id="priceError" class="text-danger"></span>
+  
+      <label for="details">Details:</label><br>
+      <textarea id="details" oninput="validateForm()" name="details" rows="4" cols="50"></textarea><br><br>
+      <span id="textError" class="text-danger"></span>
+  
+      <label for="brand">Brand:</label>
+      <input type="text" id="brand" oninput="validateForm()" name="brand"><br><br>
+      <span id="brandError" class="text-danger"></span>
+  
+      <label for="image">Product Image:</label>
+      <input type="file" class="image" id="images" name="images" multiple><br><br>
+      <div id="imageContainer"></div>
+      <div id="alert-container"></div>
+      <span id="imageError" class="text-danger"></span>
+  
+      <label for="sizes">Sizes and Quantities:</label><br>
+      <div id="sizeInputs">
+          <div class="sizeInput">
+              <input type="text" name="sizes[]" value="L" readonly>
+              <input type="number" id="quantity1" name="quantities[]" placeholder="Quantity" oninput="validateForm()">
+              <span id="quantity1Error" class="text-danger"></span>
+          </div>
+          <div class="sizeInput">
+              <input type="text" name="sizes[]" value="M" readonly>
+              <input type="number" id="quantity2" name="quantities[]" placeholder="Quantity" oninput="validateForm()">
+              <span id="quantity2Error" class="text-danger"></span>
+          </div>
+          <div class="sizeInput">
+              <input type="text" name="sizes[]" value="XL" readonly>
+              <input type="number" id="quantity3" name="quantities[]" placeholder="Quantity" oninput="validateForm()">
+              <span id="quantity3Error" class="text-danger"></span>
+          </div>
+      </div>
+  
+      <label for="choices-category-input">Select a category:</label>
+      <select class="form-select" id="choices-category-input" name="category">
+          <% categories.forEach(category => { %>
+          <option value="<%=category._id %>">
+              <% if (category.isListed == false) { %>
+              <%= category.categoryName %>
+              <% } %>
+          </option>
+          <% }); %>
+      </select>
+  
+      <button type="submit">Add Product</button>
+  </form>
+  
   
 
 <!-- Bootstrap JS and jQuery -->
@@ -246,112 +231,94 @@
 
 imageInput.addEventListener("change", imageupload);
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('addProduct').addEventListener('submit', function (event) {
-        const productName = document.getElementById('productname').value.trim();
-        const price = document.getElementById('price').value.trim();
-        const stock = document.getElementById('stock').value.trim();
-        const details = document.getElementById('details').value.trim();
-        const brand = document.getElementById('brand').value.trim();
-        const images = document.getElementById('images').files;
-
-        // Check if product name contains only letters and spaces
-        if (!/^[a-zA-Z\s]+$/.test(productName)) {
-            showAlert('Product name must contain only letters and spaces.', 'alert-danger');
-            event.preventDefault();
-            return;
+function validateForm() {
+    let isValid = true;
+    
+    // Validate Product Name
+    const name = document.getElementById("productname");
+    const nameError = document.getElementById("nameError");
+    const nameInput = name.value.trim();
+    if (nameInput === "") {
+        nameError.textContent = "Name is required";
+        isValid = false;
+    } else {
+        nameError.textContent = '';
+    }
+    
+    // Validate Price
+    const price = document.getElementById("price");
+    const priceError = document.getElementById("priceError");
+    const priceInput = price.value.trim();
+    const priceValue = parseFloat(priceInput);
+    if (priceInput === "") {
+        priceError.textContent = "Price is required";
+        isValid = false;
+    } else if (isNaN(priceValue) || priceValue < 0) {
+        priceError.textContent = "Price must be a positive number";
+        isValid = false;
+    } else {
+        priceError.textContent = '';
+    }
+    
+    // Validate Details
+    const details = document.getElementById("details");
+    const detailsError = document.getElementById("textError");
+    const detailsInput = details.value.trim();
+    if (detailsInput === "") {
+        detailsError.textContent = "Details are required";
+        isValid = false;
+    } else {
+        detailsError.textContent = '';
+    }
+    
+    // Validate Brand
+    const brand = document.getElementById("brand");
+    const brandError = document.getElementById("brandError");
+    const brandInput = brand.value.trim();
+    if (brandInput === "") {
+        brandError.textContent = "Brand name is required";
+        isValid = false;
+    } else {
+        brandError.textContent = '';
+    }
+    
+    // Validate Images
+    const images = document.getElementById("images");
+    const imageError = document.getElementById("imageError");
+    const imageFiles = images.files;
+    if (imageFiles.length < 3) {
+        imageError.textContent = "Please select at least 3 images";
+        isValid = false;
+    } else {
+        imageError.textContent = '';
+    }
+    
+    // Validate Quantities
+    const quantities = document.querySelectorAll('input[name="quantities[]"]');
+    quantities.forEach((quantity, index) => {
+        const quantityError = document.getElementById(`quantity${index + 1}Error`);
+        const quantityInput = quantity.value.trim();
+        const quantityValue = parseInt(quantityInput, 10);
+        if (quantityInput === "" || isNaN(quantityValue) || quantityValue < 0) {
+            quantityError.textContent = `Please enter a valid quantity for size ${quantity.previousElementSibling.value}`;
+            isValid = false;
+        } else {
+            quantityError.textContent = '';
         }
-
-        // Validate price
-        if (isNaN(price) || parseFloat(price) <= 0) {
-            showAlert('Price must be a positive number.', 'alert-danger');
-            event.preventDefault();
-            return;
-        }
-
-        // Validate stock
-        if (isNaN(stock) || parseInt(stock) < 0) {
-            showAlert('Stock must be a non-negative number.', 'alert-danger');
-            event.preventDefault();
-            return;
-        }
-
-        // Ensure at least one image is selected
-        if (images.length === 0) {
-            showAlert('Please select at least one image.', 'alert-danger');
-            event.preventDefault();
-            return;
-        }
-
-        // Iterate over each image file and validate
-        for (let i = 0; i < images.length; i++) {
-            const image = images[i];
-            if (!image.type.startsWith('image/')) {
-                showAlert('Please select valid image files only.', 'alert-danger');
-                event.preventDefault();
-                return;
-            }
-            if (image.size === 0 || image.size > 5 * 1024 * 1024) {
-                showAlert('Please select image files between 0 bytes and 5 MB.', 'alert-danger');
-                event.preventDefault();
-                return;
-            }
-        }
-
-        // If all validations pass, the form will be submitted
     });
-});
-document.getElementById('addProduct').addEventListener('submit', function (event) {
-    const productName = document.getElementById('productname').value.trim();
-    const price = document.getElementById('price').value.trim();
-    const stock = document.getElementById('stock').value.trim();
-    const details = document.getElementById('details').value.trim();
-    const brand = document.getElementById('brand').value.trim();
-    const images = document.getElementById('images').files;
-
-    // Check if product name contains only letters and spaces
-    if (!/^[a-zA-Z\s]+$/.test(productName)) {
-        showAlert('Product name must contain only letters and spaces.', 'alert-danger');
-        event.preventDefault();
-        return;
-    }
-
-    // Validate price
-    if (isNaN(price) || parseFloat(price) <= 0) {
-        showAlert('Price must be a positive number.', 'alert-danger');
-        event.preventDefault();
-        return;
-    }
-
-    // Validate stock
-    if (isNaN(stock) || parseInt(stock) < 0) {
-        showAlert('Stock must be a non-negative number.', 'alert-danger');
-        event.preventDefault();
-        return;
-    }
-
-    // Ensure at least one image is selected
-    if (images.length === 0) {
-        showAlert('Please select at least one image.', 'alert-danger');
-        event.preventDefault();
-        return;
-    }
-});
-
-function showAlert(message, className) {
-    const alertDiv = document.createElement('div');
-    alertDiv.className = `alert ${className}`;
-    alertDiv.textContent = message;
-
-    // Find the alert container in the form
-    const alertContainer = document.getElementById('alert-container');
-
-    // Clear previous alerts if any
-    alertContainer.innerHTML = '';
-
-    // Append the alert to the container
-    alertContainer.appendChild(alertDiv);
+    
+    return isValid;
 }
+
+document.getElementById("addProduct").addEventListener('submit', (e) => {
+    if (!validateForm()) {
+        e.preventDefault();
+    }
+});
+
+document.querySelectorAll('input[name="quantities[]"]').forEach(input => {
+    input.addEventListener('input', validateForm);
+});
 
 
    

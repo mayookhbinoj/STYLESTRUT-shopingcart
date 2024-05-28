@@ -31,6 +31,9 @@ const cart=new mongoose.Schema({
         type: String,
         default: "Not Applied" 
     },
+    couponId:{
+        type:String
+    },
     status:{
         type:String
     }

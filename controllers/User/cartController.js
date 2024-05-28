@@ -168,7 +168,7 @@ const loadCart = async (req, res) => {
     } else {
       userCart.products.push({
         productId: productId,
-        size: size,
+        size:"M",
         quantity: parsedQuantity,
       });
     }

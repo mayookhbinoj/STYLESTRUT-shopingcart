@@ -475,13 +475,7 @@
 
                 <div class="d-flex align-items-center">
 
-                    <div class="topbar-head-dropdown ms-1 header-item">
-                        <a href="/cart"> 
-                            <button type="button" class="btn btn-icon btn-topbar btn-ghost-dark rounded-circle text-muted" data-bs-toggle="offcanvas" data-bs-target="#ecommerceCart" aria-controls="ecommerceCart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </a>
-                    </div>
+                   
     
                     <div class="dropdown topbar-head-dropdown ms-2 header-item dropdown-hover-end">
                         
@@ -1017,10 +1011,10 @@
                                             <ul class="list-unstyled d-flex gap-3 mb-0">
                                                
                                                 <div>
-                                                    <a href="/Deletewishlist?id=<%=wishlist. productId %>" class="text-danger  remove-link">
+                                                    <a href="#" id="remove" class="text-danger remove-link" onclick="confirmDelete('<%= wishlist.productId %>')">
                                                         <i class="fas fa-trash-alt"></i> Remove
-                                                    </a>  &nbsp &nbsp &nbsp
-                                                   
+                                                    </a>
+                                                    &nbsp;&nbsp;&nbsp;
                                                 </div>
                                             </ul>
                                         </td>
@@ -1166,6 +1160,25 @@
                    
                 });
             }
+
+
+            //delete
+            function confirmDelete(productId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire("Product has been removed", "", "success")
+                window.location.href = `/Deletewishlist?id=${productId}`;
+            }
+        });
+    }
         </script>
        
         
