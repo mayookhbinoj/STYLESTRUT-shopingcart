@@ -884,12 +884,7 @@
                                     <table class="table table-borderless mb-0 fs-15">
                                         <tbody>
                                             <%  cartIt.forEach(item=>{%>
-                                            <tr>
-                                                <td>Sub Total :</td>
-                                                <td class="text-end cart-subtotal">
-                                                    <%=item.subtotal  %>
-                                                    </td>
-                                            </tr>
+                                            
                                             <tr>
                                                 <td>Coupon status :</td>
                                                 <td class="text-end cart-subtotal">
@@ -901,6 +896,18 @@
                                                 <td>Shipping Charge :</td>
                                                 <td class="text-end cart-shipping" style="color:green ;">Free</td>
                                             </tr>
+                                            <tr>
+                                                <td>discount Amount :</td>
+                                                <td class="text-end cart-subtotal">
+                                                    <%=item.discountAmount  %>
+                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sub Total :</td>
+                                                <td class="text-end cart-subtotal">
+                                                    <%=item.subtotal  %>
+                                                    </td>
+                                            </tr>
                                            
                                             <tr class="table-active">
                                                 <th>Total (INR) </th>
@@ -908,6 +915,7 @@
                                                     <span class="fw-semibold cart-total"><%= item.subtotal %></span>
                                                 </td>
                                             </tr>
+                                            
                                         <%  })%>
                                         </tbody>
                                     </table>
@@ -1190,13 +1198,30 @@ function validateForm() {
 
     // Validate city
     const cityInput = document.getElementById("city");
+    const cityError=document.getElementById("cityError")
     const cityValue = cityInput.value.trim();
-    // You can add additional validation for the city if needed
+     if(cityValue===""){
+        cityError.textContent="city name is required"
+        isValid = false;
+
+     }else{
+        cityError.textContent=""
+     }
+
 
     // Validate state
-    const stateInput = document.getElementById("state");
-    const stateValue = stateInput.value.trim();
-    // You can add additional validation for the state if needed
+    const state = document.getElementById("state");
+    const stateValue = state.value.trim();
+    const stateError=document.getElementById("stateError")
+   
+     if(stateValue===""){
+        stateError.textContent="city name is required"
+        isValid = false;
+
+     }else{
+        stateError.textContent=""
+     }
+
 
     // Validate ZIP code
     const zipCodeInput = document.getElementById("zipCode");

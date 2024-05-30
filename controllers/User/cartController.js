@@ -76,8 +76,7 @@ const loadCart = async (req, res) => {
       
            
         
-  
-  
+
           res.render("cart",{cartItems:cartItems})
      
     } catch (error) {
@@ -202,12 +201,14 @@ const loadCart = async (req, res) => {
 const deleteCart=async(req,res)=>{
     try {
       const userId=req.id.id
-      const id=req.query.id
-      console.log("id:",id);
+      const { id: productId, size } = req.query;
+      console.log(productId, size )
+     
+  
   
       const result = await cart.findOneAndUpdate(
         { user:userId },
-        { $pull: { products: {  productId: id} } },
+        { $pull: { products: { productId, size } } },
         { new: true }
       )  
       let totalAmount = 0;
@@ -217,7 +218,7 @@ const deleteCart=async(req,res)=>{
       }
       result.subtotal = totalAmount;
       await result.save();  
-  console.log(result);
+
   res.redirect("/cart")
     
     } catch (error) {

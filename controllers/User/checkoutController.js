@@ -133,10 +133,10 @@ const checkOutLoad=async(req,res)=>{
 cartItems.forEach(item => {
     subtotal += item.product.price * item.quantity;
 })
-const applycoupon=await coupon.findOne()
+
 const Coupon = await coupon.findOne({ 
     couponCode:couponCode });
-    console.log("discouont amount",coupon);
+   
 
 
   let minus=subtotal-Coupon.discount_amount
@@ -152,11 +152,13 @@ const Coupon = await coupon.findOne({
         { user: userId },
         { coupon: "Applied" },{new:true}
     );
-    const cartUpdate=await cart.updateOne({user: userId },{couponId:couponFind._id},{new:true})
+    const cartUpdate=await cart.updateOne({user: userId },{couponId:couponFind._id,discountAmount:Coupon.discount_amount},{new:true})
+
    
 
-    user.coupon.push(couponFind._id); // Assuming `coupon` is an array field in the user schema
+    user.coupon.push(couponFind._id); 
     await user.save()
+    
     res.json({ success: true, message: 'Coupon applied successfully' });
    }else{
     console.log("not deleted");
@@ -219,7 +221,7 @@ const Coupon = await coupon.findOne({
      if (updateCart) {
         const updateCouponStatus = await cart.updateOne(
             { user: userId },
-            { coupon: "Not Applied" , couponId: null },{new:true}
+            { coupon: "Not Applied" , couponId: null,discountAmount:0 },{new:true}
         )
         await user.updateOne(
             { _id: userId },

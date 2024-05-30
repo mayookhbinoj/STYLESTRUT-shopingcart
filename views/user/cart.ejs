@@ -474,10 +474,11 @@
                                 <div class="col-sm">
                                     <div class="d-flex flex-wrap my-n1">
                                         <div>
-                                            <a href="#" class="text-danger  remove-link" onclick="confirmDelete('<%= item.product._id %>')">
+                                            <a href="#" class="text-danger  remove-link" onclick="confirmDelete('<%= item.product._id %>','<%= item.size%>')">
                                                 <i class="fas fa-trash-alt"></i> Remove
                                             </a>  &nbsp &nbsp &nbsp
                                         </div>
+                                       
                                        
                                     </div>
                                 </div>
@@ -724,7 +725,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function confirmDelete(productId) {
+function confirmDelete(productId,size) {
+    console.log("size",size)
     console.log(productId)
         Swal.fire({
             title: 'Are you sure?',
@@ -737,7 +739,7 @@ function confirmDelete(productId) {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire("Product has been removed", "", "success")
-                window.location.href = `/Delete?id=${productId}`;
+                window.location.href = `/Delete?id=${productId}&size=${size}`;
             }
         });
     }
