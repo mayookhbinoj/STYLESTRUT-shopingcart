@@ -1419,9 +1419,9 @@ new ImageZoom(document.getElementById("img-container"), options);
             const quantity=quantityInput.value
             console.log( quantity);
             const maxStock = quantityInput.getAttribute('data-max-stock');
-            console.log("max:",maxStock);
+            console.log("max:",selectedQuantity,quantity);
 
-            if(selectedQuantity<quantity){
+            if(Number(selectedQuantity)<Number(quantity)){
                 Swal.fire({
                 icon: 'error',
                 title: 'Out of Stock',
