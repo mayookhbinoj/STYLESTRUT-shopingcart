@@ -138,7 +138,8 @@ const onlineOrder = async (req, res) => {
                   _id: 0,
                   products: 1,
                   coupon: 1,
-                  discountAmount: 1
+                  discountAmount: 1,
+                  subtotal:1
               }
           },
           {
@@ -161,20 +162,17 @@ const onlineOrder = async (req, res) => {
                   quantity: "$products.quantity",
                   size: "$products.size",
                   coupon: 1,
-                  discountAmount: 1
+                  discountAmount: 1,
+                  subtotal:1
               }
           }
       ]);
 
       console.log("Cart items:", cartData);
 
-     
-      const total = cartData.reduce((acc, item) => {
-          return acc + (item.product.price * item.quantity);
-      }, 0);
-      console.log("Total Price:", total);
-
     
+
+     const subtotal= cartData.length > 0 ? cartData[0].subtotal : 0;
       const discountAmount = cartData.length > 0 ? cartData[0].discountAmount : 0;
       const coupon = cartData.length > 0 ? cartData[0].coupon : "Not Applied";
       
@@ -184,7 +182,7 @@ const onlineOrder = async (req, res) => {
           addressId: req.query.id,
           paymentMethod: "Online",
           cartItems: cartData,
-          total: total,
+          total: subtotal,
           coupon: coupon,
           discountAmount: discountAmount
       });
