@@ -35,7 +35,10 @@ const  salesReportPost = async (req,res)=>{
         console.log(req.body);
       const date = req.body.selectedOption
       const startDate = req.body.startDate
+      console.log(startDate)
+     
       const endDate = req.body.endDate
+      console.log(endDate)
    
   
       if(date == "month"){
@@ -133,9 +136,11 @@ const  salesReportPost = async (req,res)=>{
        res.render('salesReport',{orders:orders,orderOriginalPrice:orderOriginalPrice,orderDiscountPrice:orderDiscountPrice,totalDiscount:totalDiscount,salesCount:salesCount})
       }
   
-      if(date =="weak"){
+      if(date =="week"){
+        
           const currentDate = moment()
           const startOfWeek = currentDate.clone().startOf('week');
+          console.log(startOfWeek)
        
           const endOfWeek = currentDate.clone().endOf('week');
           

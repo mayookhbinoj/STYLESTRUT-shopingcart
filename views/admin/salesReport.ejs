@@ -542,12 +542,7 @@ option:hover {
                         </div>
 
                         <div class="dropdown ms-sm-3 header-item topbar-user topbar-head-dropdown dropdown-hover-end">
-                            <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="d-flex align-items-center">
-                                    <img class="rounded-circle header-profile-user" src="../assets/images/users/avatar-1.jpg" alt="Header Avatar">
-                                 
-                                </span>
-                            </button>
+                            
                          
                         </div>
                     </div>
@@ -704,7 +699,7 @@ option:hover {
                             <div class="collapse menu-dropdown" id="sidebarProducts">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="/admin/productslist" class="nav-link" data-key="t-list-view">List View</a>
+                                        <a href="/admin/productslist" class="nav-link" data-key="t-list-view"> List View</a>
                                     </li>
                                   
                                     <li class="nav-item">       
@@ -965,45 +960,37 @@ option:hover {
                         <div class="col-lg-12">
                             <div class="card">
                                 <a class="clear-link bold-link large-bold-link" href="/admin/salesReport">clear</a>
-
+                    
                                 <form action="/admin/day-sales" method="post">
-                                    <div style="display: flex;" class="col-lg-2 col-6 col-md-3" style="display: flex;">
-                                       
-            
-                                       
-                                        <select class="form-select" id="select" name="selectedOption" >
-                                            <option>All</option>
-                                            
+                                    <div class="form-group">
+                                        <label for="select">Select Time Period:</label>
+                                        <select class="form-select" id="select" name="selectedOption">
+                                            <option>Select</option>
                                             <option value="day">Day</option>
-                                            <option value="weak">Weak</option>
+                                            <option value="week">Week</option>
                                             <option value="month">Month</option>
                                             <option value="year">Year</option>
-                                           
                                         </select>
-                                   
                                     </div>
-                                    <!-- <br> -->
-                                    &nbsp;<p>Custom Date</p>
-                                 
-                                        
-                                   <label for="valid_from">Valid From:</label>
-                                    <input type="date" id="startDate" name="valid_from" >
-        
-        
-                                  <label for="valid_to">Valid To:</label>
-                                    <input type="date" id="endDate" name="valid_to" >
-
-                                      <br> <br> <br>
-                                      <div ><button type="submit" style="color: white; background-color: black; ;" id="button">Search</button></div> <br>
-                                      <div style="color: red;" id="error-message" class="error"></div>
-                                         
+                    
+                                    <div class="form-group">
+                                        <label for="customDate">Custom Date</label>
+                                        <br>
+                                        <label for="startDate">Valid From:</label>
+                                        <input type="date" id="startDate" name="startDate">
+                                        <label for="endDate">Valid To:</label>
+                                        <input type="date" id="endDate" name="endDate">
                                     </div>
-                                   
-                                </div>
-                             
-                            </form>
-                               
-                            </div><!--end card-->
+                    
+                                    <div class="form-group">
+                                        <button type="submit" style="color: white; background-color: black;" id="button">Search</button>
+                                    </div>
+                                    <div style="color: red;" id="error-message" class="error"></div>
+                                </form>
+                            </div><!-- end card -->
+                        </div>
+                    </div>
+                    
                             <div class="card">
                                 <div class="card-body">
                                    
@@ -1113,20 +1100,7 @@ option:hover {
             </div>
             <!-- End Page-content -->
 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <script>document.write(new Date().getFullYear())</script> © Toner.
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="text-sm-end d-none d-sm-block">
-                                Design & Develop by Themesbrand
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            
         </div>
         <!-- end main content-->
 
@@ -2437,183 +2411,103 @@ option:hover {
     <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.print.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-    <script src="https://cdn.datatables.net/datetime/1.5.2/js/dataTables.dateTime.min.js"></script>
+   
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css"/>
 
    
-    <script>
-     
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    let minDate, maxDate;
 
-let minDate, maxDate;
+    // Custom filtering function which will search data in column two between two dates
+    $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+        let min = new Date(document.getElementById('startDate').value);
+        let max = new Date(document.getElementById('endDate').value);
+        let date = new Date(data[2]); // Assuming date is in the third column
 
- 
-  DataTable.ext.search.push(function (settings, data, dataIndex) {
-    let min = minDate.val();
-    let max = maxDate.val();
-    let date = new Date(data[2]);
-    console.log("hai");
-    console.log("min == ", min, minDate);
-
-    if (
-      (min === null && max === null) ||
-      (min === null && date <= max) ||
-      (min <= date && max === null) ||
-      (min <= date && date <= max)
-    ) {
-        console.log("true");
-      return true;
-    }
-    console.log("falsee");
-    return false;
-  });
-
-  // Create date inputs
-  minDate = new DateTime("#min", {
-    format: "MMMM Do YYYY",
-  });
-  maxDate = new DateTime("#max", {
-    format: "MMMM Do YYYY",
-  });
-console.log("nijas");
-  let table = new DataTable("#orderTable", {
-    layout: {
-      topStart: {
-        buttons: [
-          "copy",
-          "csv",
-          {
-            extend: "excel",
-            text: "Download Excel",
-            customize: function (xlsx) {
-              console.log(xlsx);
-              console.log("hai");
-              // Handle Excel customization
-              if (xlsx && xlsx[0] && xlsx[0].body && xlsx[0].body.length > 0) {
-                var body = xlsx[0].body;
-
-                // Remove last column from each row
-                body.forEach(function (row) {
-                  row.splice(-1, 1);
-                  console.log("hai");
-                });
-
-                // Calculate total of the third column for filtered rows
-                var filteredRows = table.rows({ search: "applied" }).data();
-                var total = filteredRows
-                  .pluck(5  , "data")
-                  .reduce(function (acc, val) {
-                    return acc + parseFloat(val);
-                  }, 0);
-                  var totalText = {
-                text: "Total amount(INR) : ₹ <%= orderOriginalPrice %>",
-                alignment: "right",
-                
-              };
-              var countText={
-                text:"Sales count:<%= salesCount %>",
-                
-                alignment: "right",
-
-              }
-                // Add total amount to the last row
-                body.push(["", "", "", "", "Total", total]);
-              body.push(["", "", "", "", "Sales Count", salesCount]);
-              }
-            },
-          },
-          "print",
-          {
-            extend: "pdf",
-            text: "Download PDF",
-            customize: function (doc) {
-            //   Remove last column from the table
-            
-
-              // Calculate total of the third column for filtered rows
-              var filteredRows = table.rows({ search: "applied" }).data();
-              var total = filteredRows
-                .pluck(5, "data")
-                .reduce(function (acc, val) {
-                  return acc + parseFloat(val);
-                }, 0);
-
-              var totalText = {
-                text: "Total amount(INR) : ₹ <%= orderOriginalPrice %>",
-                alignment: "right",
-                
-              };
-              var countText={
-                text:"Sales count:<%= salesCount %>",
-                
-                alignment: "right",
-
-              }
-
-              var marginBeforeTotal = {
-                text: "",
-                margin: [0, 10], // Margin before the total section
-              };
-              // Add the text elements to the PDF document
-              doc.content.push(marginBeforeTotal,countText, totalText,);
-            },
-          },
-        ],
-      },
-    },
-  });
-
-  // Refilter the table
-  document.querySelectorAll("#min, #max").forEach((el) => {
-    el.addEventListener("change", () => {
-        table.draw();
-      var total = table
-        .column(8) // Change 3 to the index of the column you want to calculate the total for
-        .data()
-        .reduce(function (acc, val) {
-            console.log(val);
-          return acc + parseFloat(val);
+        if (
+            (isNaN(min) && isNaN(max)) ||
+            (isNaN(min) && date <= max) ||
+            (min <= date && isNaN(max)) ||
+            (min <= date && date <= max)
+        ) {
+            return true;
         }
-        , 0);
-      console.log(total);
+        return false;
+    });
 
-      table.row.add(["Total", "", "", total, "", "", "", ""]);
-      
-    });
-  });
-
-//validation
-
-document.getElementById('button').addEventListener('click', function(event) {
-       
-            document.getElementById('error-message').innerText = '';
-
-           
-            const startDate = document.getElementById('startDate').value;
-            const endDate = document.getElementById('endDate').value;
-
-          
-            if (startDate && endDate) {
-                const start = new Date(startDate);
-                const end = new Date(endDate);
-
-          
-                if (end < start) {
-                    document.getElementById('error-message').innerText = 'End date cannot be earlier than start date.';
-                    event.preventDefault(); 
-                }
-               
-            }
+    // DataTables initialisation
+    let table = $('#orderTable').DataTable({
+        layout: {
+            topStart: {
+                buttons: [
+                    'copy',
+                    'csv',
+                    {
+                        extend: 'excel',
+                        text: 'Download Excel',
+                        customize: function(xlsx) {
+                            // Excel customization logic
+                        }
+                    },
+                    'print',
+                    {
+    extend: 'pdf',
+    text: 'Download PDF',
+    customize: function(doc) {
+        // Calculate total
+        let total = 0;
+        table.column(3, { search: 'applied' }).data().each(function(value) {
+            total += parseFloat(value.replace('₹ ', '').replace(',', ''));
         });
 
+        // Get order original price
+        let orderOriginalPrice = '<%= orderOriginalPrice %>';
 
+        // Add total and original price to PDF
+       
 
+        doc.content.push({
+            text: 'Total ₹ ' + orderOriginalPrice,
+            alignment: 'right',
+            margin: [0, 0, 0, 10] // Adjust margins as needed
+        });
+    }
+}
 
- 
-      
+                ]
+            }
+        }
+    });
 
-      
-   
-    </script>
+    // Event listener to the two date inputs to redraw on input
+    document.getElementById('startDate').addEventListener('change', function() {
+        table.draw();
+    });
+    document.getElementById('endDate').addEventListener('change', function() {
+        table.draw();
+    });
+
+    // Validation
+    document.getElementById('button').addEventListener('click', function(event) {
+        document.getElementById('error-message').innerText = '';
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+
+        if (startDate && endDate) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+
+            if (end < start) {
+                document.getElementById('error-message').innerText = 'End date cannot be earlier than start date.';
+                event.preventDefault();
+            }
+        }
+    });
+});
+
+</script>
+
 </body>
 
 
