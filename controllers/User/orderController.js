@@ -54,7 +54,8 @@ const orderComplete=async(req,res)=>{
                 product: "$productDetails",
                 quantity: "$products.quantity",
                 size: "$products.size",
-                coupon: 1 
+                coupon: 1 ,
+                discountAmount:1
             }
         },
         
@@ -125,9 +126,9 @@ const onlineOrder = async (req, res) => {
   try {
       console.log("Enter into online success");
       const userId = req.id.id;
-      console.log(userId);
+      console.log("User ID:", userId);
 
-      
+      // Aggregate cart data
       const cartData = await cart.aggregate([
           {
               $match: { user: new mongoose.Types.ObjectId(userId) }
@@ -136,7 +137,8 @@ const onlineOrder = async (req, res) => {
               $project: {
                   _id: 0,
                   products: 1,
-                  coupon: 1 // Include coupon field
+                  coupon: 1,
+                  discountAmount: 1
               }
           },
           {
@@ -158,42 +160,47 @@ const onlineOrder = async (req, res) => {
                   product: "$productDetails",
                   quantity: "$products.quantity",
                   size: "$products.size",
-                  coupon: 1 
+                  coupon: 1,
+                  discountAmount: 1
               }
           }
       ]);
 
-      console.log("Cart items", cartData);
+      console.log("Cart items:", cartData);
 
-    
+     
       const total = cartData.reduce((acc, item) => {
           return acc + (item.product.price * item.quantity);
       }, 0);
       console.log("Total Price:", total);
 
-     
+    
+      const discountAmount = cartData.length > 0 ? cartData[0].discountAmount : 0;
       const coupon = cartData.length > 0 ? cartData[0].coupon : "Not Applied";
-
-     
+      
+    
       const orderCreate = new Order({
           userId: userId,
           addressId: req.query.id,
           paymentMethod: "Online",
           cartItems: cartData,
           total: total,
-          coupon: coupon 
+          coupon: coupon,
+          discountAmount: discountAmount
       });
 
-      console.log(orderCreate);
+      console.log("Order to be created:", orderCreate);
       const newOrder = await orderCreate.save();
 
       if (newOrder) {
-          // Update product quantities
+          console.log("Order created successfully:", newOrder);
+
+        
           for (const item of cartData) {
               const productId = item.product._id;
               const orderedQuantity = item.quantity;
               const size = item.size;
-              console.log(size);
+              console.log(`Updating product ID ${productId}, size ${size}, quantity ${orderedQuantity}`);
 
               await Product.updateOne(
                   { _id: productId, "sizes.size": size },
@@ -201,11 +208,12 @@ const onlineOrder = async (req, res) => {
               );
           }
 
+        
           res.redirect("/ordersucess");
 
-          // Delete cart after successful order
+         
           const deletedCart = await cart.findOneAndDelete({ user: userId });
-          console.log(deletedCart);
+          console.log("Deleted cart:", deletedCart);
 
           return deletedCart;
       } else {
@@ -216,6 +224,7 @@ const onlineOrder = async (req, res) => {
       res.status(500).render("error500", { message: "Internal Server Error" });
   }
 };
+
 
   const orderView=async(req,res)=>{
     try {

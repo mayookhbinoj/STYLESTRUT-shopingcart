@@ -34,6 +34,7 @@
     cartItems:{
         type:Array
     },
+    discountAmount: { type:String, default: "0" }
 
 
     })
