@@ -68,8 +68,61 @@ const isBlocked = async (req, res, next) => {
       res.render("isBlocked")
     }
   };
+
+  const isLoggedin=async(req,res,next)=>{
+    try {
+        console.log(req.cookies);
+        const token=req.cookies.jwt
+        console.log(token);
+     
+        if(token){
+            jwt.verify(token,secret,(err,decodeToken)=>{
+                if(err){
+                    console.log(err);
+                    res.redirect("/")
+                }
+                else{
+                    req.id=decodeToken
+                    res.redirect("/shop")
+                }
+            })
+        }
+        else{
+           next()
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+  const isAdminLoggedin=async(req,res,next)=>{
+    try {
+        console.log(req.cookies);
+        const token=req.cookies.admin
+        console.log(token);
+     
+        if(token){
+            jwt.verify(token,secret,(err,decodeToken)=>{
+                if(err){
+                    console.log(err);
+                    res.redirect("/admin")
+                }
+                else{
+                    req.id=decodeToken
+                    res.redirect("/admin/home")
+                }
+            })
+        }
+        else{
+           next()
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
 module.exports={
     requireAuth,
     requirelogin,
-    isBlocked
+    isBlocked,
+    isLoggedin,
+    isAdminLoggedin
 }

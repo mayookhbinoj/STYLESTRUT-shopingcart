@@ -57,9 +57,9 @@ userRoute.get("/register", userController.loadRegister);
 userRoute.post("/generateotp", userController.insertUser);
 
 //login
-userRoute.get("/", loginController.loadLandingPage);
-userRoute.get("/login", loginController.userLoadLogin);
-userRoute.get("/loginload", aut.requirelogin, loginController.userLoadLogin);
+userRoute.get("/",aut.isLoggedin, loginController.loadLandingPage);
+userRoute.get("/login",aut.isLoggedin, loginController.userLoadLogin);
+userRoute.get("/loginload", aut.isLoggedin, loginController.userLoadLogin);
 userRoute.post("/login", loginController.verifyLogin);
 userRoute.get("/error500", loginController.erroLogin);
 userRoute.get("/logout", loginController.userlogout);

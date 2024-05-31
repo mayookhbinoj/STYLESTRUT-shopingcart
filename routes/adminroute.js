@@ -43,11 +43,11 @@ const salesReportController = require("../controllers/admin/salesReportControlle
 const categoryOfferControllerr = require("../controllers/admin/categoryOfferController");
 
 //home
-adminRoute.get("/", admincontroller.showAdminLogin);
-adminRoute.post("/login", admincontroller.verifyAdmin);
+adminRoute.get("/",auth.isAdminLoggedin,admincontroller.showAdminLogin);
+adminRoute.post("/login",auth.isAdminLoggedin, admincontroller.verifyAdmin);
 adminRoute.get("/home", auth.requireAuth, admincontroller.loadAdminHome);
 adminRoute.get("/logout", admincontroller.logoutAdmin);
-adminRoute.get("/", auth.requireAuth, admincontroller.listUser);
+
 
 //userlist
 adminRoute.get("/users", auth.requireAuth, admincontroller.listUser);
