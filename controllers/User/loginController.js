@@ -84,9 +84,8 @@ const loadLandingPage=async(req,res)=>{
     }
     
       catch (error) {
-        console.error("Error in verifyLogin: ", error);
-        return res.status(500).send("Internal server error");
-     
+        console.error("Error in loadLandingPage:", error);
+        res.status(500).render("loginError")
       }
      
     }
@@ -100,10 +99,19 @@ const loadLandingPage=async(req,res)=>{
           res.status(500).send("Internal server error");
         }
       }
+      const erroLogin=async(req,res)=>{
+        try {
+          res.render("loginError")
+        } catch (error) {
+          console.log(error)
+          
+        }
+      }
 
       module.exports={
         loadLandingPage,
         userLoadLogin,
         verifyLogin,
         userlogout,
+        erroLogin
       }

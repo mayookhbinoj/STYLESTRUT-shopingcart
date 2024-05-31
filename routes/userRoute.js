@@ -61,6 +61,7 @@ userRoute.get("/", loginController.loadLandingPage);
 userRoute.get("/login", loginController.userLoadLogin);
 userRoute.get("/loginload", aut.requirelogin, loginController.userLoadLogin);
 userRoute.post("/login", loginController.verifyLogin);
+userRoute.get("/error500", loginController.erroLogin);
 userRoute.get("/logout", loginController.userlogout);
 
 //google sign

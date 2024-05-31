@@ -52,15 +52,17 @@
                 <div class="card-body">
                     <p class="logo"> StyleStrut  Sign in</p>    <h4 class="card-title mb-4"> </h4> 
                     
-                    <form action="/login" method="post">
+                    <form action="/login" method="post" id="loginForm">
                         <div class="mb-3">
-                            <input class="form-control" placeholder="Username or email" type="text" name="email">
+                            <input class="form-control" placeholder="Username or email" type="text" name="email" id="email" oninput="validation()">
+                            <span id="emailError" style="color: red;"></span>
+                        </div> <!-- form-group// -->
+                        <div class="mb-3"> 
+                            <input class="form-control" id="password" placeholder="Password" type="password" name="password" oninput="validation()">
+                            <span id="passwordError" style="color: red;"></span>
                         </div> <!-- form-group// -->
                         <div class="mb-3">
-                            <input class="form-control" placeholder="Password" type="password" name="password">
-                        </div> <!-- form-group// -->
-                        <div class="mb-3">
-                            <a href="#" class="float-end font-sm text-muted">Forgot password?</a>
+                        
                             <label class="form-check">
                                 <input type="checkbox" class="form-check-input" checked="">
                                 <span class="form-check-label">Remember</span>
@@ -103,7 +105,51 @@
     <!-- Main Script -->
     <script src="assets/js/main.js" type="text/javascript"></script>
 </body>
+<script>
+    function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
 
+function validation() {
+    let isValid = true;
+
+    // Email validation
+    const email = document.getElementById("email");
+    const emailError = document.getElementById("emailError");
+    const emailValue = email.value.trim();
+
+    if (emailValue === "") {
+        isValid = false;
+        emailError.textContent = "Email is required";
+    } else if (!validateEmail(emailValue)) {
+        isValid = false;
+        emailError.textContent = "Please enter a valid email address";
+    } else {
+        emailError.textContent = "";
+    }
+
+    // Password validation
+    const password = document.getElementById("password");
+    const passwordError = document.getElementById("passwordError");
+    const passwordValue = password.value.trim();
+
+    if (passwordValue === "") {
+        isValid = false;
+        passwordError.textContent = "Password is required";
+    } else {
+        passwordError.textContent = "";
+    }
+
+    return isValid;
+}
+document.getElementById("loginForm").addEventListener("submit",function(event){
+    if(!validation()){
+        event.preventDefault()
+    }
+})
+
+</script>
 
 <!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/page-account-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:33:33 GMT -->
 </html>
