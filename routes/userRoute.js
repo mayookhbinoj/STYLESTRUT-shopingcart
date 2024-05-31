@@ -66,12 +66,12 @@ userRoute.get("/logout", loginController.userlogout);
 
 //google sign
 userRoute.get(
-  "/auth/google",
+  "/auth/google",aut.isLoggedin,
   passport.authenticate("google", { scope: ["email", "profile"] })
 );
 
 userRoute.get(
-  "/google/callback",
+  "/google/callback",aut.isLoggedin,
   passport.authenticate("google", {
     successRedirect: "/verifygoogle",
     failureRedirect: "/auth/failure",
