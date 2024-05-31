@@ -39,7 +39,7 @@ const verifyGoogle=async(req,res)=>{
             
           }
           else{
-            console.log(req.user.picture);
+          
             
         const users = new user({
           name:req.user.given_name,
@@ -49,18 +49,18 @@ const verifyGoogle=async(req,res)=>{
           image:req.user.picture
       })
       const result=await users.save()
-      if(result){
-        const saveWallet= await wallet.findOne({userId:userData._id})
-        if(!saveWallet){
-          const newWallet= new wallet({
-            userId:userData._id
-          })
-          const save=await newWallet.save()
+      if (result) {
+        const saveWallet = await wallet.findOne({ userId: result._id });
+
+        if (!saveWallet) {
+          const newWallet = new wallet({ userId: result._id });
+          await newWallet.save();
+          console.log("new wallet", newWallet);
         }
-       
       }
+
             
-           console.log(result);
+         
               const token = createToken({id:result._id})
               res.cookie("jwt",token,{httpOnly:true,maxAge:600000000})
           res.redirect('/shop',)
