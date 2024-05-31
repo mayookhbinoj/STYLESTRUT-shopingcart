@@ -68,7 +68,7 @@
 <head>
     <title>Coupon Form</title>
     <style>
-        .error-message {
+        .error {
             color: red;
         }
     </style>
@@ -76,31 +76,98 @@
 </head>
 <form id="couponForm">
     <label for="coupon_title">Coupon Title:</label>
-    <input type="text" id="coupon_title" name="name" placeholder="Enter your coupon title">
+    <input type="text" id="coupon_title" name="name" placeholder="Enter your coupon title" oninput="validation()">
+    <span id="nameError" class="error"></span>
     <br>
 
     <label for="coupon_code">Coupon Code:</label>
-    <input type="text" id="coupon_code" name="coupon_code" placeholder="Enter your coupon code">
+    <input type="text" id="coupon_code" name="coupon_code" placeholder="Enter your coupon code" oninput="validation()">
+    <span id="codeError" class="error"></span>
     <br>
 
     <label for="Minimum">Minimum Purchase:</label>
-    <input type="number" min="1000" id="Minimum" name="Minimum" placeholder="Enter your minimum number">
+    <input type="number" min="1000" id="Minimum" name="Minimum" placeholder="Enter your minimum number" oninput="validation()">
+    <span id="minimumError" class="error"></span>
     <br>
 
     <label for="discount_value">Discount Value:</label>
-    <input type="number" id="discount_value" name="discount_amount" min="0" placeholder="Enter your discount number">
+    <input type="number" id="discount_value" name="discount_amount" min="0" placeholder="Enter your discount number" oninput="validation()">
+    <span id="discountError" class="error"></span>
     <br>
-
-    <div id="error-messages"></div><br>
 
     <input type="submit" value="Add Coupon">
 </form>
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 <script>
+function validation() {
+    let isValid = true;
+
+   
+    const name = document.getElementById("coupon_title");
+    const nameError = document.getElementById("nameError");
+    const nameInput = name.value.trim();
+    if (nameInput === "") {
+        nameError.textContent = "Name is required";
+        isValid = false;
+    } else {
+        nameError.textContent = "";
+    }
+
+
+    const couponCode = document.getElementById("coupon_code");
+    const codeError = document.getElementById("codeError");
+    const couponCodeInput = couponCode.value.trim();
+    if (couponCodeInput === "") {
+        codeError.textContent = "Coupon code is required";
+        isValid = false;
+    } else {
+        codeError.textContent = "";
+    }
+
+    
+    const minimum = document.getElementById("Minimum");
+    const minimumError = document.getElementById("minimumError");
+    const minimumInput = minimum.value.trim();
+    if (minimumInput === "" || Number(minimumInput) < 1000) {
+        minimumError.textContent = "Minimum purchase must be at least 1000";
+        isValid = false;
+    } else {
+        minimumError.textContent = "";
+    }
+
+    const discountValue = document.getElementById("discount_value");
+    const discountError = document.getElementById("discountError");
+    const discountInput = discountValue.value.trim();
+    if (discountInput === "" || Number(discountInput) < 0) {
+        discountError.textContent = "Discount value must be a positive number";
+        isValid = false;
+    } else {
+        discountError.textContent = "";
+    }
+
+    if (Number(discountInput) === Number(minimumInput)) {
+                discountError.textContent = "Discount amount and minimum should not be the same";
+                isValid = false;
+            } else if (Number(discountInput) > Number(minimumInput)) {
+                discountError.textContent = "Discount amount must be less than minimum purchase amount";
+                isValid = false;
+            } else {
+                discountError.textContent = "";
+            }
+
+            return isValid;
+        }
+
+   
     document.getElementById('couponForm').addEventListener('submit', async function(event) {
         event.preventDefault(); 
+        if (!validation()) {
+                return;
+            }
 
         const name = document.getElementById('coupon_title').value;
         const coupon_code = document.getElementById('coupon_code').value;
