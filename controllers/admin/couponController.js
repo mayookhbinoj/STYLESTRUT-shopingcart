@@ -33,14 +33,12 @@ const addcouponLoad=async(req,res)=>{
         const { name, coupon_code, discount_amount, Minimum } = req.body;
         console.log(discount_amount, "discount amount");
 
-       
-        const sameCoupon = await coupon.findOne({ couponCode: coupon_code});
+        const sameCoupon = await coupon.findOne({ couponCode: coupon_code });
         if (sameCoupon) {
             console.log("A coupon with the same code has been found");
             return res.json({ success: false, message: "Coupon already exists" });
         }
 
-       
         const newCoupon = new coupon({
             name: name,
             couponCode: coupon_code,
