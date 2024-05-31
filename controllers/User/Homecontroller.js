@@ -14,38 +14,41 @@ const jwt=require("jsonwebtoken")
 const mongoose=require("mongoose");
 const User = require("../../models/userModel");
 const category = require("../../models/categoryModel");
+
+
 const loadHome = async (req, res) => {
   
-    try {
-    
-     console.log("enter in to loadhome");
+  try {
   
-      const product=await Product.find({isListed:false})
-      const User=await user.findOne({_id:req.id.id})
-      const Category=await category.find()
-      console.log("userrrr",User);
+   console.log("enter in to loadhome");
+
+    const product=await Product.find({isListed:false})
+    const User=await user.findOne({_id:req.id.id})
+    const Category=await category.find()
+    console.log("userrrr",User);
+   
     
-      
-    
-      const inputLetter = null
-      const page = parseInt(req.query.page) || 1; 
-          const limit = 9
-          const skip = (page - 1) * limit;
-          
-          const productData = await Product.find().skip(skip).limit(limit);
-          console.log("product DAata",productData)
-          const totalProducts = await Product.countDocuments();
-          console.log("total prodducts",totalProducts)
-          const totalPages = Math.ceil(totalProducts / limit);
-     
-      res.render("home",{product:productData,user:User,inputLetter:inputLetter, currentPage: page, 
-      totalPages: totalPages,Category:Category});
-    
-    } catch (error) {
-      console.error("Error in loadHome:", error);
-      res.status(500).send("Internal server error")
-    }
-  };
+    let a =req.body.sortOption || "option"
+    const inputLetter = null
+  
+    const page = parseInt(req.query.page) || 1; 
+        const limit = 9
+        const skip = (page - 1) * limit;
+        
+        const productData = await Product.find().skip(skip).limit(limit);
+        console.log("product DAata",productData)
+        const totalProducts = await Product.countDocuments();
+        console.log("total prodducts",totalProducts)
+        const totalPages = Math.ceil(totalProducts / limit);
+   
+    res.render("home",{product:productData,user:User,inputLetter:inputLetter, currentPage: page, 
+    totalPages: totalPages,Category:Category,a:a});
+  
+  } catch (error) {
+    console.error("Error in loadHome:", error);
+    res.status(500).send("Internal server error")
+  }
+};
   const singleproductLoad=async(req,res)=>{
     try {
      console.log("enter  in to single product");

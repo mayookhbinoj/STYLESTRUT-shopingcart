@@ -606,7 +606,7 @@
                                 
                                     <label for="sort-dropdown">Sort By:</label><br>
                                     <select id="sort-dropdown" name="sortOption" class="form-select">
-                                        <option value="option">Select</option>
+                                        <option value="<%=a  %>"><%=a  %></option>
                                         <option value="lowtohigh">Low to High</option>
                                         <option value="hightolow">High to Low</option>
                                         <option value="alphabeticallyAZ">Alphabetically A-Z</option>
@@ -631,7 +631,14 @@
                                     <div class="category-list">
                                         <p class="search-header">Search Categories</p>
                                         <% Category.forEach(item => { %>
-                                            <a href="/search?id=<%= item._id  %>" class="category-link"><%= item.categoryName %></a> <br>
+                                            <% if(item.isListed===false){ %>
+                                                <a href="#" style="color: black;" onclick="event.preventDefault(); document.getElementById('form-<%= item._id %>').submit();" >
+                                                    <%= item.categoryName %> <br> <br>
+                                                </a>
+                                                <form id="form-<%= item._id %>" action="/search?id=<%= item._id %>" method="post" style="display: none;">
+                                                    <input type="hidden" name="sortOption" value="<%= a %>">
+                                                </form>
+                                            <% } %>
                                         <% }) %>
                                     </div>
                                 </div>
@@ -696,7 +703,8 @@
                         <div class="row" id="ps">
                            
                             <div class="row" id="ps">
-                              
+                             
+
                                 <% product.forEach(product => { %>
                                     <% if(product.isListed === false) { %>
                                         <div class="col-xxl-4 col-lg-4 col-md-6 mb-4">
@@ -934,7 +942,7 @@
         </section>
 
         <!-- JAVASCRIPT -->
-        <script src="/user/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        rript src="/user/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/user/libs/simplebar/simplebar.min.js"></script>
         <script src="/user/js/plugins.js"></script>
 
@@ -1031,9 +1039,7 @@ function addToWishlist(productId) {
     // Add event listener to update output when slider value changes
     priceSlider.addEventListener('input', updatePriceOutput);
 
-    
-
-
+   
 </script>
 
     </body>
