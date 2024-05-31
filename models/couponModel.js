@@ -19,16 +19,9 @@ const couponSchema=new mongoose.Schema({
         type:Number,
         required:true
     },
-    valid_from: {
-        type: Date,
-        required: true
-    },
-    valid_to: {
-        type: Date,
-        required: true
-    },
+  
     
-
+ 
 })
 const Coupon = mongoose.model('Coupon', couponSchema);
 
