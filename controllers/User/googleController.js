@@ -10,6 +10,7 @@ const adress=require("../../models/addressModel")
 const cart=require("../../models/cartModel")
 const Order=require("../../models/orderModel")
 const coupon=require("../../models/couponModel")
+const wallet=require("../../models/walletModel")
 
 const jwt=require("jsonwebtoken")
 const mongoose=require("mongoose");
@@ -48,6 +49,12 @@ const verifyGoogle=async(req,res)=>{
           image:req.user.picture
       })
       const result=await users.save()
+      if(result){
+        const saveWallet= new wallet({
+          userId:req.user.email
+        })
+        await saveWallet.save()
+      }
             
            console.log(result);
               const token = createToken({id:result._id})
