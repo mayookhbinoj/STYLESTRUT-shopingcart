@@ -24,9 +24,7 @@ require("../../auth")
 
   const otpCheck = async (req, res) => {
     try {
-      let enteredOtp = req.body.otp 
-      enteredOtp= enteredOtp.trim();
-
+      const enteredOtp = req.body.otp; 
      const otpEntry = await otp.findOne({ otp: enteredOtp });
      console.log("fdasfasf"+otpEntry);
      if(req.body.otp===""){
@@ -47,68 +45,69 @@ require("../../auth")
   
   }
 
-  const getOtp = async (req, res) => {
+  const getOtp= async (req,res)=>{
+
     console.log(req.query.id);
     try {
-      const userId = req.query.id;
-      
-      
-      const saveData = await user.findOne({_id: userId });
-      console.log("savedata",saveData)
-  
-      
-  
+      const userId=req.query.id
+      const saveData=await user.findOne({_id:userId})
       const otpcode = Math.floor(1000 + Math.random() * 9000).toString();
-      console.log(`${otpcode} code`);
-      
+      console.log(otpcode+" code")
       const newOtp = new otp({
         otp: otpcode,
-        userId: userId
+        userId:userId
       });
       const savedOtp = await newOtp.save();
-      console.log("OTP saved successfully:", savedOtp);
+          console.log("OTP saved successfully:", savedOtp); 
   
       const transporter = nodemailer.createTransport({
-        service: "gmail",
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        auth: {
-          user: process.env.user_name,
-          pass: process.env.user_password,
-        },
-      });
+          service:"gmail",
+          host : "smtp.gmail.com",
+          port: 587,
+          secure: false, 
+          auth: {
+            user: process.env.user_name,
+            pass: process.env.user_password,
+          },
+        });
+        
+          const mailOptions = {
+            from: {
+              name: 'Me',
+              address:process.env.user_name
+            }, // sender address
+            to: saveData.email, // list of receivers
+            subject: "Hello ✔", // Subject line
+            text: `Welcome to STYLESTRUT Please verify your email with This Otp${otpcode}`, // plain text body
+            html: `Welcome to STYLESTRUT Please verify your email with This Otp${otpcode}`, // html body
+            
+          };
+      
+          const sendMail = async() => {
+              try{
+              
+                  await transporter.sendMail(mailOptions)
+                 
+                  console.log("Email sent");
+                  
+                  res.render('verifyotp',{otpId:savedOtp._id})
+                
+              }catch(error)
+              {
+                  console.log(error.message);
+              }
+          }
+      
+          sendMail(transporter,mailOptions)
   
-      const mailOptions = {
-        from: {
-          name: 'Me',
-          address: process.env.user_name
-        },
-        to: saveData.email,
-        subject: "Hello ✔",
-        text: `Welcome to STYLESTRUT. Please verify your email with this OTP: ${otpcode}`,
-        html: `Welcome to STYLESTRUT. Please verify your email with this OTP: ${otpcode}`,
-      };
+      
   
-      const sendMail = async () => {
-        try {
-          await transporter.sendMail(mailOptions);
-          console.log("Email sent");
-          res.render('verifyotp', { otpId: savedOtp._id });
-        } catch (error) {
-          console.log("Error sending email:", error.message);
-          res.status(500).json({ message: "Error sending email" });
-        }
-      };
-  
-      await sendMail();
-  
-    } catch (error) {
-      console.log("Error in getOtp function:", error);
-      res.status(500).json({ message: "Internal Server Error" });
-    }
-  };
-  
+  }catch (error) {
+      console.log(error);
+      const errorMessage = "Internal Server Error";
+      return res.status(500).render("error500", { statusCode: 500, errorMessage })
+  }
+  }
   const getOTPTime=async(req,res)=>{
     try {
       const id = req.query.id;

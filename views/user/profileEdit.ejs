@@ -1,73 +1,302 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edit User Details</title>
-        <!-- Bootstrap CSS -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            #alert-container{
-                color: red;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container mt-5">
-            <h2 class="mb-4">Edit Your Details</h2>
-            <form id="edit" action="/updateUser" method="post">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter name"  value="<%= User.name  %>" >
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter email" value=" <%= User.email  %>" >
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone:</label>
-                    <input type="text" id="phone" name="phone" class="form-control" placeholder="Enter phone number" value=" <%= User.phone %>"  >
-                 
-                </div>
-                <input type="hidden" name="id" >
-                <div id="alert-container"></div>
-                <button type="submit" class="btn btn-primary" style="background-color: #06d6a0;">Save Changes</button>
-            </form>
-        </div>
-        <script>
-           document.getElementById("edit").addEventListener("submit",()=>{
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-             const phone = document.getElementById('phone').value.trim();
-             if (name === "" || email === "" || phone === "") {
-                event.preventDefault(); // Prevent form submission
-               showAlert("Please fil all required fields")
-            }
-            if(phone.length<10){
-                event.preventDefault(); // Prevent form submission
-                showAlert("Please enter a 10 digit number")
+<!DOCTYPE html>
+<html lang="en">
 
-            }
-           })
-           function showAlert(message, className) {
-           const alertDiv = document.createElement('div');
-            alertDiv.className = `alert ${className}`;
-             alertDiv.textContent = message;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
 
-  
-            const alertContainer = document.getElementById('alert-container');
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .password-field {
+            position: relative;
+        }
+
+        .password-field span {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .text-danger {
+            font-size: 0.875em;
+        }
+
+        .needs-validation .invalid-feedback {
+            display: none;
+        }
+
+        .needs-validation .form-control:invalid~.invalid-feedback {
+            display: block;
+        }
+
+        .needs-validation .form-control:valid~.invalid-feedback {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
    
-             alertContainer.innerHTML = '';
+    <div class="container mt-5">
+        <h2 class="mb-4">Edit Your Details</h2>
+        <form class="needs-validation" id="signupForm">
+            <div class="row g-3">
+                <!-- col -->
+                <div class="col">
+                    <!-- input -->
+                    <label for="formSignupfname" class="form-label">First Name</label>
+                    <input type="text" class="form-control" value="<%= User.name %>" id="name"  placeholder="First Name" name="name" oninput="validation()" />
+                    <div class="invalid-feedback">Please enter first name.</div>
+                    <span id="firstNameError" class="text-danger"></span>
+                </div>
+                <!-- col -->
+             
+                <div class="col-12">
+                    <!-- input -->
+                    <label for="formSignupEmail" class="form-label">Email address</label>
+                    <input type="email" class="form-control" value="<%= User.email  %>" id="email" placeholder="Email" name="email" autocomplete="username" />
+                    <div class="invalid-feedback">Please enter email.</div>
+                    
+                    <span class="text-danger" id="errorMessage"></span>
+                </div>
+                
+                
+                <div class="col-12">
+                    <!-- input -->
+                    <div class="password-field position-relative">
+                        <label for="formSignupPassword" class="form-label">Phone number</label>
+                        <div class="password-field position-relative">
+                            <input type="number" class="form-control fakePassword" id="phone" value="<%= User.phone  %>"  placeholder="Confirm Password" name="phone" autocomplete="new-password" />
+                            <span><i class="bi bi-eye-slash passwordToggler"></i></span>
+                            <div class="invalid-feedback">Please confirm password.</div>
+                        </div>
+                       
+                    </div>
+                    <span id="confirmPasswordFalse" class="text-danger"></span>
+                </div>
+                <div class="col-auto">
+                    <!-- input -->
+                    <label for="formOTP" class="form-label">Enter OTP</label>
+                    <input type="number" class="form-control" id="formOTP" placeholder="Enter OTP" name="otp" />
+                    <div class="invalid-feedback">Please enter OTP.</div>
+                    <span class="text-danger" id="otpError"></span>
+                </div>
+               
+                   
+                
+                <!-- Space between confirm password and register button -->
+                <div class="col-12">
+                    <div style="margin-top: 10px;"></div>
+                </div>
+                <!-- btn -->
+                <div class="col-12 d-grid">                <button type="submit" id="saveChanges" class="btn btn-primary" style="display: none;">Save changes</button>   <button type="button" class="btn btn-primary" id="getOTP">Get OTP</button></div>
+
+                <!-- text -->
+                
+            </div>
+        </form>
+    </div>
+    
+        
+   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+  
+   function validation(){
+    function validatePhoneNumber(phone) {
+    
+        if (phone.length !== 10) {
+            return false;
+        }
+
+        const allDigitsSame = /^(.)\1+$/.test(phone);
+    
+        const allDigitsZero = /^\d+$/.test(phone) && parseInt(phone) === 0;
+
+        if (allDigitsSame || allDigitsZero) {
+            return false;
+        }
+
+        return true;
+    }
+
+ 
+        const nameInput = document.getElementById("name").value;
+        const emailInput = document.getElementById("email").value;
+        const phoneInput = document.getElementById("phone").value;
+
+        const firstNameError = document.getElementById("firstNameError");
+        const emailError = document.getElementById("error-message");
+        const phoneError = document.getElementById("confirmPasswordFalse");
+
+        let isValid = true;
+
+        // Validate name field
+        if (firstNameError) {
+            if (nameInput.trim() === "") {
+                firstNameError.textContent = "Please enter first name.";
+                isValid = false;
+            } else {
+                firstNameError.textContent = "";
+            }
+        }
+
+        // Validate email field
+        if (emailError) {
+            if (emailInput.trim() === "") {
+                emailError.textContent = "Please enter email.";
+                isValid = false;
+            } else {
+                emailError.textContent = "";
+            }
+        }
+
+        // Validate phone field
+        if (phoneError) {
+        if (!phoneInput || !validatePhoneNumber(phoneInput)||phoneInput==="") {
+            phoneError.textContent = "Please enter a valid phone number.";
+            isValid = false;
+        } else {
+            phoneError.textContent = "";
+        }
+    }
+
+
+        return isValid;
+    };
+
+    document.getElementById("getOTP").addEventListener("click", async (e) => {
+        e.preventDefault();
+        if (!validation()) {
+            return;
+        }
+
+        const email = document.getElementById("email").value;
+        console.log(email);
+        const responseMessage = document.getElementById("responseMessage");
+
+        try {
+            const response = await fetch("/ProfileGetOtp", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                Swal.fire({
+                    title: 'Success',
+                    text: 'OTP has been sent to your email',
+                    icon: 'success'
+                });
+                document.getElementById("getOTP").style.display = "none";
+                document.getElementById("saveChanges").style.display = "block";
+            } else {
+                if (responseMessage) {
+                    responseMessage.textContent = `Error: ${result.message}`;
+                }
+            }
+
+        } catch (error) {
+            if (responseMessage) {
+                responseMessage.textContent = `Error: ${error.message}`;
+            }
+        }
+    });
+
+    document.getElementById("signupForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        console.log("Form submitted");
+        if (!validation()) {
+            return;
+        }
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const constotp = document.getElementById("formOTP").value.trim();
+
+        try {
+            const response = await fetch("/updateProfile", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, phone, constotp })
+            });
+
+            const result = await response.json();
+
+            const responseMessage = document.getElementById("responseMessage");
+
+            if (result.success) {
+                Swal.fire({
+                    title: 'Success',
+                    text: 'Profile updated successfully',
+                    icon: 'success'
+                }).then(() => {
+                    window.location.href = "/profile";
+                });
+            } else {
+                
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: result.message,
+                        footer: '<a href="#">Why do I have this issue?</a>'
+                    });
+               
+            }
+        } catch (error) {
+            const responseMessage = document.getElementById("responseMessage");
+            if (responseMessage) {
+                responseMessage.textContent = `Error: ${error.message}`;
+            }
+        }
+    });
+
+
 
     
-             alertContainer.appendChild(alertDiv);
-           }
+    </script>
+</body>
 
-
-
-         
-
-        </script>
-    </body>
-    </html>
+</html>

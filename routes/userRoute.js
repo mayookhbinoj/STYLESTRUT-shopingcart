@@ -154,12 +154,24 @@ userRoute.get(
   aut.isBlocked,
   profileController.profileEditLoad
 );
+
 userRoute.post(
-  "/updateUser",
+  "/ProfileGetOtp",
   aut.requirelogin,
   aut.isBlocked,
-  profileController.profileEdit
+  profileController.profileOtp
 );
+userRoute.post(
+  "/updateProfile",
+  aut.requirelogin,
+  aut.isBlocked,
+  profileController.updateProfile
+);
+
+
+
+
+
 userRoute.get(
   "/editAdressLoad",
   aut.requirelogin,

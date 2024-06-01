@@ -3,6 +3,10 @@ const adress=require("../../models/addressModel")
 const user = require("../../models/userModel");
 const Order=require("../../models/orderModel")
 const wallet=require("../../models/walletModel")
+const otp=require("../../models/otpModel")
+require("dotenv").config();
+const nodemailer = require("nodemailer");
+const User = require("../../models/userModel");
 
 const profileLogin=async(req,res)=>{
     try {
@@ -71,8 +75,10 @@ const profileLogin=async(req,res)=>{
   }
   const profileEditLoad=async(req,res)=>{
     try {
+      console.log("enter in to profile edit load")  
       console.log(req.id);
       const User=await user.findOne({_id:req.id.id})
+      console.log(User)
       res.render("profileEdit",{User:User})
     } catch (error) {
       console.log("Error fetching user profile data for editing:", error);
@@ -81,26 +87,112 @@ const profileLogin=async(req,res)=>{
     }
   }
 
-  const profileEdit=async(req,res)=>{
+  const profileOtp=async(req,res)=>{
     try {
-      console.log("update profile");
-      const profileEdit=req.id.id
-      console.log(profileEdit);
-     
+     console.log("otp has been sent ")
+     const {email}=req.body
+    
    
+     const userId=req.id.id
+     const otpcode = Math.floor(1000 + Math.random() * 9000).toString();
+     console.log(otpcode )
+    
+      console.log(email)
+      const newOtp = new otp({
+        otp: otpcode,
+        userId:userId
+      });
+      const saveOtp=await newOtp.save()
+      console.log(saveOtp)
+  
+      const transporter = nodemailer.createTransport({
+          service:"gmail",
+          host : "smtp.gmail.com",
+          port: 587,
+          secure: false, 
+          auth: {
+            user: process.env.user_name,
+            pass: process.env.user_password,
+          },
+        });
+        
+          const mailOptions = {
+            from: {
+              name: 'Me',
+              address:process.env.user_name
+            }, // sender address
+            to: email, // list of receivers
+            subject: "Hello ✔", // Subject line
+            text: `Welcome to STYLESTRUT Please verify your email with This Otp${otpcode}`, // plain text body
+            html: `Welcome to STYLESTRUT ${otpcode}`, // html body
+            
+          };
       
-      const {name,email,phone}=req.body
-      console.log(req.body);
-      const updateProfile={
-        name,email,phone
-      }
-      console.log(updateProfile);
-      const profileUpdate=await user.findByIdAndUpdate(profileEdit,updateProfile)  
-      console.log(profileUpdate); 
-      res.redirect("/profile")   
+          const sendMail = async() => {
+              try{
+              
+                  await transporter.sendMail(mailOptions)
+                 
+                  console.log("Email sent");
+                  res.json({ success: true })
+                   
+                  
+                
+              }catch(error)
+              {
+                  console.log(error.message);
+              }
+          }
+      
+          sendMail(transporter,mailOptions)
+  
+      
+
+
+
+
+
+
     } catch (error) {
       console.log("Error updating user profile:", error);
       res.status(500).render("error500").send("Internal Server Error");
+    }
+  }
+  const updateProfile=async(req,res)=>{
+    try {
+      console.log("enter in to update profile")
+      const{constotp}=req.body
+      console.log( typeof constotp)
+      const perOtp=constotp.trim()
+
+    
+      
+      const otpEntry = await otp.findOne({ otp: perOtp });
+      if (!otpEntry) {
+        console.log("OTP not found");
+        return res.json({ success: false, message: "Invalid OTP" });
+    }
+     
+      console.log("otp Entry", typeof otpEntry)
+     
+      if(perOtp===otpEntry.otp){
+        const {name,email,phone}=req.body
+        console.log(name,email,phone) 
+        const userId=req.id.id
+        const updateParameter={
+          name:name,
+          email:email,
+          phone:phone
+        }
+        const updateUser=await user.findByIdAndUpdate(userId,updateParameter)
+        res.json({success:true})
+       
+      }else{
+        res.json({ success: false, message: "Invalid OTP" });
+
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
   const changePasswordHandler=async(req,res)=>{
@@ -158,8 +250,9 @@ const profileLogin=async(req,res)=>{
     profileLogin,
     verifyadressLogin,
     profileEditLoad,
-    profileEdit,
     changePasswordHandler,
-    submitReuturn
+    submitReuturn,
+    profileOtp,
+    updateProfile
 
   }
