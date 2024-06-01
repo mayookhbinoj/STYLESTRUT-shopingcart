@@ -90,7 +90,9 @@
     // const timerInterval = setInterval(updateTimer, 1000);
   let timerOn=true
     $('#generateOTPButton').click(function() {
-      const otp = $('#otp').val(); 
+      const otp = $('#otp').val().trim()
+      console.log(otp)
+      
       $.ajax({
         type: 'POST',
         url: '/verifyotp',

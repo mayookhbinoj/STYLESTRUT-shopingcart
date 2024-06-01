@@ -50,6 +50,7 @@ const verifyGoogle=async(req,res)=>{
       })
       const result=await users.save()
       if (result) {
+        console.log("id",result._id)
         const saveWallet = await wallet.findOne({ userId: result._id });
 
         if (!saveWallet) {
