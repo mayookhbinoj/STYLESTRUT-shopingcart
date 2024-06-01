@@ -49,15 +49,14 @@ require("../../auth")
 
   const getOtp = async (req, res) => {
     console.log(req.query.id);
-    
     try {
       const userId = req.query.id;
-      const saveData = await user.findOne({ _id: userId });
+      
+      
+      const saveData = await user.findOne({_id: userId });
+      console.log("savedata",saveData)
   
-      if (!saveData) {
-        console.log(`User with id ${userId} not found.`);
-        return res.status(404).json({ message: 'User not found' });
-      }
+      
   
       const otpcode = Math.floor(1000 + Math.random() * 9000).toString();
       console.log(`${otpcode} code`);

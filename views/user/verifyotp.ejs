@@ -57,85 +57,49 @@
   
 
     
-    <a id="resendOTP" href="/resend" style="display: none;">Resend OTP</a>
+    <a id="resend"href="#" style="display: none;">Resend OTP</a>
 
     </form>
   </div>
 
   <script>
   
-    let countdownTime = 60;
+  let countdownTime = 120;
+let timerOn = true;
 
+$('#generateOTPButton').click(function() {
+  const otp = $('#otp').val().trim();
+  console.log(otp);
   
-    // function updateTimer() {
-    //   const minutes = Math.floor(countdownTime / 60);
-    //   let seconds = countdownTime % 60;
+  $.ajax({
+    type: 'POST',
+    url: '/verifyotp',
+    data: { otp: otp }, 
+    success: function(response) {
+      console.log(response);
+      if (response.otpverified) {
+        window.location.href = '/shop'; 
+      } else if (response.validataion) {
+        $('#otpDisplay').text('Please enter the OTP to verify').css('color', 'red').show();
+      } else {
+        $('#otpDisplay').text('Invalid OTP. Please try again.').css('color', 'red').show();
+      }
+    },
+    error: function() {
+      $('#otpDisplay').text('Something went wrong.');
+    }
+  });
 
-    //   seconds = seconds < 10 ? '0' + seconds : seconds;
-
-   
-    //   document.getElementById('timer').innerText = `${minutes}:${seconds}`;
-
-     
-    //   countdownTime--;
-
-    //   if (countdownTime < 0) {
-    //     clearInterval(timerInterval);
-    //     document.getElementById('timer').innerText = '00:00';
-    //     alert("OTP has been expired")
-    //   }
-    // }
-
-   
-    // const timerInterval = setInterval(updateTimer, 1000);
-  let timerOn=true
-    $('#generateOTPButton').click(function() {
-      const otp = $('#otp').val().trim()
-      console.log(otp)
-      
-      $.ajax({
-        type: 'POST',
-        url: '/verifyotp',
-        data: { otp: otp }, 
-        success: function(response) {
-          console.log(response);
-          if (response.otpverified) {
-            window.location.href = '/shop'; 
-          }
-            else if(response.validataion){
-
-                $('#otpDisplay').text('please enter the otp to verify').css('color', 'red').show();
-            }
-         else {
-
-              $('#otpDisplay').text('Invalid OTP. Please try again.').css('color', 'red').show();
-          
-         
-            
-          }
-        },
-        error: function() {
-          $('#otpDisplay').text('Something went wrong.');
-        }
-     
-      });
-   
-    
-
-     // Reset the countdown time in localStorage when the page is refreshed
-  
-   
-    });
-    
-  
-    window.addEventListener("load", (event) => {
-  // Function to show the "Resend OTP" link after one minute
-  setTimeout(() => {
-    document.getElementById("resendOTP").style.display = "inline"; // Show the link
-  }, 60000); // 60000 milliseconds = 1 minute
+  // Reset the countdown time in localStorage when the page is refreshed
 });
 
-    window.addEventListener("load", (event) => {
+window.addEventListener("load", (event) => {
+  setTimeout(() => {
+    document.getElementById("resend").style.display = "inline"; 
+  }, 120000); 
+});
+
+window.addEventListener("load", (event) => {
   event.preventDefault();
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get("id");
@@ -147,14 +111,14 @@
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        console.log(response,"dsadas");
+        console.log(response, "dsadas");
         return response.json();
       })
       .then((responseData) => {
         const createdAtTimestamp = responseData.data;
         const createdAt = new Date(createdAtTimestamp);
         console.log(createdAt);
-        const ttlMinutes = 1;
+        const ttlMinutes = 2; // Set to 2 minutes for a 2-minute timer
         const expirationTime = new Date(
           createdAt.getTime() + ttlMinutes * 60000
         );
@@ -175,7 +139,7 @@
           remaining -= 1;
 
           if (remaining >= 0 && timerOn) {
-            setTimeout(function () {
+            setTimeout(function() {
               timer(remaining);
             }, 1000);
             return;
@@ -185,7 +149,7 @@
             return;
           }
 
-          button.setAttribute("disabled", "disabled");
+          document.getElementById("generateOTPButton").setAttribute("disabled", "disabled");
           document.getElementById("timer").classList.add("text-danger");
         }
 
@@ -193,43 +157,42 @@
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
-      })
+      });
   } else {
-    console.error("ID not found in URL");
-  }
+    console.error("ID not found in URL");
+  }
 });
-
-
-
 
 // resend
 const resend = document.getElementById("resend");
 resend.addEventListener("click", (event) => {
   event.preventDefault();
-  fetch("/resend", {
-    method: "POST",
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
+  console.log(id);
+  fetch(`/resend?id=${id}`, {
+    method: "GET", // Change the method to POST
   })
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
       return response.json();
     })
     .then((data) => {
       if (data.success) {
-        // timer(data.timer);
-        alert("The otp is sent to your email");
+        alert("The OTP has been sent to your email");
         document.getElementById("resend-message").innerHTML =
-          "The otp is sent to your email";
-        location.reload();
+          "The OTP has been sent to your email";
+        // Redirect to the verification page after resending OTP
+        window.location.href = "/verifyotp";
       }
     })
     .catch((error) => {
-      throw error;
-    });
+      console.error("Error in resending OTP:", error);
+    });
 });
-   
-  </script>
-</body>
-</html>
+
+    </script>
+  </body>
+  </html>
