@@ -228,6 +228,12 @@
 
     return isValid;
 }
+document.getElementById("signupForm").addEventListener("submit", function(event) {
+    if (!validation()) {
+        event.preventDefault();
+    }
+});
+
 
     </script>
 </body>

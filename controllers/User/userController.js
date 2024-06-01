@@ -52,10 +52,7 @@ const loadRegister = async (req, res) => {
 };
 
 
-const validatePassword = (password) => {
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  return passwordRegex.test(password);
-};
+
 
 const insertUser = async (req, res) => { 
    try {
@@ -66,15 +63,11 @@ const insertUser = async (req, res) => {
     
       const spassword=await securePasword(req.body.password)
       const existingUser = await user.findOne({ email: req.body.email });
-      if (!req.body.name) {
-        return res.render('register', { message: 'Name field cannot be empty. Please enter your name.' });
-    }
+      
       if (existingUser) {
         return res.render('register', { message: 'Email already exists. Please use a different email.' });
     }
-    if (!validatePassword(req.body.password)) {
-      return res.render('register', { message: 'Password must contain at least one uppercase letter, one lowercase letter, one special character, and be at least 8 characters long.' });
-  }
+    
   function generateRandomString(length) {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
