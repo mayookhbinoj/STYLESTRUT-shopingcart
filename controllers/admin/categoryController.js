@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-const category=require("../../models/categoryModel")
+const category=require("../../models/categoryModel");
+const product=require("../../models/productModel");
+
 
 
 const loadCategory=async(req,res)=>{
@@ -105,12 +107,18 @@ const updateEditCategories=async(req,res)=>{
     const unlistCategory=async(req,res)=>{
    
         try {
+            console.log("enter in to unlist category ")
           const userId=req.query.id
           console.log(userId);
           const updatedCategory  = await category.findOneAndUpdate({_id:userId}, { isListed: true }, { new: true });
+          const updateProduct = await product.updateMany(
+            { category: userId },
+            { isListed: true },
+            { new: true }
+        );
          
-          console.log(updatedCategory);
-          res.json({ success: true, message: 'User unlisted successfully.' });
+          console.log("updateProduct",updateProduct);
+          res.json({ success: true, message: 'User unlisted successfully.' })
          
         } catch (error) {
             console.log('something Went wrong to unlist the category', error);
@@ -123,6 +131,12 @@ const updateEditCategories=async(req,res)=>{
           const userId=req.query.id
          console.log(userId);
           const updatedCategory  = await category.findOneAndUpdate({_id:userId}, { isListed: false }, { new: true });
+          const updateProduct = await product.updateMany(
+            { category: userId },
+            { isListed: false },
+            { new: true }
+        );
+
           console.log(updatedCategory);
           res.json({ success: true, message: 'User listed successfully.' });
          
