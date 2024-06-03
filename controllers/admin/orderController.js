@@ -61,7 +61,9 @@ const changeStatusOrders = async (req, res) => {
                 }
                 wallet.refund.push({
                     productName: product.product.name,
-                    amount: orders.total
+                    amount: orders.total,
+                    status:"Credited"
+
                 });
                 
                 wallet.totalAmount += parseInt(orders.total);

@@ -25,6 +25,7 @@ const razopayInstance=new Razorpay({
   })
 
 const payment=async(req,res)=>{
+    
     try {
       console.log("enter in to payment page");
       const userId=req.id.id

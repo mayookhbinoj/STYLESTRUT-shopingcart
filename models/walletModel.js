@@ -5,13 +5,17 @@ const walletSchema = new mongoose.Schema({
       
   },
   refund:[{
-      productName:{
+    productName:{
           type:String,
 
       },
       amount:{
           type:String,
-      }
+      },status:{
+        type:String,
+    
+      },
+      
 
   }],
   

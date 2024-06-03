@@ -263,7 +263,8 @@ const onlineOrder = async (req, res) => {
         }
         Wallet.refund.push({
             productName: product.product.name,
-            amount: order.total
+            amount: order.total,
+            status:"Credited"
         });
 
        
