@@ -6,6 +6,7 @@ const wallet=require("../../models/walletModel")
 const otp=require("../../models/otpModel")
 require("dotenv").config();
 const nodemailer = require("nodemailer");
+const bcrypt=require("bcrypt")
 const User = require("../../models/userModel");
 
 const profileLogin=async(req,res)=>{
@@ -205,14 +206,14 @@ const profileLogin=async(req,res)=>{
     
       
        const User = await user.findById(userId);
-       const isMatch = await bcrypt.compare(oldPassword, user.password);
+       const isMatch = await bcrypt.compare(oldPassword, User.password);
        if(!isMatch){
-        res.json({ success: false, message: 'password incorrect' });
+        res.json({ success: false, message: 'old password is incorrect' });
        }
        else{
         const hashedNewPassword = await bcrypt.hash(newPassword, 10);
-        user.password = hashedNewPassword;
-        const saveData=await user.save()
+        User.password = hashedNewPassword;
+        const saveData=await User.save()
         console.log(saveData,);
         res.json({ success: true, message: 'pasword has been changed' });
        }

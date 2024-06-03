@@ -662,53 +662,29 @@
                                                 <p style="font-weight: bold;">
                                                     <a href="#" id="toggleFormLink">Please Add your Address</a>
                                                 </p>
-
                                                 <form action="/updateAddress" method="post" id="addressForm">
                                                     <div class="mb-3">
                                                         <label for="street" class="form-label">Street:</label>
-                                                        <input type="text" id="street" name="street" class="form-control" placeholder="Enter street address">
-                                                        <div id="streetError" class="invalid-feedback" style="color: red;"></div>
-                                                     
+                                                        <input type="text" id="street" name="street" class="form-control" placeholder="Enter street address" oninput="addressValidation()">
+                                                        <span id="streetError" style="color: red;"></span>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="city" class="form-label">City:</label>
-                                                        <input type="text" id="city" name="city" class="form-control" placeholder="Enter city">
+                                                        <input type="text" id="city" name="city" class="form-control" placeholder="Enter city" oninput="addressValidation()">
+                                                        <span id="cityError" style="color: red;"></span>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="state" class="form-label">State:</label>
-                                                        <input type="text" id="state" name="state" class="form-control" placeholder="Enter state">
+                                                        <input type="text" id="state" name="state" class="form-control" placeholder="Enter state" oninput="addressValidation()">
+                                                        <span id="stateError" style="color: red;"></span>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="zipCode" class="form-label">ZIP Code:</label>
-                                                        <input type="text" id="zipCode" name="zipCode" class="form-control" placeholder="Enter ZIP code">
-                                                        <div id="zipCodeError" class="invalid-feedback" style="color: red;"></div>
+                                                        <input type="text" id="zipCode" name="zipCode" class="form-control" placeholder="Enter ZIP code" oninput="addressValidation()">
+                                                        <span id="zipCodeError" style="color: red;"></span>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary" style="background-color: #4b93ff">Save Address</button>
                                                 </form>
-
-                                                <form action="/updateAddress" method="post" id="addressForm">
-                                                    <div class="mb-3">
-                                                        <label for="street" class="form-label">Street:</label>
-                                                        <input type="text" id="street" name="street" class="form-control" placeholder="Enter street address">
-                                                        <div id="streetError" class="invalid-feedback" style="color: red;"></div>
-                                                     
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="city" class="form-label">City:</label>
-                                                        <input type="text" id="city" name="city" class="form-control" placeholder="Enter city">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="state" class="form-label">State:</label>
-                                                        <input type="text" id="state" name="state" class="form-control" placeholder="Enter state">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="zipCode" class="form-label">ZIP Code:</label>
-                                                        <input type="text" id="zipCode" name="zipCode" class="form-control" placeholder="Enter ZIP code">
-                                                        <div id="zipCodeError" class="invalid-feedback" style="color: red;"></div>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary" style="background-color: #4b93ff">Save Address</button>
-                                                </form>
-                                                
 
 
                                                 <div class="row mt-4">
@@ -757,7 +733,8 @@
                                                         <div class="col-lg-4">
                                                             <div>
                                                                 <label for="oldpasswordInput" class="form-label">Old Password*</label>
-                                                                <input type="password" name="oldPassword" class="form-control" id="oldpasswordInput" placeholder="Enter current password">
+                                                                <input type="password" name="oldPassword" class="form-control" id="oldpasswordInput" placeholder="Enter current password" oninput="inValidation()">
+                                                                 <span id="oldpasswordError" style="color: red;"></span>
                                                             </div>
                                                         </div>
                                                         <!--end col-->
@@ -766,14 +743,16 @@
                                                             <div class="col-lg-4">
                                                                 <div>
                                                                     <label for="newpasswordInput" class="form-label">New Password*</label>
-                                                                    <input type="password" name="newPassword" class="form-control" id="newpasswordInput" placeholder="Enter new password">
+                                                                    <input type="password" name="newPassword" class="form-control" id="newpasswordInput" placeholder="Enter new password" oninput="inValidation()">
+                                                                    <span id="newPasswordError" style="color: red;"></span>
                                                                 </div>
                                                             </div>
                                                             <!--end col-->
                                                             <div class="col-lg-4">
                                                                 <div>
                                                                     <label for="confirmpasswordInput" class="form-label">Confirm Password*</label>
-                                                                    <input type="password" name="confirm" class="form-control" id="confirmpasswordInput" placeholder="Confirm password">
+                                                                    <input type="password" name="confirm" class="form-control" id="confirmpasswordInput" placeholder="Confirm password" oninput="inValidation()">
+                                                                    <span id="confirmPasswordError" style="color: red;"></span>
                                                                 </div>
                                                             </div>
                                                             <!--end col-->
@@ -1642,6 +1621,129 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.18/sweetalert2.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script>
+
+       //validation for adress submitting
+       
+       function addressValidation() {
+            let isValid = true;
+
+            // Validate street
+            const streetInput = document.getElementById("street");
+            const streetError = document.getElementById("streetError");
+            const streetValue = streetInput.value.trim();
+            if (streetValue === "") {
+                streetError.textContent = "Street is required";
+                isValid = false;
+            } else {
+                streetError.textContent = "";
+            }
+
+            // Validate city
+            const cityInput = document.getElementById("city");
+            const cityError = document.getElementById("cityError");
+            const cityValue = cityInput.value.trim();
+            if (cityValue === "") {
+                cityError.textContent = "City name is required";
+                isValid = false;
+            } else {
+                cityError.textContent = "";
+            }
+
+            // Validate state
+            const stateInput = document.getElementById("state");
+            const stateError = document.getElementById("stateError");
+            const stateValue = stateInput.value.trim();
+            if (stateValue === "") {
+                stateError.textContent = "State name is required";
+                isValid = false;
+            } else {
+                stateError.textContent = "";
+            }
+
+            // Validate ZIP code
+            const zipCodeInput = document.getElementById("zipCode");
+            const zipCodeError = document.getElementById("zipCodeError");
+            const zipCodeValue = zipCodeInput.value.trim();
+            if (zipCodeValue === "") {
+                zipCodeError.textContent = "ZIP Code is required";
+                isValid = false;
+            } else if (!(/^\d{6}$/.test(zipCodeValue))) {
+                zipCodeError.textContent = "Invalid ZIP Code format";
+                isValid = false;
+            }
+            else if (/^(0{6}|1{6})$/.test(zipCodeValue)) {
+              zipCodeError.textContent = "ZIP Code cannot be all zeros or all ones";
+               isValid = false;
+                  }  else {
+                zipCodeError.textContent = "";
+            }
+
+            return isValid;
+        }
+
+        document.getElementById("addressForm").addEventListener("submit", (e) => {
+            if (!addressValidation()) {
+                e.preventDefault();
+            }
+        });
+
+//validation change password
+function inValidation() {
+    let isValid = true;
+    const oldPassword = document.getElementById("oldpasswordInput");
+    const oldPasswordError = document.getElementById("oldpasswordError");
+    const oldPasswordInput = oldPassword.value.trim();
+    const newPassword = document.getElementById("newpasswordInput");
+    const newPasswordError = document.getElementById("newPasswordError");
+    const newPasswordInput = newPassword.value.trim();
+    const confirmPassword = document.getElementById("confirmpasswordInput");
+    const confirmPasswordError = document.getElementById("confirmPasswordError");
+    const confirmPasswordInput = confirmPassword.value.trim();
+
+    function validatePassword(password) {
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return passwordRegex.test(password);
+    }
+
+    // Check if old password is empty
+    if (oldPasswordInput === "") {
+        oldPasswordError.textContent = "Old password is required";
+        isValid = false;
+    } else if(!validatePassword(oldPasswordInput)){
+        isValid = false;
+        oldPasswordError.textContent = "must be at least 8 characters long, contain one uppercase letter, one special character, and one number ";
+
+    }else {
+        oldPasswordError.textContent = "";
+    }
+
+    // Check if new password meets criteria
+    if (!validatePassword(newPasswordInput)) {
+        newPasswordError.textContent = "New password must be at least 8 characters long, contain one uppercase letter, one special character, and one number.";
+        isValid = false;
+    } else if(newPasswordInput===""){
+        isValid = false;
+        newPasswordError.textContent = "new password required";
+
+    }else {
+        newPasswordError.textContent = "";
+    }
+
+    // Check if confirm password matches new password
+    if (newPasswordInput !== confirmPasswordInput) {
+        confirmPasswordError.textContent = "Confirm password does not match new password.";
+        isValid = false;
+    } else {
+        confirmPasswordError.textContent = "";
+    }
+
+    return isValid;
+}
+
+
+
+
+
    $(document).ready(function() {
     $("#changePasswordButton").click(function() {
         var oldPassword = $("#oldpasswordInput").val();
@@ -1649,15 +1751,11 @@
         var confirmPassword = $("#confirmpasswordInput").val();
 
         // Check if new password and confirm password match
-        if (newPassword !== confirmPassword) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'New password and confirm password must match.'
-            });
+       
+        const isValid = inValidation();
+        if (!isValid) {
             return;
         }
-
         // Send AJAX request to change password
         $.ajax({
             url: "/changepassword",
@@ -1697,46 +1795,13 @@
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Failed to change password. Please try again later.'
-                });
+                });street
                 console.error(error);
             }
         });
     });
 });
 
-
-const addressForm = document.getElementById("addressForm");
-
-addressForm.addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    // Validate street address
-    const streetInput = document.getElementById("street");
-    const streetError = document.getElementById("streetError");
-    if (streetInput.value.trim() === "") {
-        streetError.textContent = "Street address is required";
-        streetInput.classList.add("is-invalid");
-        return;
-    } else {
-        streetError.textContent = "";
-        streetInput.classList.remove("is-invalid");
-    }
-
-    // Validate ZIP code (example validation)
-    const zipCodeInput = document.getElementById("zipCode");
-    const zipCodeError = document.getElementById("zipCodeError");
-    if (!/^\d{6}$/.test(zipCodeInput.value.trim())) {
-        zipCodeError.textContent = "Invalid ZIP code";
-        zipCodeInput.classList.add("is-invalid");
-        return;
-    } else {
-        zipCodeError.textContent = "";
-        zipCodeInput.classList.remove("is-invalid");
-    }
-
-    // If all validations pass, submit the form
-    this.submit();
-});
 
 document.getElementById("toggleFormLink").addEventListener("click", function(event) {
         event.preventDefault(); // Prevent the default behavior of the link

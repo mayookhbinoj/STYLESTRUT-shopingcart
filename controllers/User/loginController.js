@@ -34,7 +34,7 @@ const loadLandingPage=async(req,res)=>{
       res.render("index",{data:dataProduct})
     } catch (error) {
       console.error("Error in loadLandingPage:", error);
-      res.status(500).render("error500").send("Internal server error")
+      res.status(500).render("error500")
     }
   }
   const userLoadLogin = async (req, res) => {
