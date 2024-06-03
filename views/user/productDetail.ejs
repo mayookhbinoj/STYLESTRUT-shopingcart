@@ -1175,7 +1175,7 @@
                     <%similarproduct.forEach(product=> {%>
            
                         <div
-                        onclick="window.location.href='/product-details?id=<%=product._id %>'"
+                      
               
                         class="col-xxl-3 col-lg-4 col-sm-6"
                       >
@@ -1200,11 +1200,7 @@
                             </div>
                           </div>
                           <div class="pt-4">
-                            <a href="#">
-                              <h6 class="text-capitalize fs-15 lh-base text-truncate mb-0">
-                                <%=product.name%>
-                              </h6>
-                            </a>
+                            <a href="/single-product?id=<%= product._id %>" class="text-dark"><%= product.name %></a>
                             <div class="mt-2">
                               <span class="float-end"
                                 >4.1 <i class="ri-star-half-fill text-warning align-bottom"></i
