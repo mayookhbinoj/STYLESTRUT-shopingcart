@@ -1233,7 +1233,11 @@ function validateForm() {
     } else if (!(/^\d{6}$/.test(zipCodeValue))) {
         zipCodeError.textContent = "Invalid ZIP Code format";
         isValid = false;
-    } else {
+    }
+    else if (/^(0{6}|1{6})$/.test(zipCodeValue)) {
+              zipCodeError.textContent = "ZIP Code cannot be all zeros or all ones";
+               isValid = false;
+                  } else {
         zipCodeError.textContent = "";
     }
 
