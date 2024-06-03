@@ -31,7 +31,7 @@ const payment=async(req,res)=>{
       const userId=req.id.id
       const saveWallet=await wallet.findOne({userId:userId})
     
-      const findCart=await cart.findOne()
+      const findCart=await cart.findOne({user:userId})
       console.log("findcart",findCart.subtotal);
       res.render("payment",{findCart:findCart,saveWallet:saveWallet})
     } catch (error) {
