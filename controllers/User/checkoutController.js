@@ -36,10 +36,6 @@ const checkOutLoad=async(req,res)=>{
      
       const couponData=userData.coupon
      
-    
-      
-  
-     
       const cartItems = await cart.aggregate([
         {
             $match: { user:new mongoose.Types.ObjectId(userId)} 

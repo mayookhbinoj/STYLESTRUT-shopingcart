@@ -14,6 +14,7 @@ const coupon=require("../../models/couponModel")
 const jwt=require("jsonwebtoken")
 const mongoose=require("mongoose");
 const User = require("../../models/userModel");
+const category = require("../../models/categoryModel");
 const { ObjectId } = require('mongoose').Types;
 
 
@@ -30,8 +31,13 @@ const loadLandingPage=async(req,res)=>{
     try {
       console.log("enter in to loadhome");
       const dataProduct=await Product.find().limit(8)
-      console.log("data",dataProduct)
-      res.render("index",{data:dataProduct})
+      const Category=await category.find()
+     const  newData= await Product.find()
+      .sort({ createdAt: -1 })
+      .skip()
+      .limit(3)
+      console.log("data",newData)
+      res.render("index",{data:dataProduct,category:Category,newData:newData})
     } catch (error) {
       console.error("Error in loadLandingPage:", error);
       res.status(500).render("error500")
